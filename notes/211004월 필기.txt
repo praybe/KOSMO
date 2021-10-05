@@ -1,0 +1,280 @@
+★10월 4일 월요일 수업★
+
+지난 시간 복습: 숫자 출력
+문제 1번.
+문제 2번.
+
+
+☞double num1 =100; 과 doubl1 Num1 = 200;은 다르다. 대소문자는 같은 것으로 인식하지 않는다.
+☞보통 기호는 인식되지 않지만 $와 _ 표시는 가능하다.
+int java_program; 가능
+int $; 가능
+int ^^; 불가
+
+
+
+☞음의 정수 표현방법: 양의 정수의 이진수 표현에 2의 보수를 취한 결과를 음의 정수로 표현한다.
+음의 정수가 아이디어가 필요했는데 2의 보수법으로 해결!
+
+☞실수 표현 방식의 이해: 정수와 달리 실수는 오차 없이 표현 불가. 따라서 정밀도를 낮추고 표현 가능 값 범위를 넓힘. 실수 표현 방법의 기준 [ IEEE754 ] 
++-(1.m)*2 e-127으로 표현. 플러스 마이너스 1.m 곱하기 2의 e마이너스 127승
+
+☞따라서 왜 데이터를 굳이 정수와 실수로 나누어 놨을까?
+우리가 보기에는 정수나 실수나 간단 명료해 보이지만,
+컴퓨터 내에서는 정수와 실수 모두를 010101 덩어리로 만들어야하는데 정수와 실수를 표현해 내는 방식이 매우 다르다. 
+정수는 이진법을 이용하여 이진법으로 구현 혹은 이진법의 보수를 이용하지만, 실수는 엄청 복잡...
+
+
+♬ public class OperatePromotion {
+public static void main(String[ ] args) {
+	short num1 = 11; 
+	short num2 = 22;
+	short result = num1 + num2; //오류 발생 ! 
+	Sysout(result);
+
+근데 또 int로 진행하면 잘 나옴.
+	int num1 = 11; 
+	int num2 = 22;
+	int result = num1 + num2;
+	Sysout(result);
+코딩 결과 > 33 
+
+♨ 왜 int로는 잘 되고 short은 오류 발생할까? Why? 
+
+jvm 32비트 시스템
+학원컴 63비트 운영체제
+◐이게 뭘 뜻하냐? 옛날에는 4비트 8비트 16비트...
+놀라지 마시라. 매우 간단한 것임 ㅋ_ㅋ 예전 8비트 시스템은 cpu와 메모리에 연결된 선의 개수가 9개인 것. 
+16비트는 연결된게 16개. 32비트는 연결된 선의 개수가 32개. ▶64비트는 cpu와 메모리에 연결된 선의 개수가 64개 !!! 
+그러니 당연히 64비트가 32비트보다 비싸고 좋음. 왜 더 좋을까용? 왜 게임이 더 잘 돌아갈까용? (원리↑)
+
+메모리와 cpu가 있음. 연산은 cpu만 가능.
+메모리에 값이 있음. num1 21억, num2 21억이 있음. 
+num1과 num2의 값을 cpu에 보낼 것임.
+
+5볼트 주면 1 , 그거보다 낮은거 보내면 0 (2볼트) 
+
+long은 64비트 (8바이트 * 8 = 64비트). 그래서 선이 64개면 메모리에서 cpu로 보낼때 한 번에 보내고 숫자가 바로 뜸.
+그런데 선이 32개다? 그럼 32비트씩 2번 보내야지. int는 32비트(4바이트 * 8 = 32비트).
+▶그러니 64비트 시스템이 32비트 시스템보다 2배나 빠르고 게임도 잘 돌아가고 더 좋은 것이다.
+
+
+
+jvm은 기본적으로 32개. 
+cpu (jvm) 선이 32개. 메모리에서 cpu로 선을 연결하고 1과 0을 쏘는 것. 볼트를 보내냐 마느냐인 것이지.
+
+그럼 short는? (2바이트 * 8 = 16비트) 그럼 얘는 선이 몇 개 필요해? 16개가 필요함. 
+int 이하에서 쏠 때는 16개만 쏘는게 아니다. CPU 입장에서는 나머지 16개를 놀게 할 순 없워~~~!!
+그래서 short를 무조건 int로 늘려버리고 에러가 뜨게 되는 것.
+그러고 나서 또 32비트로 늘린걸 16비트짜리로 만들어줘야해서 형변환 시간으로 인한 속도도 느려짐.
+
+☞따라서 컴파일 에러는 정수형 사칙연산 시 자료형에 상관없이 int형 덧셈을 진행해야 함.
+그러므로 short, byte 케이스를 반드시 형변환을 시켜줘야 한다. int가 32비트에 가장 최적화 되었기 때문에 int로 바꿔줌.
+
+
+
+ 
+
+☞ float와 double 사이에서의 자료형 선택 기준은 정.밀.도 ! 
+float은 4byte 소수점 7자리, double은 8byte 소수점 16자리
+실무에서는 float 안 쓰고 120% double 씀
+
+
+double하고 float은 0101 표현하는 방법이 정수형과 완전히 다르다.
+
+
+☞문자형: Char 2byte //ex. 한글 유니코드
+
+♬public class CharTypeUnicode {
+public static void main(String[ ] args) {
+	char ch1 = '헐'; 
+	char ch2 = '확';
+	 
+	Sysout(ch1 + ch2);
+
+
+☞문자를 뿌리는 원리:
+문자와 숫자의 일 대 일 매칭(코드표)
+컴퓨터에 보이는 모든 문자 글자는 숫자값이 존재한다.
+
+☞아스키 코드표(ASCⅡ) //American Standard Code Information 1960년 10월6일 아스키 표준화 작업
+
+A를 적어본다. → hard disk or SSD
+A를 레이저로 지져서 저장하는 것은 아니다. 모든 컴퓨터는 010101 이진수만 취급한다.
+A, * 를 폰트라 부름. 이 폰트를 구현하기 위해 픽셀들을 찍어놨고 문자별로 숫자값이 있다.
+
+☞암기 해야 할 아스키코드: 65번 A
+☞주의 해야 할 아스키코드: 32번 sp (스페이스) ▶ 빈 칸 띄우는 것 조차 32번이라는 문자로 취급하며 숫자값이 있다. 
+
+
+가 → 해당 숫자 값이 있어야 함. 
+
+한국어 일본어 중국어는 어떻게 할 것인가.
+기존에 있는 1960년대 만들어진 미국의 아스키코드(영문) 1byte짜리 125개 // + 한글 일본어 한자 등 포함된 코드표인 유니코드 = 2byte
+
+☞자바에서는 유니코드를 쓴다. 유니코드란? 문자와 숫자를 1대1 매칭 시킨 코드표
+유니코드: UTF-8
+UTF 어쩌고는 다 유니코드 계열
+
+
+코드의 종류는 죠낸 많음
+한글 완성형 코드(EUC-KR, UHC), 한글 조합형 코드(JOHAB)
+예를 들면 완성형에서는 가 (100번)인데 조합형에서는 가 (200번) 이런 식으로 매칭되는 숫자가 달라진다.
+완성형이든 조합형이든 java에서는 유니코드를 씀.
+
+☞이클립스에 한글 문자 나오게 하는 방법.
+상단 Window → preferences → enc검색 → workspace →text file encoding
+→ other → UTF-8 → apply 이후 
+public static void main(String[ ] args) {
+	char ch1 = '헐';  // 쌍따옴표는 안됨. 반다시 홀따옴표. 문자열이 아니라 문자를 다루는 거라서
+	char ch2 = '확';
+	 
+	Sysout(ch1 + "" + ch2);
+이렇게 해야 코딩에 > 헐확 < 이 나옴.
+Sysout(ch1 + ch2); 이런식으로 하면 > 헐확 < 이 아니라 > 109605 < 가 나옴
+♬public class CharTypeUnicode {
+	public static void main(String[] args) {
+		
+		char ch1 = '헐'; // 문자형
+		char ch2 = '확';
+
+		char ch3 = 54736; //문자 '헐'의 유니코드 값
+		char ch4 = 54869; //문자 '확'의 유니코드 값
+
+		char ch5 = 0xD5D0;
+		char ch6 = 0xD655;
+		
+		System.out.println(ch1 + ch2);
+		System.out.println(ch1 + "" + ch2);
+		System.out.println(ch3 + "" + ch4);
+		System.out.println(ch5 + "" + ch6);
+
+		int ch7 = 'A';
+		System.out.println(ch7);
+		char ch8 = 65;
+		System.out.println(ch8);
+
+
+
+☞Boolean : 참 거짓
+public class Boolean {
+	public static void main(String[] args) {
+		boolean b1 = true;
+		boolean b2 = false;
+		System.out.println(b1); //b1이 지닌 값 출력
+		System.out.println(b2);
+		
+		int num1 = 10;
+		int num2 = 20;
+		System.out.println(num1 < num2);
+		System.out.println(num1 > num2);
+
+
+
+(num1 < num2); 일단 CPU한테 응답을 받음.
+표현을 부등호 넣어서 해도 true 또는 false가 나옴
+
+
+
+
+▲안드로이드 핸드폰에 어떤 cpu가 들어갈까요? 스냅드래곤(퀄컴), 엑시노스(샘숭..구데기임)
+컴퓨터는 intell(i7, i5 ...), AMD(라이젠 ..리사쑤 !)
+
+▲문제 해결을 위해 개발자 100명이 들러붙어. 끝까지 해결 못하는 두 세개의 문제가 남음.
+1, 2, 3 하드웨어든 소프트웨어든 이걸 해결하는 사람들은 정해져 있음. 100명 들러붙어도 소용없음. 해결하는 사람은 항상 정해져 있고 걔네가 에이스임.
+
+▲어렵다 → 아 외워야 되는구나 !! 
+   힘들다 → 아 외워야 되는구나 !!
+
+아 ~~ 소프트웨어 이렇게 짜는구나. 아 ~ 이걸 외워야 돈을 버는구나. 
+
+
+
+
+
+☞3장 Constants : 상수 (변하지 않는 수)
+final이 붙게 되면 초기화 한 번만 가능. 상수를 의미한다.
+초기화가 뭐냐?  변수 선언 후 값을 처음 할당하는 것
+♬public class Constants {
+	public static void main(String[] args) {
+		//final 붙게 되면 초기화 한 번만 가능
+		//초기화: 변수 선언 후 값을 처음 할당하는 것
+		final int num = 100; // 변수명 앞에 final 붙이면 왜 에러가 날까
+		// num = 500; final이 붙으면 변수가 아니라 상수가 된다.
+		
+		int num2;  //초기화 시킴
+		/* num2 = 500; 이건 초기화 아님 */
+		num2 = 600;
+
+
+보통의 개발자들은 대문자로 상수의 이름을 지음 (관례)
+		final int MAX_SIZE = 100;
+		final char CONST_CHAR = '상';
+		final int CONST_ASSIGNED;
+		CONST_ASSIGNED = 12;
+
+		System.out.println("상수1 : " + MAX_SIZE);
+		System.out.println("상수2 : " + CONST_CHAR);
+		System.out.println("상수3 : " + CONST_ASSIGNED);
+
+		
+		final double PI = 3.14;
+		PI = 3.16  // PI를 상수 설정해서 에러 뜸 
+		double radius = 10; //반지름
+		double area = radius * radius * PI; //원의 넓이
+		System.out.println(area); 
+		
+
+
+
+
+
+☞ 반드시 데이터 타입 잡고 올라가야 함. 
+♬public class IntegerLiterals {
+	public static void main(String[] args) {
+		
+		int num = 3 + 6; //연산을 시키도록 만들기 위해서 어쩔 수 없이 3과 6을 보내서 더해서 결과값을 받음
+		// 컴파일러는 다이렉트로 9를 못 만들어. 그래서 3이랑 6을 메모리에 방 잡아줘야 해
+		
+		int num1 = 123; //10진수 표현
+		int num2 = 0123; //8진수 표현
+		int num3 = 0x123; //16진수 표현
+		
+		System.out.println("num1: " + num1);
+		System.out.println("num2: " + num2);
+		System.out.println("num3: " + num3);
+		
+		System.out.println("11 + 22 + 33 = " + (11 + 22 + 33));
+		System.out.println("011 + 022 + 033 = " + (011 + 022 + 033));
+		System.out.println("0x11 + 0x22 + 0x33 = " + (0x11 + 0x22 + 0x33));
+		
+
+
+정수는 무조건 int형으로 인식하기로 약속. 따라서 3과 6은 정수형 [리터럴]
+그리고 3.3과 4.5는 실수형 [리터럴] 
+	int num1 = 3 + 6;
+	double num2 = 3.3 + 4.5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
