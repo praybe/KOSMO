@@ -1,0 +1,88 @@
+1. 리터럴이란?
+
+
+2. 아래의 내용이 에러가 나는 이유와 수정 방법은?
+System.out.println(3147483647 + 3147483648); //에러남
+
+
+3. 자동 형변환과 명시적 형변환에 대하여 설명하시오.
+
+4.아래의 에러가 나는 이유를 설명하고 수정 하시오.
+
+ 
+
+int a = 3;
+
+int b = 4;
+
+	
+
+double result = a / b;
+
+ 
+
+System.out.println(result);
+
+5. 이스케이프 시퀀스의 종류를 나열하고 기능을 설명하시오.
+
+6. 아래의 출력 결과를 확인하고, 130이 나오는 이유를 설명
+
+System.out.println('A'); 
+
+System.out.println('A' + 'A');
+
+7. 결합 방향과 우선순위에 대하여 설명하시오.
+
+8. "1초과 100미만인가?"를 코딩으로 표현하면?
+
+9. "2의 배수 또는 3의 배수?" 를 코딩으로 표현 하면?
+
+10. 아래의 프린트 결과를 예측해 보고, 코딩 후 결과를 확인 하시오.
+
+class SCE {
+
+	public static void main(String[] args) {
+
+		int num1 = 0;
+
+		int num2 = 0;
+
+		boolean result;    
+
+ 
+
+		result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
+
+    System.out.println("result = " + result);
+
+    System.out.println("num1 = " + num1);
+
+    System.out.println("num2 = " + num2 + '\\n'); // "
+
+	
+
+    result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
+
+    System.out.println("result = " + result);
+
+    System.out.println("num1 = " + num1);
+
+    System.out.println("num2 = " + num2);
+
+	}
+
+}
+
+11.아래를 프로그래밍 하시오.
+
+국어 : 50
+
+영어 : 70
+
+수학 : 95
+
+ 
+
+총점과 평균을 구하시오.
+
+-단 평균은 소숫점 까지 나오도록 하시오
