@@ -1,0 +1,53 @@
+1. "1초과 100미만인가?"를 코딩으로 표현하면?
+
+2. "2의 배수 또는 3의 배수?" 를 코딩으로 표현 하면?
+
+3. 아래의 프린트 결과를 예측해 보고, 코딩 후 결과를 확인 하시오.
+
+class SCE {
+
+	public static void main(String[] args) {
+
+		int num1 = 0;
+
+		int num2 = 0;
+
+		boolean result;    
+
+ 
+
+		result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
+
+    System.out.println("result = " + result);
+
+    System.out.println("num1 = " + num1);
+
+    System.out.println("num2 = " + num2 + '\\n'); // "
+
+	
+
+    result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
+
+    System.out.println("result = " + result);
+
+    System.out.println("num1 = " + num1);
+
+    System.out.println("num2 = " + num2);
+
+	}
+
+}
+
+4.아래를 프로그래밍 하시오.
+
+국어 : 50
+
+영어 : 70
+
+수학 : 95
+
+ 
+
+총점과 평균을 구하시오.
+
+-단 평균은 소숫점 까지 나오도록 하시오
