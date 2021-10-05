@@ -1,12 +1,17 @@
 1. 리터럴이란?
+☞리터럴이란 정수형 상수를 의미한다.
 
 
 2. 아래의 내용이 에러가 나는 이유와 수정 방법은?
 System.out.println(3147483647 + 3147483648); //에러남
+☞괄호 안의 두 개의 정수 모두 31억이 넘는다. jvm은 32비트 메모리 구조라 아무런 데이터 타입 설정이 없을 경우 4byte의 int를 최우선으로 적용한다.
+4byte의 int는 구현 가능한 자릿수가 약 - 21억 부터 + 21억이라 이 범위를 초과할 경우 오류가 발생하는 것이다.
+때문에 int보다 범위가 크고 31억이라는 숫자 연산이 가능한 long을 데이터 타입으로 설정할 경우 에러가 발생하지 않으며 
+System.out.println(3147483647L + 3147483648L); 각 숫자 끝에 L을 붙이면 오류가 없이 연산이 진행된다.
 
 
 3. 자동 형변환과 명시적 형변환에 대하여 설명하시오.
-
+☞명시적 형변환은 (double)num1 / 3 처럼 (double)을 붙여 정수값으로 계산될 연산에 실수 계산을 진행하라고 강제적으로 형변환 명령을 시키는 것이다.
 
 4.아래의 에러가 나는 이유를 설명하고 수정 하시오. ( 형변환으로 설명)
 
@@ -15,24 +20,36 @@ int b = 4;
 double result = a / b;
 System.out.println(result);
 
+☞int는 정수형 데이터 타입인데 3나누기 4를 하면 1 이하의 소수가 나온다. 컴퓨터는 int를 정수로 인식하기 때문에 1 이하의 소수일 경우 0으로 출력이 될 것이다.
+때문에 실수 계산을 요하는 double result를 명령하여도 정수 계산 이후 실수화가 진행되어 0.0으로 표현될 뿐 원하는 값은 도출되지 않는다.
+이를 수정하기 위해 명시적 형변환을 진행하는데, double result = (double)a/b; 혹은 double result=a/(double)b;라고 하면 된다.
 
 5. 이스케이프 시퀀스의 종류를 나열하고 기능을 설명하시오.
+☞ Escape sequence는 \ (엔터와 백스페이스 사이에 존재) 형태이며 대표적으로 4 종류가 있다.
+1) \b 후 데이터를 한 칸 당기는 것이다. 한 칸 back한다와 동일. 따라서 한 칸 당겨질 때 기존에 있던 데이터 위에 덮어지는 것과 같아짐.
+	sysout("AB"+\b+'C');
+	
+
+
+2) \t 탭키와 같은 기능. 
+3) \n
+4) \r
 
 
 6. 아래의 출력 결과를 확인하고, 130이 나오는 이유를 설명
 
 System.out.println('A'); 
 System.out.println('A' + 'A');
-
+☞
 
 7. 결합 방향과 우선순위에 대하여 설명하시오.
-
+☞
 
 8. "1초과 100미만인가?"를 코딩으로 표현하면?
-
+☞
 
 9. "2의 배수 또는 3의 배수?" 를 코딩으로 표현 하면?
-
+☞
 
 10. 아래의 프린트 결과를 예측해 보고, 코딩 후 결과를 확인 하시오.
 
@@ -44,28 +61,28 @@ class SCE {
 		
 		
 		result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
-(num1 더하기 10은 0+10은 0보다 작다)&&(num2 더하기 10은 0+10은 0보다 크다). 좌false, 우true. &&은 양 옆 데이터 모두 true여야 true가 나오므로 result는 flase값이다. 
+☞(num1 더하기 10은 0+10은 0보다 작다)&&(num2 더하기 10은 0+10은 0보다 크다). 좌false, 우true. &&은 양 옆 데이터 모두 true여야 true가 나오므로 result는 flase값이다. 
 		System.out.println("result = " + result);
-result= false가 나올 것이다.
+☞result= false가 나올 것이다.
 		
 		System.out.println("num1 = " + num1);
-num1 = 0 이 나올 것이다.   ▶오답; 코딩결과 num1 = 10◀
+☞num1 = 0 이 나올 것이다.   ▶오답; 코딩결과 num1 = 10◀
 		System.out.println("num2 = " + num2); 
-num2 = 0 이 나올 것이다.
+☞num2 = 0 이 나올 것이다.
 		
 		result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
-(num1 더하기 10은 0+10은 0보다 크다)|| (num2 더하기 10은 0+10은 0보다 크다). 좌true, 우true.||은 양 옆 데이터 둘 중 하나가 true면 true가 나오므로 result는 true값이다.
+☞(num1 더하기 10은 0+10은 0보다 크다)|| (num2 더하기 10은 0+10은 0보다 크다). 좌true, 우true.||은 양 옆 데이터 둘 중 하나가 true면 true가 나오므로 result는 true값이다.
 		System.out.println("result = " + result);
-result= true가 나올 것이다.
+☞result= true가 나올 것이다.
 		System.out.println("num1 = " + num1);
-num1 = 0 이 나올 것이다.  ▶오답; 코딩결과 num1 = 20◀
+☞num1 = 0 이 나올 것이다.  ▶오답; 코딩결과 num1 = 20◀
 		System.out.println("num2 = " + num2);
-num2 = 0 이 나올 것이다
+☞num2 = 0 이 나올 것이다
 
 	}
 }
 
-●논리 연산자와 SCE(Short-Circuit Evaluation)
+☞논리 연산자와 SCE(Short-Circuit Evaluation)
 sce란 '최단거리 연산'이라고 한다. 연산 결과 나온 것에 대해 더 이상 연산을 수행하지 않는 것. JAVA와 JAVAScript그리고 Python은 SCE연산을 지원한다.
 연산자: (&&)AND 선조건이 true일때만 후조건 실행. 선조건이 false인 경우 후조건 진행하지 않는다.
 연산자: (||)OR 선조건이 true면 후조건을 진행하지 않는다. 선조건이 false인 경우에만 후조건을 실행.
@@ -82,7 +99,7 @@ sce란 '최단거리 연산'이라고 한다. 연산 결과 나온 것에 대해
 총점과 평균을 구하시오.
 
 -단 평균은 소숫점 까지 나오도록 하시오
-public class Oct5th {
+☞public class Oct5th {
 	public static void main(String[] args) {
 		int kor=50;
 		int eng=70; 
