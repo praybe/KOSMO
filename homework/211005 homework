@@ -44,17 +44,31 @@ class SCE {
 		
 		
 		result = ((num1 += 10) < 0) && ((num2 += 10) > 0);
+(num1 더하기 10은 0+10은 0보다 작다)&&(num2 더하기 10은 0+10은 0보다 크다). 좌false, 우true. &&은 양 옆 데이터 모두 true여야 true가 나오므로 result는 flase값이다. 
 		System.out.println("result = " + result);
+result= false가 나올 것이다.
+		
 		System.out.println("num1 = " + num1);
-		System.out.println("num2 = " + num2 + '\\n'); // "
+num1 = 0 이 나올 것이다.   ▶오답; 코딩결과 num1 = 10◀
+		System.out.println("num2 = " + num2); 
+num2 = 0 이 나올 것이다.
 		
 		result = ((num1 += 10) > 0) || ((num2 += 10) > 0);
+(num1 더하기 10은 0+10은 0보다 크다)|| (num2 더하기 10은 0+10은 0보다 크다). 좌true, 우true.||은 양 옆 데이터 둘 중 하나가 true면 true가 나오므로 result는 true값이다.
 		System.out.println("result = " + result);
+result= true가 나올 것이다.
 		System.out.println("num1 = " + num1);
+num1 = 0 이 나올 것이다.  ▶오답; 코딩결과 num1 = 20◀
 		System.out.println("num2 = " + num2);
+num2 = 0 이 나올 것이다
 
 	}
 }
+
+●논리 연산자와 SCE(Short-Circuit Evaluation)
+sce란 '최단거리 연산'이라고 한다. 연산 결과 나온 것에 대해 더 이상 연산을 수행하지 않는 것. JAVA와 JAVAScript그리고 Python은 SCE연산을 지원한다.
+연산자: (&&)AND 선조건이 true일때만 후조건 실행. 선조건이 false인 경우 후조건 진행하지 않는다.
+연산자: (||)OR 선조건이 true면 후조건을 진행하지 않는다. 선조건이 false인 경우에만 후조건을 실행.
 
 
 11.아래를 프로그래밍 하시오.
@@ -65,8 +79,23 @@ class SCE {
 
 수학 : 95
 
- 
-
 총점과 평균을 구하시오.
 
 -단 평균은 소숫점 까지 나오도록 하시오
+public class Oct5th {
+	public static void main(String[] args) {
+		int kor=50;
+		int eng=70; 
+		int math=95;
+		
+		int total=kor+eng+math;
+		System.out.println("총점: "+total);
+		
+		double avg=(double)total/3;
+		System.out.println("평균: "+avg);
+총점: 215
+평균: 71.66666666666667
+
+				
+		
+
