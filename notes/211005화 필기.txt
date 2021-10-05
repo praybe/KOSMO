@@ -395,5 +395,11 @@ cf)오징어게임 홀짝 게임을 프로그램으로 옮기세요.로도 가�
 2또는 3의 배수인가? true
 0인가? false
 
+
+☞ ! 는 not을 의미
+
+I am a girl;
+! I am a girl = I am not a girl ; 
+
 		
 		
