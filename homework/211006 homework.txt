@@ -141,7 +141,35 @@ class AddNum {
 				
 결과값: 최대값은100입니다
 
+				
+			//위에 if문 간단하게 줄여보기
+				int r1 = 60;
+				int r2 = 90;
+				int r3 = 100;
+			
+				if (r1>r2) {
+					System.out.println("최대값은 60이다");
+				} else if (r2>r3) {
+					System.out.println("최대값은 90이다");
+				} else {
+					System.out.println("최대값은 100이다");
+				}
+				System.out.println("================="); 
+결과값: 최대값은100이다		
 
+			//삼항연산자 이용
+				int w1 = 60;
+				int w2 = 90;
+				int w3 = 100;
+				int Max;
+				
+				Max = ((w3>w2)&&(w3>w1)) ? w3 : w2;
+				System.out.println(Max);
+				
+결과값: 100			
+				
+				
+					
 
 11. int 변수 선언 후 임의로 값을 넣음.
 해당 값이 짝수 이면 "짝수 입니다" 출력
