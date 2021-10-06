@@ -1,12 +1,16 @@
 1.  아래가 에러가 나는 이유를 설명하고, 수정 하시오.
 short num = 1;
 short num = -num;
+☞
 2. 전위 증가 연산자와 후위 증가 연산자의 차이는?
+☞
 3. 아래의 비트 연산자 4가지를 설명하시오.
 & | ^ ~
+☞
 4. 아래의 쉬프트 연산자에 대하여 설명하시오.
 <<
 >>
+☞
 5. 아래의 출력값을 예측하시오.
 class AssignSteResult {
 	public static void main(String[] args) {
@@ -24,6 +28,7 @@ class AssignSteResult {
     System.out.println(num3);
 	}
 }
+☞
 6.아래의 출력값을 예측하시오.
 class AddNum {
 	public static void main(String[] args) {
@@ -37,11 +42,13 @@ class AddNum {
     System.out.println("3 + 6 + 9 + 12 = " + result);
 	}
 }
+☞
 
 8.  조건문의 3가지 종류를 나열하고 설명하시오.
  아래의 프로그램을 짜시오.
  국어:80 수학:80 영어:60 총점과 평균을 출력하고, 
  평균에 따른 수우미양가를 출력 하시오.
+☞
 
 9. int 변수 3개 선언 
 임의 값 집어 넣음
