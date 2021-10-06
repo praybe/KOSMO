@@ -78,18 +78,37 @@ class AddNum {
 	public static void main(String[] args) {
 		int result = 3 + 6;
 		System.out.println("3 + 6 = " + result);  
-  
+☞9예상. 3+6은 9이므로. 
 		result += 9;
     System.out.println("3 + 6 + 9 = " + result);
-    
+☞18예상. result값이 9였는데 9에 9를 다시 더하므로.    
     result += 12;
     System.out.println("3 + 6 + 9 + 12 = " + result);
 	}
 }
-☞
+☞30 예상. result 값이 18이었늗네 그 값에 12를 더하므로.
 
 8.  조건문의 3가지 종류를 나열하고 설명하시오.
-☞
+☞ 
+1) if문: if 조건문은 해당값이 참(true)인지 거짓(false)인지 판단하고 참 값을 도출하는 것이다.
+	if(n1<n2) {
+		System.out.println("n1 > n2 is true");
+	}
+2) if ~ else문: if 조건문 이후 참이 아닌 값에 대해 구하고 싶을 때 else를 붙인다.
+	if(true or false) {
+		Sysout(조건 true시 실행되는 영역);
+	}else {
+		Sysout(조건 false시 실행되는 영역);
+	}
+3) if ~ else if ~ else 문: if 조건문 이후 참이 아닌 값에 대해 다시 참 거짓을 판별하고 싶을 때 else if를 추가하고 가장 마지막으로 참거짓이 판단되는 구문은 else로 적는다. else if절은 중간에 얼마든지 추가 가능.
+	if(true or false) {
+		Sysout(조건 true시 실행되는 영역);
+	}else if {
+		Sysout(조건 false시 실행되는 영역);
+	}else {
+		Sysout(조건 false시 실행되는 영역);
+	}
+
 
 9. 아래의 프로그램을 짜시오.
 국어:80 수학:80 영어:60 총점과 평균을 출력하고, 
