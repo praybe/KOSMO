@@ -12,3 +12,32 @@
 2번
 11 이 1초과 10미만의 수인가를 체크 
 22가 2 또는 3의 배수인가를 체크 하는 프로그램"
+
+
+
+
+
+
+
+실습결과
+
+public class programming {
+
+	public static void main(String[] args) {
+// 1번		
+		int kor, eng, math;
+		kor = 50;
+		eng = 70;
+		math = 95;
+		
+		int total = kor + eng + math; // int가 아니고 double이라ㅣ고 적음
+		System.out.println("총점: " +total);
+		double avg = ((double)total / 3 );
+		System.out.println("평균: "+avg);
+//2번
+		int num1 =11;
+		int num2 = 22;
+		boolean result; //boolean이라고 적어야 하는ㄴ데 double이라고 적음
+		
+		System.out.println((num1>1)&&(num1<100));
+		System.out.println((num2%2==0)||(num2%3==0));
