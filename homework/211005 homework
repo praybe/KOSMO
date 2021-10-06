@@ -102,8 +102,8 @@ class SCE {
 		
 		System.out.println("num1 = " + num1);
 ☞num1 = 0 이 나올 것이다.   ▶오답; 코딩결과 num1 = 10◀
-▶▶num1=10이 나온 이유: (num1+=10)을 함으로서 num1 =10이 되었다. 10>0이 맞으므로 true라는 연산 값을 갖은 상태로 
-sysout(num1)값을 물으니 연산 결과 값인 10이 도출된 것이다.◀◀
+▶▶num1=10이 나온 이유: (num1+=10)을 함으로서 num1 =10이 되었다. 10은 0보다 큰 것이 맞으므로 true가 된다. 
+그 상태로 sysout(num1)값을 물으니 연산 결과 값인 10이 도출된 것이다.◀◀
 		System.out.println("num2 = " + num2); 
 ☞num2 = 0 이 나올 것이다.
 		
