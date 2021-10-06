@@ -1,16 +1,57 @@
 1.  아래가 에러가 나는 이유를 설명하고, 수정 하시오.
 short num = 1;
 short num = -num;
-☞
+☞jvm은 32비트 메모리로 int(32바이트) 이하의 데이터 타입으로 연산을 진행하고 강제변환(?)을 하지 않으면 자동으로 int이하의 데이터 타입을 int로 변환하여 연산 후 다시 short로 변환하므로 그 과정에서 오류가 발생하는 것이다. (maybe) 
+
+
 2. 전위 증가 연산자와 후위 증가 연산자의 차이는?
-☞
+☞전위 증가 연산자와 후위 증가 연산자 모두, 데이터 값에 1을 더하거나 빼는 것이다. 
+전위 증가 연산자는 (++num) 또는 (--num)으로 표현 되며 System.out.println(++num); 형태에서 전위 증가 연산자를 사용하면 데이터값에서 1이 더해진 상태로 산출이 된다.
+		int num1 = 2;  
+		System.out.println(++num1);
+	결과값: 3
+후위 증가 연산자는 (num++)또는 (num--)으로 표현되며 System.out.println(num++); 시 num값이 도출된 뒤에 연산을 진행한다. 따라서 결과값에는 연산과정 이전의 값이 도출된다. 
+연산값을 보고 싶다면  System.out.println(num);을 한 번 더 적으면 볼 수 있다.
+		int num1 = 2;
+		System.out.println(num++);
+		System.out.println(num);
+	결과값: 2  
+	        3 
+
+
 3. 아래의 비트 연산자 4가지를 설명하시오.
 & | ^ ~
-☞
+☞해당 비트 연산자 4가지는 이진수 연산이라고도 부른다.
+1) &은 AND로 읽히며 &&와는 다른 의미이다. 데이터값의 이진수 표현 상태에서 두 숫자 모두 1일 경우에만 1이 산출된다. 그 외에는 0으로 표시된다.
+	1 1 → 1
+	1 0 → 0
+	0 1 → 0
+	0 0 → 0
+2) |은 OR로 읽히며 ||와는 다른 의미이다. 데이터 값의 이진수 표현 상태에서 두 숫자 중 하나라도 1을 내포하면 1이 도출된다. 오로지 데이터 값 모두 0일 경우에만 0으로 표시된다.
+	1 1 → 1
+	1 0 → 1
+	0 1 → 1
+	0 0 → 0
+3) ^ 은 XOR라고 부르며 현장에서는 삿갓이라고 부른다. 두 이진수가 다를 경우 1이라고 표시되고 같을 경우 0으로 표시된다.
+	1 1 → 0
+	1 0 → 1
+	0 1 → 1
+	0 0 → 0
+
+4) ~ 은 모든 비트를 반전시키는 것을 의미한다. 
+	1 → 0
+	0 → 1
+
+
 4. 아래의 쉬프트 연산자에 대하여 설명하시오.
 <<
 >>
-☞
+☞ 쉬프트 연산자는 뾰족한 방향으로 데이터 값이 연산되는 것을 의미한다.
+<<일 경우 우측 숫자가 n이라고 가정할 경우 좌측 값의 n승으로 연산이 된다.
+반대로 >>일 경우 n만큼 나눠진 결과이다. ◀◀
+
+
+
 5. 아래의 출력값을 예측하시오.
 class AssignSteResult {
 	public static void main(String[] args) {
@@ -28,7 +69,10 @@ class AssignSteResult {
     System.out.println(num3);
 	}
 }
-☞
+☞ 세 값 모두 30
+
+
+
 6.아래의 출력값을 예측하시오.
 class AddNum {
 	public static void main(String[] args) {
@@ -63,22 +107,19 @@ class AddNum {
 ☞public class programming2 {
 	public static void main(String[] args) {
 
-		int sis= 60;
-		int bro = 90;
-		int papa = 100;
-	
-		if ((sis > bro) &&(sis>papa)) {
-			System.out.println("최대값은 "+ sis + "입니다");
-		} else if ((bro > sis)&&(bro > papa)) {
-			System.out.println("최대값은" + bro+ "입니다");
-		} else {
-			System.out.println("최대값은" + papa + "입니다");
-		}
+				int num1= 60;
+				int num2 = 90;
+				int num3 = 100;
+			
+				if ((num1 > num2) &&(num1>num3)) {
+					System.out.println("최대값은 "+ num1 + "입니다");
+				} else if ((num2 > num1)&&(num2 >num3)) {
+					System.out.println("최대값은 " + num2+ "입니다");
+				} else {
+					System.out.println("최대값은 " + num3 + "입니다");
+				}
 				
-	
-	}
-
-}
+				
 결과값: 최대값은100입니다
 
 
