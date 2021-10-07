@@ -3,25 +3,25 @@
 1234 월 봄입니다.출력
 5678 월 여름입니다.출력
 9 10 11 12 월 겨울 입니다. 출력
-☞
-				int n = 101;
-				switch (n) {
-				case 1:case 2:case 3:case 4:
-					System.out.println("봄입니다.");
-					break;
-					
-				case 5:case 6:case 7:case 8:
-					System.out.println("여름입니다.");
-					break;
-					
-				case 9:case 10:case 11:case 12:
-					System.out.println("겨울입니다.");
-					break;
+
+☞	int n = 101;
+	switch (n) {
+	case 1:case 2:case 3:case 4:
+		System.out.println("봄입니다.");
+		break;
 				
-				default:
-					System.out.println("찾을 수 없습니다.");
-					break;
-				}
+	case 5:case 6:case 7:case 8:
+		System.out.println("여름입니다.");
+		break;
+					
+	case 9:case 10:case 11:case 12:
+		System.out.println("겨울입니다.");
+		break;
+				
+		default:
+			System.out.println("찾을 수 없습니다.");
+			break;
+		}
 
 결과값
 찾을 수 없습니다.
@@ -46,11 +46,11 @@ for (i = 1; i <= 1000; i++){
 ☞
 
 5. 구구단 6단을 출력 하는 프로그램을 짜시오.
-☞				int i ;
-				 int dan = 6; 
-					for( i =1 ; i <10 ; i++ ) {
-						System.out.println(dan + " * " + i + " = " + i*dan);
-					}
+☞	int i ;
+	 int dan = 6; 
+		for( i =1 ; i <10 ; i++ ) {
+			System.out.println(dan + " * " + i + " = " + i*dan);
+		}
 
 결과값
 6 * 1 = 6
@@ -65,11 +65,11 @@ for (i = 1; i <= 1000; i++){
 
 
 6. 1부터 10000 까지의 합을 구하는 프로그램을 짜시오.
-☞				int j;
-				 int sum =0;
-					for (j=1 ; j <= 10000 ; j++) {
-						sum = j + sum;
-					}System.out.println("1부터 10000까지의 합: " + sum);
+☞	int j;
+	 int sum =0;
+		for (j=1 ; j <= 10000 ; j++) {
+			sum = j + sum;
+		}System.out.println("1부터 10000까지의 합: " + sum);
 				
 결과값
 1부터 10000까지의 합: 50005000
@@ -77,12 +77,12 @@ for (i = 1; i <= 1000; i++){
 
 
 7. 1부터 10000 까지의 숫자중 홀수 의 합을 구하는 프로그램을 짜시오.
-☞				int k;
-				 int sum2 = 0;
-					for(k=1 ; k <=10000; k++) {
-						sum2= k +sum2;
-						
-					} System.out.println("1부터 10000까지의 합: " + sum2);
+☞	int k;
+	 int sum2 = 0;
+		for(k=1 ; k <=10000; k++) {
+			sum2= k +sum2;
+			
+		} System.out.println("1부터 10000까지의 합: " + sum2);
 결과값
 1부터 10000까지의 합: 50005000		
 
@@ -93,66 +93,65 @@ for (i = 1; i <= 1000; i++){
 
 
 9. 1과 100 사이의 숫자중 5의 배수이자 7의 배수의 첫번재 수는(프로그램밍 하시오)
-☞                  int m;
+☞      int m;
 					
-					for(m=1; m<100; m++) {
-						if( (m%5==0) && (m%7==0) ) {
-							break;
-						}
-					} System.out.println("5의 배수이자 7의 배수의 첫번재 수: " + m);
+	for(m=1; m<100; m++) {
+	if( (m%5==0) && (m%7==0) ) {
+		break;
+		}
+	} System.out.println("5의 배수이자 7의 배수의 첫번재 수: " + m);
 				
 결과값
 5의 배수이자 7의 배수의 첫번재 수: 35	
 
-						/*나의 오답
-						 * continue와 break위치, continue넣으니까 답 1나옴  
-						    int m;
-							for(m=1; m<100; m++) {
-								if( (m%5==0) && (m%7==0) ) {
-									continue;             
-								}break;
-							} System.out.println(m); */
+		/*나의 오답
+		 * continue와 break위치, continue넣으니까 답 1나옴  
+		    int m;
+			for(m=1; m<100; m++) {
+				if( (m%5==0) && (m%7==0) ) {
+					continue;             
+				}break;
+			} System.out.println(m); */
 							
-
 
 
 10. 1과 10000 사이의 숫자중 5의 배수이자 7의 배수의 첫번재 수는(프로그램밍 하시오) count 사용
 ☞
-                    int p;
-					int count = 0;
-					for (p = 1; p < 10000; p++) {
-						if ((p % 5 == 0) && (p % 7 == 0)) {
-							break;
-						}
-						count++;
-					}
-					System.out.println("5의 배수이자 7의 배수의 첫번재 수: " + p);
+        int p;
+	int count = 0;
+	for (p = 1; p < 10000; p++) {
+		if ((p % 5 == 0) && (p % 7 == 0)) {
+			break;
+		}
+		count++;
+	}
+	System.out.println("5의 배수이자 7의 배수의 첫번재 수: " + p);
 
 결과값
 1부터 10000까지의 합: 50005000	
 
 
-				/* 나의 오답 
-				 * 첫번째 수가 아니라 총 개수 구하고 심지어 틀림 count 변수 설정만 하고 숫자 제시 안함. 
-                 * count++위치 틀림 
-				 * int = p; 
-				 * int = count; 
-				 * 	for(p=1; p<10000; p++) { 
-				 * 		if((p%5!=0)||(p%7!=0)) { 
-				 * 			continue; 
-				 * 		} 
-				 * 	} count++; //자꾸 오류 뜸
-				 * System.out.println(count); */
-				
-				/* 개수 구하는 옳은 방법 
-				 * int p; 
-				 * int count=0; 
-				 * 	for(p=1; p<10000; p++) {
-				 * 		if((p%5!=0)||(p%7!=0)) { 
-				 * 			continue; 
-				 * 		} count++; 
-				 * 	}
-				 * System.out.println(count); */
+	/* 나의 오답 
+	 * 첫번째 수가 아니라 총 개수 구하고 심지어 틀림 count 변수 설정만 하고 숫자 제시 안함. 
+         * count++위치 틀림 
+	 * int = p; 
+	 * int = count; 
+	 * 	for(p=1; p<10000; p++) { 
+	 * 		if((p%5!=0)||(p%7!=0)) { 
+	 * 			continue; 
+	 * 		} 
+	 * 	} count++; //자꾸 오류 뜸
+	 * System.out.println(count); */
+		
+	/* 개수 구하는 옳은 방법 
+	 * int p; 
+	 * int count=0; 
+	 * 	for(p=1; p<10000; p++) {
+	 * 		if((p%5!=0)||(p%7!=0)) { 
+	 * 			continue; 
+	 * 		} count++; 
+	 * 	}
+	 * System.out.println(count); */
 
 
 
