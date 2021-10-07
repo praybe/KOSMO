@@ -28,16 +28,17 @@
 
 
 2. int num = -10 을 할당 후 해당 정수에 대한 절댓값을 출력하는 프로그램을 작성하시오.
-절대값은 양수 입니다.
-☞
-			/*	int num = -10;
-				
-				for (num = -10 ; num <100 ; num++) {
-					num = 10;
-				
-				} System.out.println(num+ '\n');
-				*/
-				
+절대값은 양수 입니다. ◀◀
+☞	int num = -10;
+	 if(num<0) {
+	  	num=-num;
+	}
+	System.out.println("-10의 절대값: " +num);
+		
+// 절대값 공식 이용		
+	int num2 = -10;
+	int result = Math.abs(num2);
+	System.out.println(result);
 			
 			
 
