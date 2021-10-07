@@ -1,8 +1,8 @@
 //Switch
-//°É¾î¼­ ÇÏ´Ã±îÁö..
-//°É¸®¸é break±îÁö..
+//ê±¸ì–´ì„œ í•˜ëŠ˜ê¹Œì§€..
+//ê±¸ë¦¬ë©´ breakê¹Œì§€..
 
-public class Switch {
+public class SwitchBasic {
 
 	public static void main(String[] args) {
 		
