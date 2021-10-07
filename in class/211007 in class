@@ -22,25 +22,26 @@
 		
 		double avg = total / 3.0;
 		
-		if (avg>90) {
+		if (avg>=90) {
 			System.out.println("수");
-		} else if (avg >80) {
+		} else if (avg >=80) {
 			System.out.println("우");
-		} else if (avg > 70) {
+		} else if (avg >= 70) {
 			System.out.println("미");
-		} else if (avg > 60) {
+		} else if (avg >= 60) {
 			System.out.println("양");
 		} else {
 			System.out.println("가");
 		}
 		System.out.println("=============");
-		
-//2번
+
+
+//2번: 홀수 짝수 표현하기
 		int num = 73984723;
 		if (num%2==0) {
-			System.out.println("짝수입니다");
+			System.out.println(num+"짝수입니다");
 		} else {
-			System.out.println("홀수입니다");
+			System.out.println(num+"홀수입니다");
 		}
 		
 
