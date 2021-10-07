@@ -1,0 +1,406 @@
+♣10월 7일 목요일♣
+
+
+복습) 
+
+
+
+▣Ch.5 실행 흐름의 컨트롤
+◐Switch와 break: 걸어서 하늘까지, 걸리면 break까지
+주의 할 것은 break
+
+☞		int n = 3;
+		switch (n) {
+			case 1:
+				System.out.println("Simple Java");
+			case 2:
+				System.out.println("Funny Java");
+			case 3:
+				System.out.println("Fantastic Java");
+			default:
+				System.out.println("The best programming language");
+		}
+		
+			System.out.println("Do you like Java?");
+
+
+
+◐반복문(repeat) 3가지: for, while 그리고 do~ while문 
+false가 나올때까지 계속 반복되는 것.
+
+▶while 문
+if문 자리에 while문이 오면, 조건이 오는 것임. 그것도 반복 조건.
+조건 검사 후 결과가 true이면 중괄호 영역 실행 until false나올때까지
+while (rum < 5) {
+	반복영역 sysout("I like Java" + num);num++;
+}
+
+☞public class Repeat {
+	public static void main(String[] args) {
+		int num = 0;
+		while(num<5) {
+			System.out.println("I like Java"+num);
+			num++;
+ 
+결과값:
+I like Java0
+I like Java1
+I like Java2
+I like Java3
+I like Java4
+
+
+
+▶do while 문
+do while은 반드시 안에 내용을 한번은 실행한다. do while은 조건이 끝에 있어서 그렇다. 
+while은 조건에 맞지 않으면 내용 실행 안함
+
+☞		int num = 0;
+		do {
+			System.out.println("I like Java" + num);
+			num++;
+		} while(num<5);
+
+결과값:
+I like Java0
+I like Java1
+I like Java2
+I like Java3
+I like Java4
+
+코딩시 주의할 점 !!!!
+while(num<5) { 이런식으로 while 뒤에는 ; 세미콜론을 넣으면 안된다. ;은 문법 단위의 끝을 뜻함. 
+do while에서는while(num<5); 이렇게 while 끝에 ; 세미콜론이 들어감. 문법의 끝이기 때문이다. 
+
+
+▶for문 (while 문과의 비교)
+왜 실무에서는 for문을 더 많이 쓸까?
+문법 사항을 더 간략히 나타낼 수 있기 때문이다.
+관습적으로 선배들은 int=i 를 쓴다. i j k 순서로 씀. 관습임.
+
+for ( int num = 0 ; num < 5 ; num++){
+		 sysout("...");
+		 }
+
+int num = 0 ▷초기화 구문 (num 값에 대한 초기화 구문, num은 초기값)
+num < 5     ▷반복 조건
+num++   ▷반복조건을 충족시키기 위한 증감 
+
+
+☞		for(int i = 0; i <5; i++) {
+			System.out.println("I love Java" + i);
+		}
+		
+결과값:
+I love Java0
+I love Java1
+I love Java2
+I love Java3
+I love Java4
+
+★ (순서 중요!!!!!까먹지 말 것) ★
+초기값 i를 집어 넣음. 메모리에 i=0인 것을 찍어 넣음. ☆그 다음은 i<5 비교구문을 실행시킨다.
+그러니 처음에는 i값이 0인 상태로 cpu에게 0과 5를 비교하여 참이냐고 묻는다. 0<5는 참(true).
+true로 판별 후에☆ i++가 아니라 ☆sysout 내용을 실행시킨다. sysout 실행 이후에 i++를 실행한다.
+또 참이게 되면 sysout을 실행시킨다 until i<5가 true일때 까지. 
+false가 되는 순간 finally 탈출 ~! 
+
+
+practice 구구단 만들기
+Q. 9단을 찍으시오
+	1 * 9 = 9
+	2 * 9 = 18
+	3 * 9 = 27
+	4 * 9 = ...
+	 ....
+		
+☞		for(int i=1 ; i<10; i++) 
+			System.out.println(i + " * 9 = "+ i*9);
+
+결과값:		
+1 * 9 = 9
+2 * 9 = 18
+3 * 9 = 27
+4 * 9 = 36
+5 * 9 = 45
+6 * 9 = 54
+7 * 9 = 63
+8 * 9 = 72
+9 * 9 = 81
+//++i도 가능한데 관습적으로 i++씀
+
+
+
+ctrl shft F 줄맞추기
+
+
+
+
+practice ▶▶등차수열의 합◀◀ 구하기 ▶어려워서 힌트와 컨닝(?)을 함...
+Q. 1+ 2+ 3+ 4+ ...1부 터 100까지의 합을 구하는 프로그래밍을 하시오.
+☞		int sum = 0; 
+		for (int i = 1; i <= 100; i++) {
+			sum +=i;
+		}
+		System.out.println("sum : " + sum);
+
+결과값
+sum : 5050
+
+
+practice ▶▶홀수의 합◀◀ 
+Q. 1부터 100까지의 수 중에서 홀수의 합을 구하는 프로그래밍을 하시오.
+☞		int sum = 0;
+		for (int i = 1; i <= 100; i++) {
+			
+			if (i % 2 == 1) { // sum이 아니라 i를 넣어
+				sum = sum + i;
+			}
+		}
+		System.out.println("sum : " + sum);
+			
+		
+		int sum = 0;
+		for (int i = 1; i <= 100; i=i+2) {
+			
+			if (i % 2 == 1) { // sum이 아니라 i를 넣어
+				sum = sum + i;
+			}
+		}
+		System.out.println("sum : " + sum);
+
+
+결과값
+sum : 2500
+
+
+
+
+practice ▶▶짝수의 합◀◀
+Q. 1부터 100까지의 수 중에서 짝수의 합을 구하는 프로그래밍을 하시오.
+☞		int sum = 0;
+		for (int i = 1; i <= 100; i++) {
+			
+			if (i % 2 == 0) {
+				sum = sum + i;
+			}
+		}
+		System.out.println("sum : " + sum);
+		
+		
+결과값
+sum : 2550
+
+
+practice ▶▶ 2가지 배수의 합◀◀ 
+Q. 1과 1000 사이의 숫자 중 2의 배수이자 3의 배수인 수와 합
+	
+☞		int sum = 0;
+		for (int i = 1; i <= 1000; i++) {
+	
+			if ((i % 2 == 0) && (i % 3 == 0)) {
+				sum = sum + i;
+				System.out.println(i);
+			}
+		}
+	
+		System.out.println("sum : " + sum);			
+
+결과값
+6
+12
+...
+990
+996
+sum : 83166
+
+
+
+
+◐[ Debug ] 디버깅모드 : ◀◀
+소스 코드 만들 수 있는 줄은 구슬을 만들 수 있다. 구슬은 좌측 숫자 바 옆 파란 색 더블 클릭
+벌레 클릭 > 액세스 허용 > 뭐가생김 > f6 누르면 뭐가 생김.
+한줄 한줄 체크 가능..
+실무가면 다들 이러고 있음 sysout 이건 하수가 씀.. 고수는 디버깅 모드로 체크
+
+
+◐break & continue
+break는 반복문이랑 switch문에서 사용된다.
+
+
+▶while문이 계속 돌아가는데 특정한 조건을 걸어서 빠져나오고 싶을때 break를 걸어서 while문 탈출.
+while (n < 100) {
+	if(x==20)
+		break;
+	.....
+          }
+
+
+▶break와 반대되는 개념이 continue. 
+x가 20인 순간에 밑에 소스코드를 타지 않고 처음 조건으로 돌아가고 싶을 때 사용.
+while (n < 100) {
+	if(x==20)
+		continue;
+	.....
+          }
+
+
+▶Break로 최소공배수 찾기
+☞public class BreakBasic {
+	public static void main(String[] args) {
+		
+		int num=1;
+		boolean search = false;
+	//처음 만나는 5의 배수이자 7의 배수인 수를 찾는 반복문
+		
+		while(num < 100) {
+			if(((num%5)==0)&&((num%7)==0)) {
+				search = true;
+				break;   	//while문을 탈출
+			}
+			num++;
+		}
+		if (search)
+			System.out.println("찾는 정수 : " + num);
+		else
+			System.out.println("5의 배수이자 7의 배수인 수를 찾지 못했습니다.");
+
+
+결과값
+찾는 정수 : 35
+
+
+
+
+▶Continue로 최소공배수 찾기
+☞public class Continue {
+	public static void main(String[] args) {
+		
+		int num = 0;
+		int count = 0;
+		
+		while((num++)<100) {
+			if(((num%5)!=0) || ((num%7) !=0))    //얘가 false가 되야 뒤에 7의 배수를 체크해서 count로 넘어간다. false가 되려면 앞에 연산값이 5의 배수면 됨.
+				continue;			// 어렵고 복잡하지만 디버깅 모드 직어보면 연산이 쥬르륵~
+			count++;
+			System.out.println(num);
+		}
+		System.out.println("count: " +count);
+
+
+결과값
+35
+70
+count: 2
+
+debugging모드 사용하여 (f6) 맞는지 체크
+
+
+
+
+
+practice ▶▶  배수의 종류와 개수◀◀ 
+Q. 1과 1000 사이의 숫자 중 2의 배수이자 3의 배수인 수의 첫번 째 수를 출력
+☞		int num = 1;
+		boolean search = false;
+		
+		while (num<=1000) {
+			if((num%2==0)&&(num%3==0)) {
+				search = true;
+				break;
+			}
+			num++;
+		}
+		if(search)
+			System.out.println("2의 배수이자 3의 배수인 수의 첫번 째 수: " + num);
+		else
+			System.out.println("찾지 못했습니다.");
+
+결과값
+2의 배수이자 3의 배수인 수의 첫번 째 수: 6
+▶▶for문으로 응용해보기
+☞		int i;
+		for(i =1; i <=1000; i++) {
+			if( (i%2==0) && (i%3==0) ) {
+				break;
+			}
+		}
+		System.out.println(i);
+		
+결과값: 6
+
+
+
+
+practice ▶▶   배수의 종류와 개수◀◀ 
+Q. 1과 1000 사이의 숫자 중 2의 배수이자 3의 배수는 모두 몇 개
+
+☞		int count = 0;
+		
+		while ((num++)<=1000){
+			if((num%2!=0)||(num%3!=0)) 
+				continue;
+				count++;
+			
+			}
+		System.out.println("2의 배수이자 3의 배수의 개수: " + count + "개");
+		
+결과값
+2의 의 배수이자 3의 배수의 개수: 166개
+▶▶ for문으로 응용해보기
+☞			int i;
+			int count = 0;
+			for (int i= 1; i <= 1000; i++) {
+	
+				if ((i % 2 != 0) || (i % 3 != 0)) {   	 ▶내가 틀린 부분◀
+					continue;   		 ▶내가 틀린 부분◀
+	
+				}
+				count++;				 ▶이해요◀
+			}
+			System.out.println(count);
+
+결과값: 166
+
+
+
+
+
+
+
+//  ((i%2)==0) && ((i%3==0)
+//  ((i%2)!=0) || ((i%3)!=0)
+		
+		int i;
+		int count=0;
+		//i=6
+		for( i = 1; i<=1000 ; i++) {
+			//0 !==				0!=0
+			if( (i % 2 != 0) || (i %3 != 0)) {
+				continue;
+			}
+			count++;
+		}
+		System.out.println(count);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
