@@ -4,13 +4,13 @@ public class Oct6th {
 	public static void main(String[] args) {
 		
 		
-//5¹ø
+//5ë²ˆ
 				int num1 = 10, num2 = 20, num3 = 30;
 				num1 = num2 = num3;    
 
 				/*
-		      = ¿¬»êÀÚ´Â °áÇÕ ¹æÇâÀÌ ¿À¸¥ÂÊ¿¡¼­ ¿ŞÂÊÀ¸·Î ÁøÇàµÈ´Ù.  ->
-		      µû¶ó¼­ À§ÀÇ ¹®ÀåÀº ´ÙÀ½°ú °°´Ù. 
+		      = ì—°ì‚°ìëŠ” ê²°í•© ë°©í–¥ì´ ì˜¤ë¥¸ìª½ì—ì„œ ì™¼ìª½ìœ¼ë¡œ ì§„í–‰ëœë‹¤.  ->
+		      ë”°ë¼ì„œ ìœ„ì˜ ë¬¸ì¥ì€ ë‹¤ìŒê³¼ ê°™ë‹¤. 
 		      num1 = (num2 = num3);        
 		    */
 		    
@@ -22,7 +22,7 @@ public class Oct6th {
 			    
 			    
 			    
-//6¹ø
+//6ë²ˆ
 			    int result = 3 + 6;
 				System.out.println("3 + 6 = " + result);  
 				result += 9;
@@ -31,62 +31,87 @@ public class Oct6th {
 			    System.out.println("3 + 6 + 9 + 12 = " + result);
 			    
 			    System.out.println("=================");
+		
+//9ë²ˆ
+			int kor = 86;
+			int eng = 97;
+			int math = 64;
+			
+			int total =  kor + math + eng;
+			System.out.println("ì´ì : "+total);
+			
+			double avg = total / 3.0;
+			System.out.println("í‰ê· : "+avg);
+			
+			if (avg>=90) {
+				System.out.println("ìˆ˜");
+			} else if (avg >=80) {
+				System.out.println("ìš°");
+			} else if (avg >= 70) {
+				System.out.println("ë¯¸");
+			} else if (avg >= 60) {
+				System.out.println("ì–‘");
+			} else {
+				System.out.println("ê°€");
+			}
+			System.out.println("=============");
+		
 			    
 			    
 			    
 			    
-//11¹ø	
+//11ë²ˆ	
 
 				int num11 = 38476285;
 			
 				if (num11%2==0) {
-					System.out.println("Â¦¼ö ÀÔ´Ï´Ù");
+					System.out.println("ì§ìˆ˜ ì…ë‹ˆë‹¤");
 				} else {
-					System.out.println("È¦¼ö ÀÔ´Ï´Ù");
+					System.out.println("í™€ìˆ˜ ì…ë‹ˆë‹¤");
 				}
 				System.out.println("=================");
 				
 				
 				
 				
-//10¹ø		
-				/* int º¯¼ö 3°³ ¼±¾ğ 
-			      ÀÓÀÇ °ª Áı¾î ³ÖÀ½
+//10ë²ˆ		
+				/* int ë³€ìˆ˜ 3ê°œ ì„ ì–¸ 
+			      ì„ì˜ ê°’ ì§‘ì–´ ë„£ìŒ
 			      
-			      ±× Áß 3°³ÀÇ °ª Áß ÃÖ´ë°ªÀ» Ãâ·Â 
+			      ê·¸ ì¤‘ 3ê°œì˜ ê°’ ì¤‘ ìµœëŒ€ê°’ì„ ì¶œë ¥ 
 			      90 100 60
 			      
-			      Ãâ·Â:
-			      ÃÖ´ë°ªÀº 100ÀÔ´Ï´Ù. */
+			      ì¶œë ¥:
+			      ìµœëŒ€ê°’ì€ 100ì…ë‹ˆë‹¤. */
 				
 				int n1= 60;
 				int n2 = 90;
 				int n3 = 100;
 			
 				if ((num1 > num2) &&(num1>num3)) {
-					System.out.println("ÃÖ´ë°ªÀº "+ n1 + "ÀÔ´Ï´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ "+ n1 + "ì…ë‹ˆë‹¤");
 				} else if ((n2 > n1)&&(n2 >n3)) {
-					System.out.println("ÃÖ´ë°ªÀº " + n2+ "ÀÔ´Ï´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ " + n2+ "ì…ë‹ˆë‹¤");
 				} else {
-					System.out.println("ÃÖ´ë°ªÀº " + n3 + "ÀÔ´Ï´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ " + n3 + "ì…ë‹ˆë‹¤");
 				}
 				System.out.println("=================");
 				
-			//À§¿¡ if¹® °£´ÜÇÏ°Ô ÁÙ¿©º¸±â
+			//ìœ„ì— ifë¬¸ ê°„ë‹¨í•˜ê²Œ ì¤„ì—¬ë³´ê¸°
 				int r1 = 60;
 				int r2 = 90;
 				int r3 = 100;
 			
 				if (r1>r2) {
-					System.out.println("ÃÖ´ë°ªÀº 60ÀÌ´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ 60ì´ë‹¤");
 				} else if (r2>r3) {
-					System.out.println("ÃÖ´ë°ªÀº 90ÀÌ´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ 90ì´ë‹¤");
 				} else {
-					System.out.println("ÃÖ´ë°ªÀº 100ÀÌ´Ù");
+					System.out.println("ìµœëŒ€ê°’ì€ 100ì´ë‹¤");
 				}
 				System.out.println("================="); 
 				
-			//»ïÇ×¿¬»êÀÚ ÀÌ¿ë
+			//ì‚¼í•­ì—°ì‚°ì ì´ìš©
 				int w1 = 60;
 				int w2 = 90;
 				int w3 = 100;
