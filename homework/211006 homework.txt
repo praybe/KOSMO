@@ -113,6 +113,32 @@ class AddNum {
 9. 아래의 프로그램을 짜시오.
 국어:80 수학:80 영어:60 총점과 평균을 출력하고, 
 평균에 따른 수우미양가를 출력 하시오.
+☞			int kor = 80;
+			int math = 80;
+			int eng = 60;
+			
+			int total =  kor + math + eng;
+			System.out.println("총점: "+total);
+			
+			double avg = total / 3.0;
+			System.out.println("평균: "+avg);
+			
+			if (avg>=90) {
+				System.out.println("수");
+			} else if (avg >=80) {
+				System.out.println("우");
+			} else if (avg >= 70) {
+				System.out.println("미");
+			} else if (avg >= 60) {
+				System.out.println("양");
+			} else {
+				System.out.println("가");
+			}
+결과값: 총점: 220
+	평균: 73.33333333333333
+	미
+
+
 
 10. int 변수 3개 선언 
 임의 값 집어 넣음
@@ -168,7 +194,7 @@ class AddNum {
 				
 결과값: 100			
 				
-//과제 10번 해설. 세 수 중 큰 수 찾기
+☞☞//과제 10번 해설. 세 수 중 큰 수 찾기
 			int a = 60;
 			int b = 90;
 			int c = 100;
