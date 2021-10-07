@@ -33,9 +33,9 @@ public class Oct6th {
 			    System.out.println("=================");
 		
 //9번
-			int kor = 86;
-			int eng = 97;
-			int math = 64;
+			int kor = 80;
+			int math = 80;
+			int eng = 60;
 			
 			int total =  kor + math + eng;
 			System.out.println("총점: "+total);
