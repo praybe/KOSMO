@@ -18,9 +18,10 @@
 		int math = 64;
 		
 		int total =  kor + eng + math;
-		System.out.println(total);
-		
+		System.out.println("총점: "+total);
+			
 		double avg = total / 3.0;
+		System.out.println("평균: "+avg);
 		
 		if (avg>=90) {
 			System.out.println("수");
@@ -39,17 +40,18 @@
 //2번: 홀수 짝수 표현하기
 		int num = 73984723;
 		if (num%2==0) {
-			System.out.println(num+"짝수입니다");
+			System.out.println(num+" 짝수입니다");
 		} else {
-			System.out.println(num+"홀수입니다");
+			System.out.println(num+" 홀수입니다");
 		}
 		
 
 
 결과값:
-247
+총점: 247
+평균: 82.33333333333333
 우
 =============
-홀수입니다
+73984723 홀수입니다
 
     
