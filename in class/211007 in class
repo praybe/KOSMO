@@ -6,3 +6,49 @@
 . int 변수 선언 후 임의로 값을 넣음.
 해당 값이 짝수 이면 ""짝수 입니다"" 출력
 해당 값이 홀수 이면 ""홀수 입니다"" 출력"
+
+
+
+실습결과
+
+	public static void main(String[] args) {
+//1번		
+		int kor = 86;
+		int eng = 97;
+		int math = 64;
+		
+		int total =  kor + eng + math;
+		System.out.println(total);
+		
+		double avg = total / 3.0;
+		
+		if (avg>90) {
+			System.out.println("수");
+		} else if (avg >80) {
+			System.out.println("우");
+		} else if (avg > 70) {
+			System.out.println("미");
+		} else if (avg > 60) {
+			System.out.println("양");
+		} else {
+			System.out.println("가");
+		}
+		System.out.println("=============");
+		
+//2번
+		int num = 73984723;
+		if (num%2==0) {
+			System.out.println("짝수입니다");
+		} else {
+			System.out.println("홀수입니다");
+		}
+		
+
+
+결과값:
+247
+우
+=============
+홀수입니다
+
+    
