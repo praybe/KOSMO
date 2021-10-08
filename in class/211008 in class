@@ -66,24 +66,27 @@ public class seasons {
 public class gugudan {
 
 	public static void main(String[] args) {
+		
+		int dan = 6;
 
 		for (int i = 1; i < 10; i++)
-			System.out.println(i + "*6 =" + 6 * i);
+			
+			System.out.println(dan + " * " + i + " = " + 6 * i);
 
 	}
 
 }
 
 결과값
-1*6 =6
-2*6 =12
-3*6 =18
-4*6 =24
-5*6 =30
-6*6 =36
-7*6 =42
-8*6 =48
-9*6 =54
+6 * 1 = 6
+6 * 2 = 12
+6 * 3 = 18
+6 * 4 = 24
+6 * 5 = 30
+6 * 6 = 36
+6 * 7 = 42
+6 * 8 = 48
+6 * 9 = 54
 
 
 3번
@@ -94,10 +97,10 @@ public class multiple {
 		int count = 0;
 		for (int i = 1; i <= 10000; i++) {
 			if ((i % 5 == 0) && (i % 7 == 0)) {
-				count++; // 5의 배수거나 7의 배수면 count실행
+				count++; // 5와 7의 배수면 count실행
 			}
 		}
-		System.out.println(count + '\n'); // 결과값 295 << ??
+		System.out.println(count + "개"); // 한칸 띄우기하려고 쓴 '\n'이거때매 결과값이 295 나왔음 ㅋㅋ그래서 뺌..
 
 //설명 		
 		int count1 = 0;
@@ -105,9 +108,9 @@ public class multiple {
 			if ((j % 5 != 0) || (j % 7 != 0)) {
 				continue; // 5의 배수가 아니면 그냥 continue, 7의 배수가 아니어도 continue
 			}
-			count1++; // 5의 배수거나 7의 배수면 count실행
+			count1++; // 5와 7의 배수면 count실행
 		}
-		System.out.println(count1); // 결과값 285 <<이게 맞음..
+		System.out.println(count1 + "개"); // 결과값 285 <<이게 맞음..
 
 	}
 
@@ -115,8 +118,9 @@ public class multiple {
 
 
 결과값
-295
-285
+285개
+285개
+
 
 
 
