@@ -2,33 +2,27 @@
 
 복습) 
 
-◐무한루프(무한반복)
-	public class InfiniteLoop {
-		public static void main(String[] args) {
-		
-	//for문 안에 세미콜른; 두개 들어감. 조건 참거짓 숫자전달
-			for ( ; ; ) {
-			 System.out.println("Hello Our Earth");
-			}
-		
-		
-	//do while 문으로 무한 반복
-			do {
+◐무한루프(무한반복) Infinite Loop
+▶for문 안에 세미콜른; 두개 들어감. 조건 참거짓 숫자전달
+		for (;;) {
+			System.out.println("Hello Our Earth");
+		}
+
+▶do while 문으로 무한 반복
+		do {
 			System.out.println("Hello World");
-			}while (true);
+		} while (true);
 
+▶무한루프와 break
 
+		int num = 1;
 
+		while (true) {
+			if ((num % 6 == 0) && (num % 14 == 0))
+				break; // 무한 반복문은 break없이 절대 빠져나올 수 없다.
+			num++;
+		} // 6의 배수면서 14의 배수인 가작 작은 자연수 찾기로 이해 가능
 
-
-◐무한루프와 break문
-			int num = 1;
-			
-			while (true) {
-				if((num % 6 ==0) && (num % 14 ==0) )
-					break;  //무한 반복문은 break없이 절대 빠져나올 수 없다.
-				num++;
-			} //6의 배수면서 14의 배수인 가작 작은 자연수 찾기로 이해 가능
 
 
 
@@ -505,15 +499,15 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 
 
-     *
-    ***
-   *****
-  *******
- *********
+    *
+   ***
+  *****
+ *******
+*********
 
 		for (int i = 1; i <= 5; i++) {
 
-			for (int j = 5; j >= i; j--) { // blankspace
+			for (int j = 5; j > i; j--) { // blankspace
 
 				System.out.print(" ");
 			}
@@ -526,9 +520,6 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 			System.out.println();
 
 		}
-
-
-
 
 
 
