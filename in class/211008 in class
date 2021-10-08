@@ -14,3 +14,106 @@ switch 문에서 아래의 프로그래밍을 짜시오.
 
 3번
 1과 10000 사이의 숫자중 5의 배수이자 7의 배수인 수의 갯수는(프로그램밍 하시오)"
+
+
+
+
+실습결과
+
+1번
+public class seasons {
+
+	public static void main(String[] args) {
+
+		int n = 3;
+		switch (n) {
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			System.out.println("봄입니다.");
+
+			break;
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+			System.out.println("여름입니다.");
+			break;
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+			System.out.println("겨울입니다.");
+			break;
+
+		default:
+			System.out.println("찾을 수 없습니다.");
+			break;
+		}
+
+	}
+
+}
+
+
+결과값
+봄입니다.
+
+
+
+2번
+public class gugudan {
+
+	public static void main(String[] args) {
+
+		for (int i = 1; i < 10; i++)
+			System.out.println(i + "*6 =" + 6 * i);
+
+	}
+
+}
+
+결과값
+1*6 =6
+2*6 =12
+3*6 =18
+4*6 =24
+5*6 =30
+6*6 =36
+7*6 =42
+8*6 =48
+9*6 =54
+
+
+3번
+public class multiple {
+
+	public static void main(String[] args) {
+
+		int count = 0;
+		for (int i = 1; i <= 10000; i++) {
+			if ((i % 5 == 0) && (i % 7 == 0)) {
+				count++; // 5의 배수거나 7의 배수면 count실행
+			}
+		}
+		System.out.println(count + '\n'); // 결과값 295 << ??
+
+//설명 		
+		int count1 = 0;
+		for (int j = 1; j <= 10000; j++) {
+			if ((j % 5 != 0) || (j % 7 != 0)) {
+				continue; // 5의 배수가 아니면 그냥 continue, 7의 배수가 아니어도 continue
+			}
+			count1++; // 5의 배수거나 7의 배수면 count실행
+		}
+		System.out.println(count1); // 결과값 285 <<이게 맞음..
+
+	}
+
+}
+
+
+결과값
+295
+285
