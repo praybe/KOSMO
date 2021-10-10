@@ -459,7 +459,7 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 		for (int i = 1; i <= 5; i++) {
 			// 일단 초기값 4개
-			for (int j = 4; j >= i; j--) { // 공백 담당
+			for (int j = 4; j >= i; j--) { // 공백 담당  for(int j=i; j<5; j++) 이것도 가능 
 
 				System.out.print(" "); // 답이 안나온 이유는 스페이스바를 안눌렀고 상단 for문 오류
 
