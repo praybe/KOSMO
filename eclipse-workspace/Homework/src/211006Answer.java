@@ -3,15 +3,15 @@ public class Oct6thAnswer {
 
 	public static void main(String[] args) {
 		
-//°úÁ¦ 10¹ø ÇØ¼³. ¼¼ ¼ö Áß Å« ¼ö Ã£±â
+//ê³¼ì œ 10ë²ˆ í•´ì„¤. ì„¸ ìˆ˜ ì¤‘ í° ìˆ˜ ì°¾ê¸°
 			int a = 60;
 			int b = 90;
 			int c = 100;
 			
-			int max; //ÃÖ´ë°ª ¼³Á¤
+			int max; //ìµœëŒ€ê°’ ì„¤ì •
 		
 			if (a>b) {
-				if(a>c) {      //if ¹® ¾È¿¡ if ÀÖ´Â°Ç ±×´ÙÁö ÁÁÁö ¾ÊÀ½
+				if(a>c) {      //if ë¬¸ ì•ˆì— if ìžˆëŠ”ê±´ ê·¸ë‹¤ì§€ ì¢‹ì§€ ì•ŠìŒ
 					max=a;
 				}else {
 					max = c;
@@ -26,7 +26,7 @@ public class Oct6thAnswer {
 			System.out.println(max);			
 			System.out.println("=============");
 	
-		//¹æ¹ý 2. ³»°¡ ÇÑ ¹æ¹ý. 
+		//ë°©ë²• 2. ë‚´ê°€ í•œ ë°©ë²•. 
 			if((a>b)&&(a>c)) {
 				max = a;
 			}else if((b>a)&&b>c) {
@@ -37,8 +37,8 @@ public class Oct6thAnswer {
 			System.out.println(max);
 			System.out.println("=============");
 			
-		//¹æ¹ý 3. Á» ´õ ÁÙ¿©º¸±â. ¼±»ý´Ô ¹æ¹ý.
-			max = a; //a¸¦ max°ªÀ¸·Î ÁöÁ¤ÇØ³õ°í b¿Í ºñ±³
+		//ë°©ë²• 3. ì¢€ ë” ì¤„ì—¬ë³´ê¸°. ì„ ìƒë‹˜ ë°©ë²•.
+			max = a; //aë¥¼ maxê°’ìœ¼ë¡œ ì§€ì •í•´ë†“ê³  bì™€ ë¹„êµ
 			if(b>max) {
 				max=b;
 			}
@@ -48,8 +48,8 @@ public class Oct6thAnswer {
 			System.out.println(max);
 			System.out.println("=============");
 			
-		//»ïÇ×¿¬»êÀÚ ÀÌ¿ë
-			//a¿Í b¸¦ ÀÏ´Ü ºñ±³¸¦ ÇØ. a°¡ ´õ Å©¸é Âü
+		//ì‚¼í•­ì—°ì‚°ìž ì´ìš©
+			//aì™€ bë¥¼ ì¼ë‹¨ ë¹„êµë¥¼ í•´. aê°€ ë” í¬ë©´ ì°¸
 			max = (a>b) ? (a>c?a:c) : (b>c? b:c); 
 			System.out.println(max);
 			
