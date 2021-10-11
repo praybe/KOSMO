@@ -1,4 +1,4 @@
-//»ê Âï±â, ÇÇ¶ó¹Ìµå Âï±â
+//ì‚° ì°ê¸°, í”¼ë¼ë¯¸ë“œ ì°ê¸°
 public class Num11 {
 
 	public static void main(String[] args) {
