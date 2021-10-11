@@ -1,0 +1,585 @@
+♣10월 8일 금요일♣
+
+복습) 
+
+◐메소드(함수)와 변수의 스코프(범위)
+▶메소드
+class명은 반드시 자바에 있는 이름과 같아야하고, 개발자가 작명가능하나 반드시 대문자
+
+이름 뒤에 괄호 열고 닫는 것(String[] args)이 함수. 빨간색이면 안됨. 
+메인 함수라고 하면 void 뒤 전체.
+	public static void main(String[] args) {
+		System.out.println ("Hello, World")
+	}
+}
+
+괄호 열고 닫으면 무조건 함수.
+println도 함수
+
+	 	 void main(String[] args) {
+		System.out.println("Hello, World")
+		
+	}
+}
+
+프로그램의 시작은 main에서 부터. 고슬링 아재가 정한 것
+모든 자바 프로그램은 jvm위에 해당 프로그래밍 010101덩어리가 올라감. class.
+
+jvm에서 우리 프로그램을 실행하는데 
+jvm은 가장 먼저 main 함수를 찾음. 그 다음 위에서부터 아래로 순차적으로 실행. 
+
+
+함수는 (      ) . 괄호를 보고 함수를 알 수있음
+
+문법사항임. 첨하는 사람은 한 번에 이해하는 사람이 있고 영원히 헷갈리는 사람이 있음.
+여기서부터 차이가 남. 알고나면 별거 아닌데 ㅠㅠ~! 
+
+
+▶메소드 정의와 호출
+함수에는 2가지가 있음. 그것이 바로 정의 & 호출
+즉, 함수 만드는 것(정의)가 있고 함수 써먹는 법(호출)이 있다.
+
+만두를 빚고 (함수를 만들 줄 알고 ▷정의)
+만두를 먹는다 (함수 만든 것을 써먹을 줄 알아야함 ▷호출)
+
+현업에서는 '함수 호출 했나?' 이런 말을 많이 씀.
+
+
+	public static void main(String[] args) {
+		
+	①	System.out.println("프로그램의 시작"); //출력하는 것
+	⑤	hiEveryone(12);  //뭔가 앞에 괄호가 있으니 함수임 ㅋㅋㅋ hiEveryone이 함수ㅋㅋ 함수한테 기죽지 마
+		hiEveryone(13);  //13을 전달하는 hiEveryone함수
+	⑥	System.out.println("프로그램의 끝");
+	}
+			
+②	public static void hiEveryone(int age) {   //매개변수가 하나인 메소드의 정의
+③		System.out.println("좋은 아침입니다.");
+④		System.out.println("제 나이는" + age + "세 입니다.");
+		
+
+
+public static void hiEveryone(int age){        }  이 부분이 실질적 함수.		
+hiEveryone 총 세 번 나옴. 마지막 hiEveryone은 괄호 나오고 int도 나옴.
+이거는 hiEveryone을 써먹고 있는 것. 즉 호출.
+앞에 hiEveryone 두 개가 써먹는 호출이고 마지막 hiEveryone이 정의하여 빚어낸 것.
+
+1번. public static void hiEveryone(int age)   
+
+2번. System.out.println("좋은 아침입니다.");
+
+3번. System.out.println("제 나이는" + age + "세 입니다.");
+
+4번. hiEveryone(12); 
+
+
+
+
+
+◈주의 
+1. class 안에 함수 존재해야 함. 
+2.함수 안에 함수 존재하면 안됨. main안에 함수 생성하면 안됨.
+
+
+함수 생성했으니 함수 名인 hiEveryone을 가져와. 
+호출 할 때는 값을 넣어 주면 됨.
+hiEveryone이 int age니까 age(나이)에 알맞는 숫자값을 hiEveryone뒤 괄호에 넣어주면 됨
+	hiEveryone(10);
+
+함수를 만들어 뒀으니 
+
+		System.out.println("프로그램의 시작");
+		hiEveryone(12); 
+		hiEveryone(23);
+		hiEveryone(45); 
+		hiEveryone(67); 
+		hiEveryone(91);  
+	
+이런식으로 여러번 호출 가능함.
+
+
+
+
+♬함수 만들 때는 괄호 치고 변수 선언(int age) 이 온다.
+public static void hiEveryone(int age)  
+이 변수 선언되는 int age를 "파라미터"라고 부른다. 
+한국어로 "매개변수"라고 한다. 현직에서는 파라미터를 더 많이 씀 
+
+♬함수 호출할 때는 바로 값을 집어 넣음.
+
+public class Method {
+
+	public static void main(String[] args) {
+
+		double myHeight = 175.9;
+		hiEveryone(12, 12.5);
+		hiEveryone(13, myHeight);
+		byEveryone();
+
+	}
+
+	public static void hiEveryone(int age, double height) {   //매개변수인 파라미터가 2개. 현업에서는 매개나 매개변수라는 말을 잘 안쓰고, 값을 넘긴다라고 많이 씀 혹은 파라미터라고 씀 
+
+		System.out.println("제 나이는 " + age + "세 입니다.");
+		System.out.println("저의 키는 " + height + "cm 입니다.");
+
+	}
+
+	public static void byEveryone() {
+
+		System.out.println("다음에 뵙겠습니다.");
+
+	}
+
+}
+
+
+결과값:
+제 나이는 12세 입니다.
+저의 키는 12.5cm 입니다.
+제 나이는 13세 입니다.
+저의 키는 175.9cm 입니다.
+다음에 뵙겠습니다.
+
+
+//public static은 함수 아님
+
+
+
+▶값을 반환하는 메소드
+
+public class Method3 {
+
+	public static void main(String[] args) { // void는 값을 반환하지 않음을 의미
+
+		int result;
+		result = adder(4, 5); // adder가 반환하는 값을 result에 저장
+		System.out.println("4 + 5 = " + result);
+		System.out.println("3.5 x 3.5 = " + square(3.5));
+
+	}
+
+	public static int adder(int num1, int num2) {
+
+		int addResult = num1 + num2;
+		return addResult; // addResult의 값을 반환
+
+	} // return: 값의 반환을 명령
+
+	public static double square(double num) {
+
+		return num * num; // num*num의 결과를 반환
+
+	}
+
+}
+
+결과값:
+4 + 5 = 9
+3.5 x 3.5 = 12.25
+
+
+
+result = adder(4, 5); 는 하단에 분명히 함수 선언이 있을 것이다.
+함수 선언시 변수를 선언한다. public static int adder(int num1, int num2){ 
+
+return값에 대한 데이터타입을 적고 있음. 해당 값을 남겨준다는 뜻
+return 9;
+int와 return의 데이터타입을 반.드.시 맞춰줘야 함 
+
+값을 반환return하는 메소드
+
+
+메소드 함수는 real 리얼 수학에서 옴. 나도 너도 예상했겠지만...
+
+ㅁ (입력) => 2x + 1 => (출력)
+
+출력부분을 return으로 표현하고 입력을 파라미터라고 표현 한 것,
+출력값은 안타깝(?)게도 한 개. 정답은 하나.
+
+	public static double square(double num) {
+		return num * num;
+		}
+
+return값에 대한 데이터타입을 앞에 반드시 주게 되어 있음.
+
+기본적인 문법
+int add(int num1, int num2){
+	return num1 + num2;
+}
+
+리턴타입 함수명(파라미터...){
+	//실행내용, 연산...
+	return 값(value);  //값에 대한 타입을 리턴타입이라고 부름
+}
+
+만약 리턴타입이 void면 return해줄게 없음
+void 함수(int num1, int num2){
+	sysout
+}
+
+함수호출: 함수명(값);
+int num = 함수명 (값);
+
+
+
+
+▶출력값 10이 찍히도록 add함수 사용하시오 ((반드시 암기 !!!!))
+public class MethodAdd {
+
+	public static void main(String[] args) {
+
+		int num = add(3, 7); // 호출하는 중. 그러려면 함수가 있어야 함
+
+		System.out.println(num);
+
+	}
+	
+	//호랑이는 죽으면 가죽을 남기고, 함수는 죽으면 값을 남긴다.
+	//그것이 바로 리턴이다.
+
+	public static int add(int num1, int num2) { // 3과 7을 메모리에 올릴 수 있는 변수 선언을 반드시 해야 함
+
+	// 함수 명 앞에 있는 리턴타입을 결정해줘야 함.
+	// add라는 함수는 값을 넘겨주고 있음.그러려면 반드시 return이 있어야 함
+	// return이 있으려면 return타입도 있어야함. 반드시
+
+		int result = num1 + num2;
+		return result; //결과에 대한 int를 맞춰 줘. 혹은 바로 return num1 + num2; 도 가능
+
+	}
+
+}
+
+결과값:
+10
+
+
+▶빼기. 마이너스 sub 
+public class MethodSub {
+
+	public static void main(String[] args) {
+		
+		int num = sub(3, 7);
+		System.out.println(num);
+
+	}
+	
+
+	public static int sub(int num1, int num2) {
+
+
+		int result = num1 - num2;
+		return result; 
+
+	}
+
+}
+
+
+결과값:
+-4
+
+
+▶곱하기, mul
+public class MethodMul {
+
+	public static void main(String[] args) {
+
+		int num = mul(6, 7);
+		System.out.println(num);
+
+	}
+
+	public static int mul(int num1, int num2) {
+
+		int result = num1 * num2;
+		return result;
+
+	}
+
+}
+결과값:
+42
+
+
+
+▶나누기, div
+public class MethodTraining4 {
+
+	public static void main(String[] args) {
+
+		double num = div(6, 0);  //사칙연산. int로 하든 double로 보든 상관없이
+		System.out.println(num);
+
+	}
+
+	public static double div(double num1, double num2) {
+
+		double result = num1 / num2;
+		return result;
+
+	}
+
+}
+
+결과값:
+Infinity
+
+
+값이 출력되게 하려면 if를 사용한다.
+public class MethodDiv {
+
+	public static void main(String[] args) {
+
+		int num = div(6, 0);
+		System.out.println(num);
+
+	}
+
+	public static int div(int num1, int num2) {
+
+		int result;
+
+		if (num2 == 0) {
+
+			result = 0;
+			System.out.println("0이 입력되었습니다. 잘못된 입력입니다.");
+
+		} else {
+
+			result = num1 / num2;
+
+		}
+
+		return result;
+
+	}
+
+}
+
+
+▶StarPrint 5를 넣으면 5층탑, 6을 넣으면 6층 탑
+
+헤매는 중 ;_;
+public class StarPrint {
+
+	public static void main(String[] args) {
+
+		starPrint(5, 5);
+		starPrint(6, 6);
+
+	}
+
+	public static void starPrint(int i, int j) {
+
+		for (i = 1; i <= 10; i++) {
+
+			for (j = 1; j <= i; j++) {
+				System.out.print("*");
+
+			}
+
+			System.out.println(" ");
+		}
+
+	}
+
+}
+
+
+정답은 ... 
+	public static void main(String[] args) {
+
+		starPrint(5); // 연산이 아니고 5개를 내부적으로 올리는거라 return값 불필요. 그러니 void사용
+		
+
+	}
+
+	public static void starPrint(int num) { // return type과 함수명을 입력
+
+		for (int i = 1; i <= num; i++) {
+
+			for (int j = 1; j <= i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
+
+▷내가 틀린 이유는: starPrint(int num)여기에 int i라고 두니까 for (int i = 1; i <= num; i++)  여기서  i <= num; 이 부분 설정이 곤란해졌음.
+
+
+▶원 면적 넓이를 구하는 함수
+
+double area = getCircleArea(10);
+System.out.println(area);
+출력값이 314.0
+
+public class StarPrint2 {
+
+	public static void main(String[] args) {
+
+		double area = getCircleArea(10);
+
+		System.out.println(area);
+
+	}
+
+	// 리턴타입 함수명
+	public static double getCircleArea(double r) { // area가 아니라 r
+
+		final double PI = 3.14; // 상수 만들어줘
+		double area = r * r * PI;
+
+		return area; // 이걸 안함.. 이걸 해야 위에 함수에 대한 문법 에러가 안뜸.
+
+	
+
+}
+
+결과값:
+314.0
+
+
+
+▶직사각형의 넓이를 구하는 함수
+public class RectArea {
+
+	public static void main(String[] args) {
+
+		double width = 100;
+		double height = 100;
+
+		double area = getRectArea(width, height);
+
+		System.out.println(area);
+
+	}
+
+	public static double getRectArea(double w, double h) { // 변수선언은 맘대로 해도 됨. 타입은 double로 반드시 맞춰줘야함
+
+		return w * h;
+
+	}
+
+}
+
+결과값:
+10000.0
+
+
+▶수우미양가 성적 산출하기
+public class Grade {
+
+	public static void main(String[] args) {
+
+		char grade;
+		double avg = 80;
+
+		grade = getGrade(avg);
+		// 우 입니다. 로 출력
+		System.out.println(grade + "입니다.");
+
+	}
+
+	public static char getGrade(double avg) { // 리턴타입 캐릭터 ! grade 구할거니까
+
+		char grade = '우'; // 이걸 안써서 자꾸 오류뜸
+
+		if (avg >= 90) {
+
+			grade = '수'; // 내가 쓴 건 System.out.println("수"); 그래서 답이 어딘가 이상했음..
+
+		} else if (avg >= 80) {
+
+			grade = '우';
+		} else if (avg >= 70) {
+
+			grade = '미';
+
+		} else {
+
+			grade = '가';
+
+		}
+
+		return grade;
+
+	}
+
+}
+
+
+결과값:
+우입니다.
+
+
+
+▶등차수열의 합
+public class Sum {
+
+	public static void main(String[] args) {
+
+		int sum = getHap(1, 100);
+
+		System.out.println(sum);
+
+	}
+
+	public static int getHap(int i, int j) {  //getHap을 geHap으로 오타내서 오류떴음 ㅠㅠ
+
+		int sum = 0;
+		for (i = 1; i <= j; i++) {
+			sum = sum + i;
+		}
+
+		return sum;  //return을 result라고 써서 자꾸 오류떴음 ㅠ 
+
+	}
+
+}
+
+결과값:
+5050
+
+
+선생님 방법. 나랑 함수정의가 살짝 다름
+	public static void main(String[] args) {
+
+		int sum = getHap(1, 100);
+
+		System.out.println(sum);
+
+	}
+
+	public static int getHap(int start, int end) {   <<나랑 다른 부분
+
+		int sum = 0;
+		
+		for (int i = start; i <= end; i++) {
+			sum = sum + i;
+		}
+
+		return sum;
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
