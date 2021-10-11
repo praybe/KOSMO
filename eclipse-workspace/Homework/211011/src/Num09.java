@@ -3,7 +3,7 @@ public class Num09 {
 
 	public static void main(String[] args) {
 
-		printGuGudan(3); // 3´Ü Ãâ·Â
+		printGuGudan(3); // 3Â´Ãœ ÃƒÃ¢Â·Ã‚
 		printGuGudan(4);
 
 	}
@@ -25,7 +25,7 @@ public class Num09 {
 }
 
 /*
- * °á°ú°ª 3x1= 3 3x2= 6 3x3= 9 3x4= 12 3x5= 15 3x6= 18 3x7= 21 3x8= 24 3x9= 27
+ * ê²°ê³¼ê°’ 3x1= 3 3x2= 6 3x3= 9 3x4= 12 3x5= 15 3x6= 18 3x7= 21 3x8= 24 3x9= 27
  * 
  * 4x1= 4 4x2= 8 4x3= 12 4x4= 16 4x5= 20 4x6= 24 4x7= 28 4x8= 32 4x9= 36
  */
