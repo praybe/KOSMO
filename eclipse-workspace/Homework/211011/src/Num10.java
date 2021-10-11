@@ -3,7 +3,7 @@ public class Num10 {
 
 	public static void main(String[] args) {
 
-		int area = getRecArea(3, 5); // Á÷»ç°¢Çü ³ĞÀÌ
+		int area = getRecArea(3, 5); // ÃÃ·Â»Ã§Â°Â¢Ã‡Ã¼ Â³ÃÃ€ÃŒ
 
 		System.out.println(area);
 
@@ -17,4 +17,4 @@ public class Num10 {
 
 }
 
-//°á°ú°ª: 15
+//ê²°ê³¼ê°’: 15
