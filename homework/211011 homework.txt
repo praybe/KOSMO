@@ -323,16 +323,115 @@ getRecArea(3,5) //삼각형 넓이
 
 
 12.아래의 함수를 만드시오. 
-int month = 4;
-
-getSeason(3)// 봄입니다. 출력
-printGuGudan(12)// 겨울 입니다. 출력
-▶
 !! 겨울은 두자라서 char가 안됨
 switch문 활용
 return아닌고 void활용!! 
-▶▶
 
+int month = 4;
+getSeason(3)// 봄입니다. 출력
+
+▶
+	public static void main(String[] args) {
+
+	
+
+		getSeason(3); // 봄입니다. 출력
+
+	}
+
+	public static void getSeason(int m) {
+
+		switch (m) {
+		case 3:
+		case 4:
+		case 5:
+			System.out.println("봄 입니다.");
+
+			break;
+
+		case 6:
+		case 7:
+		case 8:
+			System.out.println("여름 입니다.");
+
+			break;
+
+		case 9:
+		case 10:
+		case 11:
+			System.out.println("가을 입니다.");
+
+			break;
+
+		case 12:
+		case 1:
+		case 2:
+			System.out.println("겨울 입니다.");
+
+			break;
+
+		default:
+			break;
+		}
+
+	}
+}
+
+
+//결과값: 봄 입니다.
+
+
+
+12-1. printGuGudan(12)// 겨울 입니다. 출력
+▶
+	public static void main(String[] args) {
+
+	
+
+		printGuGudan(12); // 겨울 입니다. 출력
+
+	}
+
+	public static void printGuGudan(int m) {
+
+		switch (m) {
+		case 3:
+		case 4:
+		case 5:
+			System.out.println("봄 입니다.");
+
+			break;
+
+		case 6:
+		case 7:
+		case 8:
+			System.out.println("여름 입니다.");
+
+			break;
+
+		case 9:
+		case 10:
+		case 11:
+			System.out.println("가을 입니다.");
+
+			break;
+
+		case 12:
+		case 1:
+		case 2:
+			System.out.println("겨울 입니다.");
+
+			break;
+
+		default:
+			break;
+		}
+
+	}
+}
+
+
+//결과값: 겨울 입니다.
 
 
 
