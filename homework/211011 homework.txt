@@ -1,17 +1,21 @@
 1. 함수는 어떻게 알아 볼수있는가?
-☞괄호 있으면 함수
+▶괄호 있으면 함수
 
 
 2. 함수 호출 하는 법은?
-☞
+▶함수 호출이란 빚어낸 만두를 먹는 것과 그 결이 비슷하다. 
+public static void main(String[] args) { }의 중괄호 안, 즉 main 함수 하단 부분이 함수 호출이다.
 
 
 3. 함수 만드는 법은?
-☞
+▶main 함수 이외에 함수정의 부분을 생성해야 한다. 함수는 정의 후 호출이 가능하기 때문이다.
+함수는 class 안에 존재해야하며 다른 함수안에 존재하면 안 된다. 
+
 
 
 4. 리턴 타입 void 는 어떠한 경우에 쓰는가?
-☞
+▶return타입은 값을 구해야 할 때 사용하고, 
+별찍기, 산찍기처럼 값을 구하는 것이 아니라 보여주는 경우void를 사용한다. (?)
 
 
 5. 아래를 함수로 만드시오.
@@ -23,11 +27,37 @@ starPrint2(5)
   ***
    **
     *
-☞
+▶
+	public static void main(String[] args) {
+
+		starPrint2(5);
+
+	}
+
+	public static void starPrint2(int num) {
+
+		for (int i = 1; i <= num; i++) {
+
+			for (int j = 1; j < i; j++) {
+				System.out.print(" ");
+			}
+
+			for (int j = i; j <= num; j++) {
+
+				System.out.print("*");
+
+			}
+			System.out.println(" ");
+
+		}
+
+	}
 
 
 
-5. 아래를 함수로 만드시오.
+
+
+5-1. 아래를 함수로 만드시오.
 starPrint3(5) 
 
 출력
@@ -37,7 +67,35 @@ starPrint3(5)
   *****
  *******
 *********
-☞
+▶
+	public static void main(String[] args) {
+
+		starPrint3(5);
+
+	}
+
+	public static void starPrint3(int num) {
+
+		for (int i = 1; i <= num; i++) {
+
+			for (int j = i; j < num; j++) {
+
+				System.out.print(" ");
+
+			}
+			for (int j = 1; j <= (2 * i - 1); j++) {
+
+				System.out.print("*");
+
+			}
+			System.out.println(" ");
+
+		}
+
+	}
+
+
+
 
 
 6.아래의 함수를 만드시오. 		
@@ -48,7 +106,43 @@ grade = getGrade(avg);
 
 // 우 입니다.
 System.out.println(grade + " 입니다.");
-☞
+▶
+	public static void main(String[] args) {
+
+		char grade;
+		double avg = 80;
+
+		grade = getGrade(avg);
+
+		System.out.println(grade + " 입니다.");
+
+	}
+
+	public static char getGrade(double avg) {
+
+		char grade;
+
+		if (avg >= 90) {
+			grade = '수';
+
+		} else if (avg >= 80) {
+			grade = '우';
+
+		} else if (avg >= 70) {
+			grade = '미';
+
+		} else if (avg >= 60) {
+			grade = '양';
+
+		} else {
+			grade = '가';
+		}
+
+		return grade;
+
+	}
+//결과값: 우 입니다.
+
 
 
 
@@ -56,8 +150,28 @@ System.out.println(grade + " 입니다.");
 int sum = getHap(1,100);
 //5050
 System.out.println(sum);
-☞
+▶
+	public static void main(String[] args) {
 
+		int sum = getHap(1, 100);
+
+		System.out.println(sum);
+
+	}
+
+	public static int getHap(int First, int End) {
+
+		int sum = 0;
+		for (int i = First; i <= End; i++) {
+
+			sum = sum + i;
+
+		}
+
+		return sum;
+
+	}
+//결과값: 5050
 
 
 
@@ -65,7 +179,33 @@ System.out.println(sum);
 int count = get57(1,100);
 //count 는 1부터 100 까지의 숫자중 5의 배수 이자 7의 배수인 수의 갯수
 System.out.println(count );
-☞
+▶
+	public static void main(String[] args) {
+
+		int count = get57(1, 100);
+		System.out.println(count);
+
+	}
+
+	public static int get57(int First, int End) {
+
+		int count = 0;
+
+		for (int i = First; i <= End; i++) {
+			if ((i % 5 != 0) || (i % 7 != 0)) { // ((i % 5 == 0) || (i % 7 == 0))
+
+				continue; // count ++
+			}
+
+			count++;
+
+		}
+
+		return count;
+	}
+
+
+
 
 
 
@@ -96,7 +236,9 @@ int month = 4;
 getSeason(3)// 봄입니다. 출력
 printGuGudan(12)// 겨울 입니다. 출력
 ☞
-
+!! 겨울은 두자라서 char가 안됨
+switch문 활용
+return아닌고 void활용!! 
 
 
 
