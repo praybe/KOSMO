@@ -1,4 +1,4 @@
-//6.»ç°¢Çü º°À» ÂïÀ¸½Ã¿À.
+//6.ì‚¬ê°í˜• ë³„ì„ ì°ìœ¼ì‹œì˜¤.
 public class Num06 {
 
 	public static void main(String[] args) {
