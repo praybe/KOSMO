@@ -1,10 +1,10 @@
 1. 반복문 무한루프 만드는 세가지 방법은?
-☞for, dowhile, while문 
+▶for, dowhile, while문 
 
 2. 아래와 같이 출력 되도록 프로그래밍 하시오.(//반복문 사용 할 필요 없음)
 126500 의 금액을 한국 화폐로 바꾸었을 때 각각 몇 개의 화폐가 필요한지 계산해서 출력하기 
-▶정처기 단골 문제, 반복문 사용 안해도 됨. 출력만 하단처럼해주면 뭐든 okay
-Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
+☞정처기 단골 문제, 반복문 사용 안해도 됨. 출력만 하단처럼해주면 뭐든 okay
+Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000☜
 예) int 126500;
 오만원 : 2장	
 만원:    2장
@@ -12,24 +12,147 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 천원: 1
 오백원: 1개
 백원: 0개
-☞ ? ? ? ?
+▶ ? ? ? ?
 
 
 3.구구단 출력 하시오.
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 2; i < 10; i++) {
+
+			for (int j = 1; j < 10; j++) {
+				
+				System.out.println(i + "x" + j + "=" + i * j);
+
+			}
+			
+			System.out.println();
+		}
+
+	}
+
+}
+
+/*
+ * answer 2x1=2 2x2=4 2x3=6 2x4=8 2x5=10 2x6=12 2x7=14 2x8=16 2x9=18
+ * 
+ * 3x1=3 3x2=6 3x3=9 3x4=12 3x5=15 3x6=18 3x7=21 3x8=24 3x9=27
+ * 
+ * 4x1=4 4x2=8 4x3=12 4x4=16 4x5=20 4x6=24 4x7=28 4x8=32 4x9=36
+ * 
+ * 5x1=5 5x2=10 5x3=15 5x4=20 5x5=25 5x6=30 5x7=35 5x8=40 5x9=45
+ * 
+ * 6x1=6 6x2=12 6x3=18 6x4=24 6x5=30 6x6=36 6x7=42 6x8=48 6x9=54
+ * 
+ * 7x1=7 7x2=14 7x3=21 7x4=28 7x5=35 7x6=42 7x7=49 7x8=56 7x9=63
+ * 
+ * 8x1=8 8x2=16 8x3=24 8x4=32 8x5=40 8x6=48 8x7=56 8x8=64 8x9=72
+ * 
+ * 9x1=9 9x2=18 9x3=27 9x4=36 9x5=45 9x6=54 9x7=63 9x8=72 9x9=81
+ * 
+ */
+
+
 
 4.구구단 짝수단 출력 하시오.
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i < 10; i++) {
+
+			if (i % 2 != 0) {
+				continue;
+
+			}
+
+			for (int j = 1; j < 10; j++) {
+
+				System.out.println(i + "x" + j + "=" + i * j);
+
+			}
+
+			System.out.println();
+		}
+
+	}
+
+}
+
+/*
+ * answer
+ * 
+ * 2x1=2 2x2=4 2x3=6 2x4=8 2x5=10 2x6=12 2x7=14 2x8=16 2x9=18
+ * 
+ * 4x1=4 4x2=8 4x3=12 4x4=16 4x5=20 4x6=24 4x7=28 4x8=32 4x9=36
+ * 
+ * 6x1=6 6x2=12 6x3=18 6x4=24 6x5=30 6x6=36 6x7=42 6x8=48 6x9=54
+ * 
+ * 8x1=8 8x2=16 8x3=24 8x4=32 8x5=40 8x6=48 8x7=56 8x8=64 8x9=72
+ * 
+
+
 
 5. 3의 배수인 단(3,6,9)만 출력 하시오.
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i < 10; i++) {
+
+			if ((i % 3 != 0) && (i % 6 != 0) && (i % 9 != 0)) { // &&이 아니라 ||했을떄는 답이 안나옴
+
+				continue;
+			}
+
+			for (int j = 1; j < 10; j++) {
+
+				System.out.println(i + "x" + j + "=" + i * j);
+
+			}
+
+			System.out.println();
+		}
+
+	}
+
+}
+
+/*
+ * answer
+ * 
+ * 3x1=3 3x2=6 3x3=9 3x4=12 3x5=15 3x6=18 3x7=21 3x8=24 3x9=27
+ * 
+ * 6x1=6 6x2=12 6x3=18 6x4=24 6x5=30 6x6=36 6x7=42 6x8=48 6x9=54
+ * 
+ * 9x1=9 9x2=18 9x3=27 9x4=36 9x5=45 9x6=54 9x7=63 9x8=72 9x9=81
+ * 
+ * 
+ */
+
+
+
 
 6.아래의 별을 찍으시오.
 *****
 *****
 *****
 *****
-☞
+▶	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = 1; j <= 5; j++) {
+
+				System.out.print("*");
+
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
 
 7.아래의 별을 찍으시오.
 *
@@ -37,7 +160,25 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 ***
 ****
 *****
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = 1; j <= i; j++) {
+
+				System.out.print("*");
+
+			}
+
+			System.out.println();
+		}
+
+	}
+
+}
+
+
 
 8.아래의 별을 찍으시오.
 *****
@@ -45,7 +186,25 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 ***
 **
 *
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = i; j <= 5; j++) {
+
+				System.out.print("*");
+			}
+
+			System.out.println();
+		}
+
+	}
+
+}
+
+
+
 
 9.아래의 별을 찍으시오.
     *
@@ -53,7 +212,29 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
   ***
  ****
 *****
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = i; j < 5; j++) {
+
+				System.out.print(" ");
+
+			}
+
+			for (int j = 1; j <= i; j++) {
+
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+
 
 10.아래의 별을 찍으시오.
 *****
@@ -61,7 +242,30 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
   ***
    **
     *  
-☞    
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = 1; j < i; j++) {
+
+				System.out.print(" ");
+			}
+
+			for (int j = i; j <= 5; j++) {
+				System.out.print("*");
+
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+
+
+
 
 11.아래의 별을 찍으시오.
 
@@ -70,10 +274,63 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
   *****
  *******
 *********
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			for (int j = i; j < 5; j++) {
+
+				System.out.print(" ");
+
+			}
+
+			for (int j = 1; j <= 2 * i - 1; j++) {
+
+				System.out.print("*");
+
+			}
+
+			System.out.println();
+
+		}
+
+	}
+
+}
+
+
+
 
 12. 구구단 에서 2의 배수 이자 3의 배수인 수의 갯수는?
-☞
+▶
+	public static void main(String[] args) {
+
+		int count = 0;
+
+		for (int i = 2; i < 10; i++) {
+
+			for (int j = 1; j < 10; j++) {
+
+				int result = i * j;
+
+				if ((result % 2 == 0) && (result % 3 == 0)) {
+
+					count++;
+
+				}
+
+			}
+
+		}
+		System.out.println(count + "개");
+
+	}
+
+}
+
+//answer: 28개
+
 
 13.다음과 같이 출력하시오.
 1. Hi
@@ -81,7 +338,18 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 3. Hi
 4. Hi
 5. Hi
-☞
+▶
+	public static void main(String[] args) {
+
+		for (int i = 1; i <= 5; i++) {
+
+			System.out.println(i + ". Hi");
+		}
+
+	}
+
+}
+
 
 14.아래와 같이 출력 하시오.
 1 1 1 1 1
@@ -89,17 +357,23 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 3 3 3 3 3
 4 4 4 4 4
 5 5 5 5 5
-☞
+▶
+	public static void main(String[] args) {
+
 		for (int i = 1; i <= 5; i++) {
 
 			for (int j = 1; j <= 5; j++) {
 
 				System.out.print(i);
-
 			}
 			System.out.println();
-
 		}
+
+	}
+
+}
+
+
 
 
 
@@ -109,6 +383,14 @@ Hint: 복권 65000 / 5000 몫1(장) 나머지15000(원) /1000◀
 4 5 6 7 8
 5 6 7 8 9
 6 7 8 9 10
-☞
+▶ ????
+
+
+
+
+
+
+
+
 
 
