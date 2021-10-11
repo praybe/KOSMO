@@ -1,4 +1,4 @@
-//14.¾Æ·¡¿Í °°ÀÌ Ãâ·Â ÇÏ½Ã¿À.
+//14.ì•„ë˜ì™€ ê°™ì´ ì¶œë ¥ í•˜ì‹œì˜¤.
 public class Num14 {
 
 	public static void main(String[] args) {
