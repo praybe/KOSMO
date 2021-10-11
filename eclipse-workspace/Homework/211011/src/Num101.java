@@ -3,7 +3,7 @@ public class Num101 {
 
 	public static void main(String[] args) {
 
-		double area = getRecCircle(5); // ¿ø³ĞÀÌ
+		double area = getRecCircle(5); // Å¼Å™Å‚ÄÅ”Äš
 
 		System.out.println(area);
 
@@ -19,4 +19,4 @@ public class Num101 {
 
 }
 
-//°á°ú°ª: 78.5
+//ê²°ê³¼ê°’: 78.5
