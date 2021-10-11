@@ -1,4 +1,4 @@
-//4.±¸±¸´Ü Â¦¼ö´Ü Ãâ·Â ÇÏ½Ã¿À.
+//4.êµ¬êµ¬ë‹¨ ì§ìˆ˜ë‹¨ ì¶œë ¥ í•˜ì‹œì˜¤.
 public class Num04 {
 
 	public static void main(String[] args) {
