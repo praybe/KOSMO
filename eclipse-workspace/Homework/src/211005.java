@@ -2,30 +2,30 @@
 public class Oct5th {
 
 	public static void main(String[] args) {
-//¹®Á¦2¹ø
+//ë¬¸ì œ2ë²ˆ
 		System.out.println(3147483647L + 3147483648L);
-//¹®Á¦4¹ø
+//ë¬¸ì œ4ë²ˆ
 		int a = 3;
 		int b = 4;
 		double result1 = (double)a/b;
 		double result2=a/(double)b;
 		System.out.println(result1);
 		System.out.println(result2);
-//¹®Á¦6¹ø		
+//ë¬¸ì œ6ë²ˆ		
 		System.out.println('A'); 
 		System.out.println('A' + 'A');
-//¹®Á¦ 8¹ø
-		/* "1 ÃÊ°ú 100¹Ì¸¸ÀÎ°¡?"¸¦ ÄÚµùÀ¸·Î Ç¥ÇöÇÏ¸é? */
+//ë¬¸ì œ 8ë²ˆ
+		/* "1 ì´ˆê³¼ 100ë¯¸ë§Œì¸ê°€?"ë¥¼ ì½”ë”©ìœ¼ë¡œ í‘œí˜„í•˜ë©´? */
 		int num8 = 43;
 		boolean result8=((num8>1)&&(num8<100));
-		System.out.println("1 ÃÊ°ú 100¹Ì¸¸ÀÎ°¡? "+result8);
+		System.out.println("1 ì´ˆê³¼ 100ë¯¸ë§Œì¸ê°€? "+result8);
 				
-//9¹ø
-		/* "2ÀÇ ¹è¼ö ¶Ç´Â 3ÀÇ ¹è¼ö?" ¸¦ ÄÚµùÀ¸·Î Ç¥Çö ÇÏ¸é? */
+//9ë²ˆ
+		/* "2ì˜ ë°°ìˆ˜ ë˜ëŠ” 3ì˜ ë°°ìˆ˜?" ë¥¼ ì½”ë”©ìœ¼ë¡œ í‘œí˜„ í•˜ë©´? */
 		int num9 = 21;
 		boolean result9 = ((num9%2)==0)||((num9%3==0));
-		System.out.println("2ÀÇ ¹è¼ö ¶Ç´Â 3ÀÇ ¹è¼ö?" +result9);
-//¹®Á¦10¹ø
+		System.out.println("2ì˜ ë°°ìˆ˜ ë˜ëŠ” 3ì˜ ë°°ìˆ˜?" +result9);
+//ë¬¸ì œ10ë²ˆ
 		int num1 = 0;
 		int num2 = 0;
 		boolean result;
@@ -41,23 +41,23 @@ public class Oct5th {
 		System.out.println("num2 = " + num2);
 		
 		
-//¹®Á¦11¹ø		
-		/*±¹¾î : 50
-		  ¿µ¾î : 70
-		  ¼öÇĞ : 95
+//ë¬¸ì œ11ë²ˆ		
+		/*êµ­ì–´ : 50
+		  ì˜ì–´ : 70
+		  ìˆ˜í•™ : 95
 		  
-		ÃÑÁ¡°ú Æò±ÕÀ» ±¸ÇÏ½Ã¿À.
-		-´Ü Æò±ÕÀº ¼Ò¼ıÁ¡ ±îÁö ³ª¿Àµµ·Ï ÇÏ½Ã¿À */
+		ì´ì ê³¼ í‰ê· ì„ êµ¬í•˜ì‹œì˜¤.
+		-ë‹¨ í‰ê· ì€ ì†Œìˆ«ì  ê¹Œì§€ ë‚˜ì˜¤ë„ë¡ í•˜ì‹œì˜¤ */
 		
 		int kor=50;
 		int eng=70; 
 		int math=95;
 		
 		int total=kor+eng+math;
-		System.out.println("ÃÑÁ¡: "+total);
+		System.out.println("ì´ì : "+total);
 		
 		double avg=(double)total/3;
-		System.out.println("Æò±Õ: "+avg);
+		System.out.println("í‰ê· : "+avg);
 				
 		
 		
