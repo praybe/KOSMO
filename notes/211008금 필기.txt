@@ -388,7 +388,7 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 디버깅 모드로 한 칸 한 칸 원리 파악하기.
 
 
-
+▶5개찍기
 *****
 
 		for(int i=1; i<=5; i++) {	
@@ -398,24 +398,27 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 
 
+▶5x5
+*****
+*****
+*****
+*****
+*****
+		for (int i = 1; i <= 5; i++) {   // 행역할
 
-*****
-*****
-*****
-*****
-*****
-		for (int i = 1; i <= 5; i++) {
-
-			for (int j = 1; j <= 5; j++) {
+			for (int j = 1; j <= 5; j++) {  //여기서부터 모든 알고리즘 시작
 				
 행				System.out.print("*");
 			}
 			
-열			System.out.println();
+열			System.out.println();  //위에 있는거 다섯번 반복
 		}
 
 
 
+
+
+▶직각삼각형 (기본 로직)
 *
 **
 ***
@@ -432,7 +435,7 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 		}
 
 
-
+▶역우향직각삼각형 (기본 로직)
 *****
 ****
 ***
@@ -450,7 +453,7 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 
 
-
+▶좌향직각삼각형
     *
    **
   ***
@@ -475,6 +478,7 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 		}
 
 
+▶역좌향직각삼각형
 *****
  ****
   ***
@@ -498,21 +502,24 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 
 
-
+▶산찍기
     *
    ***
   *****
  *******
 *********
 
+		//1번. 산찍기도 blank 생각안하고 별을 먼저 생각한다. 그러면 좌측부터 13579가 형성됨
+		//2번. 그 다음 blank를 생각한다. 좌향직각삼각형의 blank와 완전 똑같음.
+
 		for (int i = 1; i <= 5; i++) {
 
-			for (int j = 5; j > i; j--) { // blankspace
+			for (int j = i; j <5 ; j++) { //이게 2번 blankspace. for (int j = 5; j > i; j--) 얘도 가능
 
 				System.out.print(" ");
 			}
 			
-			for (int j = 1; j <= i*2-1; j++) { //star
+			for (int j = 1; j <= i*2-1; j++) { //이게 1번 star
 				
 				System.out.print("*");
 			}
@@ -523,7 +530,31 @@ print(행)와 println(열) 둘 다 안에 들어가는 내용은 같음
 
 
 
+		//또 다른 방법
 
+		for (int i = 1; i <= 5; i++) {
+			
+			for (int j = i; j <5 ; j++) {   
+
+				System.out.print(" ");
+			}
+
+
+			for (int j = 1; j <= i; j++) {   
+
+				System.out.print("*");      //여기까지는 좌향직각삼각형
+			}
+			
+
+
+			for (int j = 1; j <i ; j++) {  //그 다음 옆에 1234를 붙여서 산찍기 완성
+
+				System.out.print("*");
+			}
+
+			System.out.println("");
+
+		}
 
 
 
