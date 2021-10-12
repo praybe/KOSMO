@@ -222,7 +222,7 @@ printGuGudan(4)// 4단 출력
 
 	public static void printGuGudan(int num) {
 
-		for (int i = num; i <= num; i++) {
+		for (int i = num; i <= num; i++) {    ◀이중for문 할 필요 없음
 
 			for (int j = 1; j < 10; j++) {
 
@@ -240,6 +240,32 @@ printGuGudan(4)// 4단 출력
  * 
  * 4x1= 4 4x2= 8 4x3= 12 4x4= 16 4x5= 20 4x6= 24 4x7= 28 4x8= 32 4x9= 36
  */
+
+((정답))
+public class Answer9 {
+
+	public static void main(String[] args) {
+
+		printGuGudan(3);
+		printGuGudan(4);
+
+	}
+
+	public static void printGuGudan(int dan) {
+
+		for (int j = 1; j <= 9; j++) {
+
+			System.out.println(dan + "x" + j + "= " + (dan * j));
+
+		}
+
+		System.out.println();
+
+	}
+
+}
+
+
 
 
 
