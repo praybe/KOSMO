@@ -1,4 +1,4 @@
-//15.¾Æ·¡¿Í °°ÀÌ Ãâ·Â ÇÏ½Ã¿À.
+//15.ì•„ë˜ì™€ ê°™ì´ ì¶œë ¥ í•˜ì‹œì˜¤.
 public class Num15 {
 
 	public static void main(String[] args) {
