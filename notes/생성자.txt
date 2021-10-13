@@ -1,0 +1,311 @@
+♣10월 13일 수요일♣
+
+클래스에는 변수와 메소드가 있다.
+
+인스턴스 변수 
+
+인스턴스 메소드 
+
+변수 1개나 게터(getter) 세터(setter)로 클래스 구성
+어떻게 클래스를 객체화 시키는가? new를 이용하면 됨.
+
+class이름은 반.드.시 대문자로 시작함. 관습입니다요 
+
+[1안]
+public class ObjTest {
+
+	public static void main(String[] args) {
+
+		A a = new A();   // 이그시 바로 객체 생성 >_<!!
+
+	}
+}
+
+[2안]
+public class ObjTest {
+
+	public static void main(String[] args) {
+		A a;
+		a = new A();   //new뒤의 A를 '생성자'라고 함, 변수선언
+
+		a.num =10; //객체에서 .으로 접근할 수있는건 변수와 메소드 뿐
+		a.num = 20; //가지고 있는 변수에 객체대입
+		
+		System.out.println(a.num);
+
+	}
+}
+
+
+
+[클래스 생성 및 진행]
+class A{	
+	int num;
+	
+	void setNum(int n) {  //n이 10을 받게 되면 num에 10을 세팅한다. 그럼 num값이 10되어 메모리로 올라감
+		num =n;
+	}
+	
+	int getNum(){ //반드시 void가 아니라 int. 왜내면 int num을 받아올거임. 왜냐. 내가 num 얼마를 넣었는지 가물가물할때 사용
+		return num;
+	}
+	
+	void printNum() {
+		System.out.println(num); //(2)
+	}
+}
+public class ObjTest {
+	public static void main(String[] args) {
+		
+		A a; 
+		a = new A();  //변수선언
+		
+		//a.num = 10;
+		a.setNum(10);
+		int num = a.getNum();
+		a.printNum(); //출력이 10이 되도록 > num값을 뿌리는 함수를 만들어라 (1)
+		
+		//a.num = 10; 
+		//a.num = 20; //가지고 있는 변수에 객체대입
+		
+		//System.out.println(a.num);
+		
+	}
+}
+
+
+
+
+[복습: Circle & Rectangle]
+class Circle {
+
+	double r;
+	
+	double getR() { // r을 꺼내는 함수
+		return r;
+	}
+
+	void setR(double rad) { // 원래있던 값에 세팅만 혀
+		r = rad;
+	}
+
+	double getArea() {
+		return r * r * Math.PI;
+	}
+}
+
+
+class Rectangle{
+	
+	int width; //int 가로; 가능
+	int height; //int 세로;
+	
+	public int getWidth() {
+		return width;
+	}
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public int getArea() {
+		return height * width;
+	}
+	
+
+	
+}
+
+public class AreaTest {
+	public static void main(String[] args) {
+		
+		Rectangle rec = new Rectangle();
+		
+		rec.setHeight(10); // rec안에 가로 10 세로 10인 사각형이 저장되는 함수가 됨
+		rec.setWidth(10); //set함수가 안에 있는 인스턴스 값을 집어 넣는 것
+		System.out.println(rec.getArea());
+		
+		rec.setHeight(20);
+		rec.setWidth(20);
+		System.out.println(rec.getArea());
+
+		
+		
+		
+		Circle circle = new Circle();
+
+		circle.setR(10);
+		double area = circle.getArea();
+		System.out.println(area);
+
+		circle.setR(20);
+		System.out.println(circle.getArea());
+	}
+}
+
+
+
+
+[BankAccount]
+
+으아아ㅏ 으아ㅏ아
+
+
+
+[참조변수에 null 대입]
+null: 가리키는 주소 없음. 관계를 끊는다.
+jvm엥게 해당 메모리가 정리 대상임을 알려주는 것
+프로그래밍을 좀 더 쉽게 하려고
+
+
+null을 왜 쓸까? 
+은행 계좌만 해도 몇 천만명이 이용하니까 메모리에 몇 천만 이상의 정보가 있음
+프로그래밍을 
+
+//클래스, 인스턴스 관련 예제
+
+class BankAccount00 {	
+	public static void printNum(int num) {
+		System.out.println(num);
+	}	
+	public static void printBank(BankAccount acc) { //printBank에서 jung을 넘겼다는 말
+		acc.checkMyBalance();
+	}
+	
+	
+	public static void main(String[] args) {	
+		printNum(10);
+			
+		// 두 개의 인스턴스 생성
+		BankAccount yu = new BankAccount();
+		BankAccount jung = new BankAccount();
+		
+
+		// @해시코드는 jvm이 제공하는 가짜 주소. 메모리 주소를 확인하는 방법
+		System.out.println(yu);
+
+		// 각 인스턴스를 대상으로 예금을 진행
+		yu.deposit(5000);
+		jung.deposit(3000);
+
+		// 각 인스턴스를 대상으로 출금 진행
+		yu.withdraw(2000);
+		jung.withdraw(2000);
+
+		// 각 인스턴스 대상 잔액 조회
+		yu.checkMyBalance();
+		jung.checkMyBalance();
+			
+		printBank(yu);
+		
+		
+		//null 널 체크
+		//가리키는 주소가 없다. 관계를 끊는다.
+		yu = null;
+		
+		if (yu == null) {
+			yu = new BankAccount();
+		}else {
+			yu.deposit(5000);
+		}  
+		
+		
+		
+	
+	
+	}
+
+}
+
+
+
+[생성자와 String 클래스의 소개]
+
+BankAccount 유저이름
+이 때 쓰는 것이 String
+
+String name ; 
+
+
+
+
+
+
+
+[생성자 constructor]
+class BankAccount2 {	
+	
+	public static void main(String[] args) {
+		
+		//생성장 (Constructor) new 뒷 부분
+		//1.클래스 이름 같은 함수 = 생성자
+		//2.만약 개발자가 생성ㅇ자를 만들지 않으면
+		//컴파일러 만들어주는 생성자 이걸 디폴트 생성자라고 함
+		//3.생성자 또한 함수 이지만 기존 함수와 조금 다르다.
+		// 다른 점은 리턴 타입이 없으니까 당연히 리턴 값도 없다.
+		BankAccount yu = new BankAccount(); //계좌생성
+		yu.initAccount("12-34-89", "990990-9090990", 10000); //초기화
+		
+		BankAccount jung = new BankAccount();
+		jung.initAccount("12-34-78", "999999-399998", 10000);
+		
+	}
+
+}
+
+
+
+
+
+자바에서는 기본적으로 CamelCase를 씁니다. 
+
+Add + Your + Money = addYourMoney
+이런걸 CamelCase 모델이라고 함
+
+
+final int MAX_NUM = 100;
+상수는 snake case라고 함 왜냐면 뱀처럼 생겨서.
+
+
+ch.7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+변수의 반댓말 
+
+상수 이름 규칙
+
+상수의 이름은 모든 문자를 대문자로 구성한다.
+둘 이상의 단어가 묶여서 하나의 이름을 이룰 때 단어 사이를 언더바로 연결한다.
+
+ex)
+final int COLOR_RAINBOW = 7;
+
+
+
+
+
+
+
+
+
+
+
+
+
