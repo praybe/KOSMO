@@ -1,23 +1,30 @@
 1. String 에서 concat 메소드에 대해서 설명하시오.
 ▶ 단순히 붙이는 것으로 앞 뒤 문자열을 연결해주는 것이다.
 +연산을 사용하고 f3을 돌리면 +연산이 concat으로 풀어져 내부적 계산이 되는 것을 확인 할 수 있다.
+String str 뒤에 str2를 붙이는 것.
+예) str.concat(str2);
 
 2. String 에서 substring 메서드 사용법은?
 ▶subString(0)은 잘라 내어 메모리에 다시 생성하는 것이다. 
 chaAt(0)는 메로리에 다시 생성시키지 않고 코드값만 받아 오는 것이다. 
+String의 인덱스에 해당하는 char를 제거 하는 것.
+예) abcd 에 위치별로 삭제되고 그런거 예시
 
 3. String  compareTo 사용법은?
-▶
+▶문자열이 같으면 정수 0을 리턴.
+음수 리턴하면 후자가 출력되고 양수면 전자가 출력됨.
+예) lux어쩌고 사전 예시
 
 4. String.valueOf 에 대하여 설명하시오.
-▶
+▶ 어떤 타입이 들어가도 String으로 변환해주는 함수
+예)
 
 5. 아래가 실행되는 원리(함수)를 표현해 보세요.
 String str = "age" + 17;
-▶
+▶age (String.concat(17)과 동일
 
 6.StringBuilder 와 String 의 차이는?
-▶
+▶String은 imutable인데 
 
 7.아래의 메모리 그림을 그리시오. (1차원 배열)
 int[] ar1 = new int[5];
