@@ -1,10 +1,12 @@
-1. Stirng 에서 concat 메서드에 대해서 설명하시오.
-▶
+1. String 에서 concat 메소드에 대해서 설명하시오.
+▶ 단순히 붙이는 것으로 앞 뒤 문자열을 연결해주는 것이다.
++연산을 사용하고 f3을 돌리면 +연산이 concat으로 풀어져 내부적 계산이 되는 것을 확인 할 수 있다.
 
-2. Stirng 에서 substring 메서드 사용법은?
-▶
+2. String 에서 substring 메서드 사용법은?
+▶subString(0)은 잘라 내어 메모리에 다시 생성하는 것이다. 
+chaAt(0)는 메로리에 다시 생성시키지 않고 코드값만 받아 오는 것이다. 
 
-3. Stirng  compareTo 사용법은?
+3. String  compareTo 사용법은?
 ▶
 
 4. String.valueOf 에 대하여 설명하시오.
@@ -35,6 +37,9 @@ Box[] ar = new Box[5];
 출력: 파일 이름은: Java 이며 확장자는 avi 입니다.
 ▶▶while문, Hello.java입력을 scanner로 받아주기
 ▶
+
+
+
 10.아래를 배열을 활용하여 프로그램을 짜시오.
 화폐매수 구하기
 - 1원 부터 5000 원 까지 랜덤으로 생성.
