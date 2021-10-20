@@ -1,13 +1,51 @@
 1. 배열에서의 초기화 방법은?
-▶
+▶스테플러 [ ] 안에 값을 넣으먄 된다.
+Circle[] cir = new Circle[5]; 
+cir[0] = new Circle(5);
+
+
 
 2. arraycopy 함수의 사용 방법은?
-▶
+▶배열 복사 메소드
+
+		int[] ar1 = new int[10];
+		int[] ar2 = new int[10];
+		
+		// 배열 ar1을 7로 초기화
+		Arrays.fill(ar1, 7);
+		// 배열 ar1을 ar2로 부분 복사
+		System.arraycopy(ar1, 0, ar2, 3, 4); ◀ 하단에 이 부분 해석 有
+		
+		for(int i = 0; i < ar1.length; i++)
+			System.out.print(ar1[i] + " ");
+		System.out.println();	// 단순 줄 바꿈
+		
+		for(int i =0; i < ar2.length; i++)
+			System.out.print(ar2[i] + " ");
+출력:
+7 7 7 7 7 7 7 7 7 7 
+0 0 0 7 7 7 7 0 0 0 
+
+☞해석
+System.arraycopy(ar1,  0,  ar2,  3,  4);
+       ↘
+
+                    스타트 위치    대상은 여기         몇 개 복사
+System.arraycopy(ar1 [0],          ar2[3],                   4);
+
+
+
 
 3.main 함수에서 String[] args 사용 방법은?
-▶
-4.enhenced for 문이란?
-▶
+▶터미널(Terminal) 이용해서..
+
+
+4.enhanced for 문이란?
+▶ 배열할때 편하게 하려고
+값을 넣는건 못하고 출력하는 것만 가능.
+변수 값 넣은 것을 순서대로 출력 
+예시: getNum해서 get함수만  
+
 
 5. Box 클래스를 짜시오.
 public static void main(String[] args) {
