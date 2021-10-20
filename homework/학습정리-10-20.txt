@@ -30,14 +30,17 @@ cir[0] = new Circle(5);
 System.arraycopy(ar1,  0,  ar2,  3,  4);
        ↘
 
-                    스타트 위치    대상은 여기         몇 개 복사
+                    스타트 위치    복사되는 위치         몇 개 복사
 System.arraycopy(ar1 [0],          ar2[3],                   4);
 
 
 
 
 3.main 함수에서 String[] args 사용 방법은?
-▶터미널(Terminal) 이용해서..
+▶static 붙은 함수라서 가장 먼저 메모리에 접근해서 가장 먼저 실행.
+그리고 메인은 외부로부터 값을 받기 때문에
+String[] args이게 없으면 외부에서 값을 받지 못한다.
+예시)) 터미널(Terminal) 이용
 
 
 4.enhanced for 문이란?
