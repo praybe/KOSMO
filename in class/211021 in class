@@ -1,0 +1,33 @@
+1번
+"5. Box 클래스를 짜시오.
+public static void main(String[] args) {
+        Box[] ar = new Box[5];
+        ar[0] = new Box(101, ""Coffee"");
+        ar[1] = new Box(202, ""Computer"");
+        ar[2] = new Box(303, ""Apple"");
+        ar[3] = new Box(404, ""Dress"");
+        ar[4] = new Box(505, ""Fairy-tale book"");
+
+        for (Box e : ar) {
+                if (e.getBoxNum() == 505)
+                        System.out.println(e);
+        }
+}"
+
+
+
+
+
+
+
+2번
+"Rectangle 을 배열로 3개 선언
+
+해당 객체에 인덱스 순서대로 가로 세로 설정 - 
+이번에는 반드시 scanner 로 입력 받을것
+
+해당 배열에 있는 Rectangle 의 총넓이의 합을 구하시오.
+
+또한 아래의 함수도 만들것(static 으로 만들것)
+- 파라미터를 Rectangle 배열로 받아서 해당 배열에 들어 잇는 
+Rectangle 들에 총 넓이를 리턴 하는 함수를 만드시오."
