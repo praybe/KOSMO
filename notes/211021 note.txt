@@ -1,0 +1,620 @@
+2021-10-21
+
+
+◐2차원 배열
+▶public class TwoDimenArray {
+
+	public static void main(String[] args) {
+		
+		int[][]arr = new int [3][4];
+		int num = 1;
+		
+		//배열에 값을 저장
+		for(int i = 0; i <3; i++) {
+			for(int j =0; j <4; j++) {
+				arr[i][j] = num;
+				num++;
+			}
+		}
+		
+		//배열에 저장된 값을 출력
+		for(int i = 0; i <3; i++) {
+			for(int j =0; j <4; j++) {
+				System.out.print(arr[i][j] + "\t");
+			}
+			System.out.println();
+		} 
+		
+
+	}
+
+}
+
+출력값:
+1	2	3	4	
+5	6	7	8	
+9	10	11	12	
+
+
+◐2차원 배열의 실제구조 = 메모리 그려봐라
+ex) int [] [] arr = arr[3] [2]
+	arr[1][0] = 10  << 두 번째 행 첫 번재 열의 메모리 공간 의미
+: 달걀 두 개 품은 세 마리의 엄마 닭
+
+◐2차원 배열 돌릴떄 반.드.시 아래와 같이 돌린다
+▶for(int i = 0; i <3; i++) {
+			for(int j =0; j <4; j++) {
+				System.out.print(arr[i][j] + "\t");
+			}
+			System.out.println();
+		} 
+
+
+
+◐2차원 배열의 초기화
+int[][]arr={
+
+	{11,22,33},		11 22 33
+	{44,55,66}	,		44 55 66
+	{77,88,99}	,		77 88 99
+
+}
+
+
+
+int[][]arr={
+
+	{11},			11
+	{22,33},			22 33
+	{44,55,66}	,		44 55 66
+};
+
+앞에 주소기 떄문에 가능함.
+
+
+▶public class PartiallyFilledArray {
+
+	public static void main(String[] args) {
+		int[][] arr = { { 11 }, { 22, 33 }, { 44, 55, 66 }
+
+		};
+
+		// 배열의 구조대로 내용 출력
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				System.out.print(arr[i][j] + "\t");
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+출력값:
+11	
+22	33	
+44	55	66	
+
+
+
+
+
+◐자료구조(Data) 주민번호 - 5천만 (db) 오라클
+- 저장. 검색, 정렬 --
+배열[] ▷ set list que map
+
+=========================
+
+
+가장 중요한 것은 객체.
+클래스를 만들어서 데이터 멤버와 함수를 구성해서
+뉴 해서 객체 생성해서 
+함수도 호출하고  하는 것이 가장 중요 ! ! 
+
+
+13장까지가 객체. >> 여기까지가 real java basic 
+=========================
+14장 부터 상속이 나오는데 경력자들도 활용을 어려워 함. 
+난이도가 엄청 올라간다 !!! 
+but 선배가 짜놓은 코딩을 이해하려면 반드시 must 학습해야하는 부분.
+
+따라서 이해 위주로 하자. 몰라도 코딩 따라하고 프로젝트하면서 익혀두자.
+활용하는데 시간이 걸리는 부분이라 바로 활용 못한다고 좌절하지 말자.
+
+암기할 것도 겁나리 많음 
+
+
+
+
+OOP(객체지향언어):
+1. 상속▷ 14장
+2. 정보은닉▷ (최대한 데이터 보호, access modifier>privat~public)
+3. 다형성▷상속을 이해해야 polymoltism(?)이해 가능
+4. 캡슐화▷ 소프트웨어의 최종 목적. 즉, 프로그램을 잘 짜는 것.
+
+
+
+=========================
+14장. 상속 Inheritance
+
+
+OOP에서 핵심 개념 중 하나. (핵심 among 객체지향언어)
+
+
+상속에 관한 논문과 이론이 상당히 많음
+
+상속은 코드의 재활용을 위한 문법은 아니다. 
+처음 생길 땐 코드의 재활용을 위한 문법으로 탄생하긴 함... 
+다만 20년 이상 실무에서 사용하면서 재활용을 위한 문법이 아닌 것을 알게 됨.
+
+상속은 연관된 일련의 클래스들에 대해 공통적인 규약을 정의할 수 있다. 
+
+
+◐상속 『extends』 
+▶class Man {
+	String name;
+
+	public void tellYourName() {
+		System.out.println("my name is " + name);
+	}
+
+}
+
+class BuisnessMan extends Man {
+	String company;
+	String position;
+
+	public void tellYouInfo() {
+		System.out.println("My company is " + company);
+		System.out.println("My position is " + position);
+		tellYourName();
+
+	}
+}
+
+
+상속의 대상이 되는 클래스를 상위 클래스, 기초 클래스, 부모 클래스 라고 한다.
+ex) class Man{
+  ...
+}
+
+상속을 하는 클래스를 하위 클래스, 유도 클래스, 자식 클래스 라고 한다.
+
+ex) class BusinessMan extends Man{
+   ...
+}
+
+상위 클래스 것을 하위 클래스가 물려 받으니까 『상속』이라고 부르게 된 것이다.
+
+
+◐상속과 생성자
+
+▶class Man {
+	String name;
+
+	public void tellYourName() {
+		System.out.println("my name is " + name);
+	}
+
+}
+
+class BusinessMan extends Man {
+	String company;
+	String position;
+
+	public BusinessMan(String name, String company, String position) {
+		this.name = name;
+		this.company = company;
+		this.position = position;
+	}
+
+	public void tellYouInfo() {
+		System.out.println("My company is " + company);
+		System.out.println("My position is " + position);
+		tellYourName();
+	}
+
+}
+
+public class ExtendBasic {
+	public static void main(String[] args) {
+		BusinessMan man = new BusinessMan("YOON", "Hybrid ElD", "Staff Eng.");
+
+		man.tellYourName();
+
+	}
+
+}
+
+
+▷부모거에 있는 걸 어떻게 초기화 할 것인가
+▷ 상속을 받는다는 것은 쓰겠다는 것. 문법이 몇 개 제공되는데..
+부모  문법 중 하나가 『super』와  『super()』 함수. 
+this.name = name; 보통 이러는데 
+부모거를 끌고 올떄는 super.name=name; 이라고 한다.
+
+super() 부모 생성자 호출
+this(); 생성자 호출
+
+super(name); 이러면 부모에 있는 생성자 호출 
+부모에 있는거: Man(String name){this.name = name;}
+
+
+class Man {
+	String name;
+
+	Man(String name){
+		this.name = name;
+	}
+
+	public void tellYourName() {
+		System.out.println("my name is " + name);
+	}
+
+}
+
+
+class BusinessMan extends Man {
+	String company;
+	String position;
+
+	public BusinessMan(String name, String company, String position) {
+		super(name); //부모에 있는 생성자 호출 Man(String name){this.name = name;}
+		
+		this.company = company;
+		this.position = position;
+	}
+
+...
+
+
+
+
+
+
+
+
+
+◐상속과 생성자: 생성자 호출 관계
+부모 것을 먼저 호출하고 자식 것을 호출한다.
+▶class SuperCLS {
+
+	public SuperCLS() {
+		System.out.println("I'm Super Class");
+	}
+}
+
+class SubCLS extends SuperCLS {
+
+	public SubCLS() {
+		System.out.println("I'm Sub Class");
+	}
+
+}
+
+public class SuperSubCon {
+	public static void main(String[] args) {
+
+		new SubCLS();
+
+	}
+
+}
+
+
+
+
+
+
+
+
+◐
+내가 서브클래스에서 특별히 부모 클래스에서 생성자를 호출하지 않으면
+디폴트로 ... 부모에있는 디폴트 생성자를 만든다
+따로 호출을 안했을경우
+
+
+객체는 생성자를 통해 초기화 시켜주는게 가장 좋음
+
+생성자:
+public CLASSNAME (){
+	this. a = a;
+}
+
+
+◐단일 상속◑
+자바는 다중 상속을 지원하지 않음.
+한 클래스에서 상속할 수 있는 최대 클래스의 수는 한 개이다.
+
+
+	class A {
+
+	}
+
+	class CCC {
+	
+	}
+
+	class B extends A, CCC {    ▷▷ 이런 식으로 한 클래스가 여러 개 상속이 안됨.
+
+	}
+
+
+하나의 자식에겐 하나의 부모만! 부모가 한 번에 여럿일 수는 업숴~!
+왜 고슬링 아재는 다중상속을 막았을까?
+
+고슬링 아재가 만든 밑도 끝도 없는 함수들이 40개 이상이 됨 
+ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+
+암튼 자식 클래스가 부모 클래스를 한 번에 두 개를 받아버리면 
+소프트웨어 복잡성이 커지고 ....
+
+현실에서 점점 다중상속을 안 사용하고 단일 상속만 쓰니까 
+아예 다중상속 몬하게 못 박아 버림.
+
+자바가 현실을 잘 받아줌
+
+
+◐클래스 변수, 메소드는 상속 될까? 
+ex) static은 상속이 가능할까? 
+
+문법을 자꾸 추가하니까 변수들이 생겨버림.
+
+
+하위 클래스에서 이름만으로 접근 가능.
+접근 수준 지시자에서 허용한다면
+
+▶class SuperCLS {
+	★static★ int count = 0; //클래스 변수
+	
+	public SuperCLS() {
+		count++; //클래스 내에서는 직접 접근이 가능
+	}	
+}
+
+class SubCLS extends SuperCLS {
+	public void showCount() {
+		System.out.println(count); //상위 클래스에 위치하는 클래스 변수에 접근
+	}
+} //그러나 하위 클래스에서 이름만으로 접근 가능! 접근 수준 지시자에게 허용한다면 !
+
+
+스태틱을 그대로 상속받아 써먹을 수 있다.
+
+
+//일단 상속을 받게되면 부모에 있는 것을 메모리에 올림. 생성자를 반드시 호출
+자식놈이 호출하면 디폴트 생성자를 컴파일러가 생성해서 넣어준다 (..?)
+▶▶class Man {
+        String name;
+        public void tellYourName() {
+                System.out.println("My name is "+ name);
+        }        
+}
+
+class BusinessMan extends Man{
+        String company;
+        String position;
+        
+        public BusinessMan(String name, String company, String position) {
+                this.name = name;
+                this.company = company;
+                this.position = position;
+        }
+        public void tellYourInfo() {
+                System.out.println("My company is" + company);
+                System.out.println("My position is" + position);
+                tellYourName();
+        }
+}
+
+class MyBusinessMan{
+        public static void main(String[] args) {
+                BusinessMan man =
+                                new BusinessMan("YOON","Hybrid ELD","Staff Eng.");
+                
+                man.tellYourInfo();
+        }
+}
+
+
+▶class SuperCLS {
+    protected static int count = 0;
+
+    public SuperCLS() {
+        count++;
+        System.out.println("호출됨");
+    }
+}
+
+//SubCLS obj3 = new SubCLS();
+//obj3.showCount();
+class SubCLS extends SuperCLS {        
+        
+        public SubCLS() {
+                super();                
+        } //컴파일러가 넣어준다.
+        
+        public void showCount() {
+        System.out.println(count);
+    }
+}
+
+
+class ForInFor {
+    public static void main(String[] args) {
+               SuperCLS obj1 = new SuperCLS();
+           SuperCLS obj2 = new SuperCLS();
+           
+           SubCLS obj3 = new SubCLS();
+           obj3.showCount();
+            
+    }
+}
+=========================
+
+
+1번. 
+다음 TV 클래스가 있다.
+다음 main()메소드와 실행 결과를 참고하여 TV를 상속받은 ColorTV 클래스를 작성하라.
+
+▶class TV {
+	private int size; //  protected면 바로 size 들어감
+
+	public TV(int size) {
+		this.size = size;
+	}
+
+	protected int getSize() {
+		return size;
+	}
+
+}
+
+class ColorTV extends TV {
+	int color;
+
+	public ColorTV(int size, int color) {
+		super(size);
+		this.color = color;
+
+	}
+
+	public void printProperty() {
+		System.out.println(getSize() + "인치 " + color + "컬러");
+
+	}
+
+}
+
+
+public class ExColorTV {
+	public static void main(String[] args) {
+
+		ColorTV myTV = new ColorTV(32, 1024);
+
+		myTV.printProperty();
+
+	}
+
+}
+
+//32인치 1024컬러
+
+▷▷▷ 
+private 같은 클래스 내
+default 같은 패키지
+protected 다른 패키지에도 불구하고 상속받은 놈은 같은 값을 받아올 수 있음. = 상속을 위한 키워드 
+public
+=========================
+2번.
+칼라티비 상속 받아서 IPTV 클래스 작성하기
+//[2번] 다음 main() 메소드와 실행 결과를 참고하여 
+
+//ColorTV를 상속받는 IPTV 클래스를 작성하라.
+
+//192.1.1.2 주소에 32인치, 2048컬러
+public static void main(String[] args) {
+   IPTV iptv = new IPTV("192.1.1.2", 32, 2048); 
+   
+   iptv.printProperty();
+}
+
+▶class TV {
+	private int size;
+
+	public TV(int size) {
+		this.size = size;
+	}
+
+	protected int getSize() {
+		return size;
+	}
+}
+
+class ColorTV extends TV {
+	private int color;
+
+	public ColorTV(int size, int color) {
+		super(size);
+		this.color = color;
+	}
+	public void printProperty() {
+		System.out.println(getSize() + "인치 " + color + "컬러");
+
+	}
+
+}
+
+class IPTV extends ColorTV {
+	private String ip;
+
+	public IPTV(String ip, int size, int color) {
+		super(size, color);
+		this.ip = ip;
+	}
+
+	public void printProperty() {
+		System.out.print(ip + " 주소에 ");
+		//System.out.println(ip + " 주소에 " + super.getSize() + "인치, " + this.color + "컬러");
+		super.printProperty();
+
+	}
+}
+
+//192.1.1.2 주소에 32인치, 2048컬러
+
+public class ExIPTV {
+	public static void main(String[] args) {
+
+		IPTV iptv = new IPTV("192.1.1.2", 32, 2048);
+
+		iptv.printProperty();
+
+	}
+
+}
+
+=========================
+1-1번.
+2차원 상의 한 점을 표현하는 Point 클래스
+Point를 상속받아 색을 가진 점을 나타내는 ColorPoint 클래스를 작성하라.
+
+class Point {
+        private int x, y;
+        public Point(int x, int y) { this.x = x; this.y = y; }
+        public int getX() { return x; }
+        public int getY() { return y; }
+        protected void move(int x, int y) { this.x =x; this.y = y; }
+
+        public static void main(String[] args) {
+                ColorPoint cp = new ColorPoint(5, 5, "YELLOW");
+                cp.setXY(10, 20);
+                cp.setColor("RED");
+                String str = cp.toString();
+                System.out.println(str+"입니다. ");
+}
+
+/*
+RED색의 (10,20)의 점입니다.
+*/
+
+▶
+
+
+=========================
+
+
+
+
+내일 다형성 (polymorphism)
+메소드 오버로딩
+
+
+
+
+
+
+
+
+

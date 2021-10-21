@@ -1,0 +1,305 @@
+♣10월 18일 월요일♣
+
+
+▣가위 바위 보 게임 
+>> 어떠한 종류의 소프트웨어든 객체를 어떻게 나눌까. 즉, 클래스를 어떻게 나눌지 고민.
+1. Class를 어떻게 만들지 구상.
+객체지향 언어는 다 이럼 ㅋㅋ
+
+- RSPTest 클래스를 만든다.(Main)
+- 먼저 한 개만 돌아가게 해놓고 전체를 반복문 돌림
+가위바위보 한 게임 끝난 후 " 계속 하시겠습니까" 
+되던 안되던 설계문이니까 일단 그렇게 control을 짠다 
+
+-Player 클래스 만든다. (객체 두 개 생성, 나 자신과 컴퓨터)
+	-가위바위보 변수로 담는다.
+	-가위바위보 결과(result)를 출력하는 함수
+
+
+public void result(Player player) {
+                
+                if(this.rsp == player.rsp) {
+                        System.out.println("비겼습니다.");
+                        return;
+                }
+                //1.가위 2.바위 3.보
+                if(this.rsp == 1 && player.rsp == 2) {
+                        System.out.println("제가 졌습니다.");
+                }else if(this.rsp == 1 && player.rsp == 3) {
+                        System.out.println("제가 이겼습니다.");
+                }else if(this.rsp == 2 && player.rsp == 1) {
+                        System.out.println("제가 이겼습니다.");
+                }else if(this.rsp == 2 && player.rsp == 3) {
+                        System.out.println("제가 졌습니다.");
+                }else if(this.rsp == 3 && player.rsp == 1) {
+                        System.out.println("제가 졌습니다.");
+                }else if(this.rsp == 3 && player.rsp == 2) {
+                        System.out.println("제가 이겼습니다");
+                }        
+                
+        }
+
+
+private String getRSPString(int rsp) {
+     String str = "";
+    
+     if(rsp == 1)
+     str = "가위";
+     else if(rsp ==2)
+     str = "바위";
+     else
+     str = "보";
+    
+     return str;
+    }
+
+
+
+11장. 메소드 오버로딩과 String 클래스
+
+▣함수 오버로딩은 면접떄 가장 많이 나오는 것 중 하나.
+객체지향 언어로 들어오면서 오버로딩이 가능해짐.
+같은 함수 이름으로 여러 개를 만들 수 있는 길을 열었다.
+무조건 같다고 되는 건 아니고...
+▶같은 함수 이름(1)으로 파라미터의 type(2) 또는 갯수(3)를 달리 하는 것. 
+
+
+
+▣오버로딩 관련 피해야 할 애매한 상황
+class AAA{
+	void simple(int p1, int p2) { ... }
+	void simple(int p1, double p2) { ... }
+}
+
+오버로딩 왜 위에거가 호출될까용
+
+
+
+
+
+
+▣하나의 파일에 클래스가 2개 이상이면
+반드시 하나에만 public 을 붙일 수 있음
+관습적인 것. - 다른쪽에서 접근 하는 진입 점으로 생각함.
+
+class A{
+
+}
+
+
+public class RSPTest {
+	public static void main() {
+	
+	}
+	
+}
+
+
+
+키워드 this를 이용한 다른 생성자의 호출
+자기 자신의 생성자 호출.
+Person(int rnum, int pnum) {
+	regiNum = rnum;
+	passNum = 0;
+}
+
+Person(int rnum) {
+	this(rnum, 0);
+}
+
+
+
+this는 안 까먹는데
+this함수는 까먹음
+this는 자기자신을 뜻함
+
+
+
+▣String은 문자열을 담기 위한 참조열
+객체 생성 두 가지 방법.
+1. new
+2. 다이렉트로
+
+
+String str1 = new String ("Simple String");
+
+String str2 = "The Best String";
+
+둘 다 String 인스턴스의 생성으로 이어지고 그 결과 인스턴스의 참조 값이 반환된다.
+
+
+▣println은 단골 면접 질문 (오버로딩)
+▶▶같은 함수이름으로 파라미터 타입과 개수를 다르게 하는건데
+그 중 가장 대표적인 함수는 println(프린트엘엔) 입니다.
+
+
+▣문자열 생성 방법 두 가지의 차이점 (Immutable String)
+public class ImmutableString {
+	public static void main(String[] args) {
+		String str1 = "Simple String";
+		String str2 = "Simple String";
+		
+		String str3 = new String("Simple String");
+		String str4 = new String("Simple String");
+		
+		// == 참조변수의 참조 값 비교
+		if(str1 == str2)
+			System.out.println("str1과 str2는 동일 인스턴스 참조");
+		else
+			System.out.println("str1과 str2는 다른 인스턴스 참조");
+		
+		// == 참조변수의 참조 값 비교
+		if(str3 == str4)
+			System.out.println("str3과 str4는 동일 인스턴스 참조");
+		else
+			System.out.println("str3과 str4는 다른 인스턴스 참조");
+	
+	}
+
+▣String 에서 ==이거는 문자열이 아니라 주소값만 비교한다. ! ! ! 
+쌍따옴표는 반드시 중복되는 것 없이 한 개만. 중복되는 건 안 들어감.
+new로 되는건 무조건 메모리에 올라감.
+
+▣고로 str3와 str4는 new String이 붙은 상태로 비교하니 다른 놈들임
+
+▣str1과 str2는 안에 있는 주소값이 같으냐.
+
+		String str1 = "simple String";
+		String str2 = "Simple String";
+▣대문자를 소문자로 바꿨음. 그러면 얘는 다른 인스턴스로 나옴.
+
+
+
+
+
+
+▣String 인스턴스는 Immutable 인스턴스 (자바Script랑 뷰나 리액트 배울떄 중요하게 나옴)
+따라서 생성되는 인스턴스의 수를 최소화 한다.
+mutable 가변
+Immutable 원본불변 (원본 보전)
+		String str1 = "Simple String";
+		String str2 = "Simple String";
+
+		String str7 = str1 + str2 ;  //문자열끼리 더하기
+		System.out.println(str1);
+		System.out.println(str7 == str1);
+		
+		System.out.println(str2);
+		System.out.println(str7 == str2);
+
+String 어쩌고는 절대 건들지 않어. 스트링은 원본을 건들지 않어
+
+
+
+▣String 인스턴스 기반 switch문 구성
+
+▣문자열 연결시키기
+
+.concat
+
+▣문자열의 일부 추출
+.substring
+
+▣문자열의 내용 비교
+.equals
+
+.compareTo
+
+.compareToIgnoreCase
+
+
+
+
+
+▣오늘 배운 것을 활용해보자
+
+화폐 매수 구하는 것.
+입력126000
+
+오만원 ,,
+만,,,
+
+계속 하시겠습니까. Y 
+
+스캐너로 하셈
+
+
+
+class Money {
+private  int m_500, m_100, m_50, m_10, m_5, m_1, money, tmp;
+
+Money(int money) {
+
+setMoney(money);
+}
+
+public void setMoney(int money) {
+
+if(money < 0) {
+this.money = 0;
+System.out.println("잘못된 입력입니다.");
+return;
+}
+
+this.money = money;
+
+}
+
+public void show() {
+
+m_500 = money / 50000;
+tmp = money - m_500 * 50000;
+
+m_100 = tmp / 10000;
+tmp = tmp - m_100 * 10000;
+
+m_50 = tmp / 5000;
+tmp = tmp - m_50 * 5000;
+
+m_10 = tmp / 1000;
+tmp = tmp - m_10 * 1000;
+
+m_5 = tmp / 500;
+tmp = tmp - m_5 * 500;
+
+m_1 = tmp / 100;
+System.out.println("오만원 : " + m_500 + "장");
+System.out.println("만원 : " + m_100 + "장");
+System.out.println("오천원 : " + m_50 + "장");
+System.out.println("천원 : " + m_10 + "장");
+System.out.println("오백원 : " + m_5 + "개");
+System.out.println("백원 : " + m_1 + "개");
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
