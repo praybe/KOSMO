@@ -5,7 +5,7 @@
  
                                                            UML 표시
 class Man{                                  
-  ...                                                            Man  
+  ...                                                           Man  
 }                                                                ↑
                                                           BusinessMan    
 class BusinessMan extends Man{
@@ -23,12 +23,12 @@ class BusinessMan extends Man{
 
 4. 단일 상속과 다중 상속 이란 무엇인가요? UML 로의 표기는?
 ▶ 단일상속: 자식클래스가 하나의 부모클래스만 상속
-    다중상속: 자식클래스가 여럿의 부모클래스를 상속 
+   다중상속: 자식클래스가 여럿의 부모클래스를 상속 
 
         단일 상속                                       다중 상속
            Man                                   AAA                 MMM
-            ↑                                       ↖                   ↗
-      BusinessMan                                  BusinessMan
+            ↑                                     ↖                 ↗
+       BusinessMan                                      BusinessMan
  
 
 5.
@@ -77,8 +77,51 @@ public static void main(String[] args) {
 ===========
 32인치 1024컬러
 */
-▶
 
+▶public class ColorTVMain {
+
+		public static void main(String[] args) {
+
+			ColorTV myTV = new ColorTV(32, 1024);
+
+			myTV.printProperty();
+
+
+		}
+	}
+
+▶	public class TV {
+
+		private int size;
+
+		public TV(int size) {
+			this.size = size;
+		}
+
+		protected int getSize() {
+			return size;
+		}
+
+	}
+	
+▶▶public class ColorTV extends TV {
+
+	private int color;
+
+	public ColorTV(int size, int color) {
+		super(size);
+		this.color = color;
+
+	}
+
+	public void printProperty() {
+
+		System.out.println(getSize() + "인치 " + color + "컬러");
+
+	}
+
+}	
+	
 
 
 
@@ -93,4 +136,39 @@ public static void main(String[] args) {
 나의 IPTV는 192.1.1.2 주소의 32인치 2048컬러
 */
 
-▶
+▶public class IPTVMain {
+	public static void main(String[] args) {
+
+		IPTVSuper iptv = new IPTVSuper("192.1.1.2", 32, 2048);
+
+		iptv.show();
+
+	}
+}
+
+
+
+▶▶public class IPTV extends ColorTV {
+
+	private String ip;
+
+	public IPTV(String ip, int size, int color) {
+		super(size, color);
+		this.ip = ip;
+
+	}
+
+	public void show() {
+
+		System.out.print(ip + " 주소에 ");
+		super.printProperty();
+
+	}
+
+}
+
+
+
+
+
+
