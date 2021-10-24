@@ -1,0 +1,380 @@
+10월 22일 
+
+오늘은 중요함.
+- 다형성 공부
+- 함수 오버로딩 vs 오버 라이딩
+- 영어로도 외워볼까? 
+
+
+객체지향언어(OPP)의 시작은 『상속』에서 시작된다고 봐도 과언이 아니다.
+그 중에서도 상속의 『함수 오버라이딩』이 정말 중요하다.
+
+설계적인 ...
+
+해당 클래스를 넣고 main에서 컨트롤
+이런거 구상하고 짜는거 자체가 설계다.
+클래스도 당연히 여러가지 설계 방법이 존재한다.
+
+그럼 어떨 때 상속을 해야하는가? 어느 경우에?
+=========================
+
+ IS-A 관계일 때 상속을 쓸 수 있다.
+~ 은 ~이다 = (IS - A) 관계
+
+ex) 비둘기는 새이다.
+	class Bird {
+		String legs; 
+		int eyes;
+	}
+	
+	class 참새 extends Bird { 
+	
+	}
+
+▷참새는 legs랑 eyes 상속받을 수 있다. 
+참새 아니더라도 모든 새들은 상속받을 수 있음. 
+
+
+ex)메모리는 컴퓨터이다.
+	class Computer {
+		 
+	}
+	
+	class Memory extends Computer { 
+	
+	}
+
+▷▷애매한 것 같으면 상속하지 말자! 
+	class Computer {
+		Memory memory;
+		GraphicCard graphic;
+		SoundCard sound;
+	}
+	
+	class OOO extends Computer { 
+	
+	}
+
+▷ Has-A관계
+
+=========================
+
+Is-A
+Laptop is Computer, Mobilephone is SmartPhone
+
+
+Has-A
+Life is Journey 애매하면 무조건 HasA
+=========================
+
+class MobilePhone {
+	protected String number; // 전화번호
+
+	public MobilePhone(String num) {
+		number = num;
+	}
+
+	public void answer() {
+		System.out.println("Hi~ from " + number);
+	}
+}
+
+◐IsA 관계 예시
+▶class SmartPhone extends MobilePhone {
+	private String androidVer; //안드로이드 운영체제 네임(버전)
+
+	public SmartPhone(String num, String ver) {
+		super(num);
+		androidVer = ver;
+	}
+
+	public void playApp() {
+		System.out.println("App is running in " + androidVer);
+	}
+
+}
+
+public class javaMobileSmartPhone {
+	public static void main(String[] args) {
+		SmartPhone phone = new SmartPhone("010-555-777", "Nougat0");
+
+		phone.answer(); // 전화를 받는다.
+		phone.playApp(); // 앱을 선택하고 실행한다.
+
+	}
+
+}
+
+=========================
+오버로딩: 같은 함수이름으로  함수를 만들 수 있다. println
+그렇다면 오버라이딩은 뭘까?
+
+=========================
+
+
+◐다형성(PolyMorphism)
+▶public class javaMobileSmartPhone {
+	public static void main(String[] args) {
+		
+		MobilePhone ph2 = new SmartPhone("010-999-333", "Nougat");
+		ph2.answer(); 
+		// ph2.playApp();이건 컴파일 에러가 남
+
+	}
+
+}
+
+
+▶▶ MobilePhone(부모) ph2 = new SmartPhone(자식)();
+int a = 100; ▷32비트
+double num =a ; ▷64비트 자동형변환
+		
+레퍼런스 타입에도 법칙이 있음 !
+               ★부모 = 자식. (feat. 형변환없이)(다형성)
+MobilePhone ph2 = new SmartPhone();
+왼쪽 부모              오른쪽 자식
+
+즉, 자동형변환 없이 되더라. 
+원래대로라면 MobilePhone ph2 = (SmartPhone)new SmartPhone(); 요래됨
+
+
+
+
+▶▶ph2.answer();  // ph2.playApp();이건 컴파일 에러가 남
+
+이건 메모리 그림으로 참고
+
+
+자식이 new로 올라가고 부모는 데이터타입
+달라진 것은 데이터 타입 뿐.
+
+그렇다면 왜 ph2.answer();은 호출 가능하고
+ph2.playApp(); 호출은 못할까?
+
+그 이유는 데이터 타입이 MobilePhone이라 
+가리킬 수 있는 범위가 부모영역 뿐이어서 그렇다.
+
+=========================
+
+◐참조변수의 참조 가능성 관련 예제
+▶class MobilePhone {
+	protected String number; 
+
+	public MobilePhone(String num) {
+		number = num;
+	}
+
+	public void answer( ) {
+		System.out.println("Hi~ from " + number);
+	}
+}
+
+class SmartPhone extends MobilePhone {
+	private String androidVer; 
+
+	public SmartPhone(String num, String ver) {
+		super(num);
+		androidVer = ver;
+	}
+
+	public void playApp( ) {
+		System.out.println("App is running in " + androidVer);
+	}
+
+}
+
+public class javaMobileSmartPhone {
+	public static void main(String[] args) {
+		SmartPhone ph1 = new SmartPhone("010-555-777", "Nougat");
+		MobilePhone ph2 = new SmartPhone("010-999-333", "Nougat");
+
+		ph1.answer( ); 
+		ph1.playApp( ); 
+		System.out.println( );
+				
+		ph2.answer( ); 
+	         // ph2.playApp( );
+
+	}
+
+}
+
+출력값:
+Hi~ from 010-555-777
+App is running in Nougat
+
+Hi~ from 010-999-333
+
+
+=========================
+◐참조변수의 참조에 대한 정리
+▶
+
+부모 = 자식 (O) : 갖고 있어서 자동 형변환 되어서 가능
+	CheeseCake ca1 = new CheeseCake();
+	Cake ca2 = ca1;
+
+자식 = 부모 (X) : 기본적으로 안됨. 강제형변환 가능은 함.
+	Cake ca3 = new CheeseCake();
+	CheeseCake ca4 = ca3; 
+
+
+=========================
+◐메소드 오버라이딩
+▶반드시 상속 관계에서 같은 함수(이름이 같다는 의미아님)로 바디만 달리 한 것.
+같은 함수 means 리턴타입, 함수명, 파라미터 【 void yummy( ) 】이 세 개가 같은 것.
+뭐만 다르다? 안에 있는 내용. 【 System.out.println( ) 】 즉, 바디만 다름.
+이것이 함수 오버라이딩이다.
+
+▶class Cake {
+	public void yummy( ) {
+		System.out.println("Yummy Cake");
+	}
+}
+
+class CheeseCake extends Cake {
+	public void yummy( ) {
+		System.out.println("Yummy Cheese Cake");
+	}
+}
+
+public class OverRiding {
+	public static void main(String[] args) {
+
+		Cake c1 = new CheeseCake( );
+		CheeseCake c2 = new CheeseCake( );
+
+		c1.yummy( );
+		c2.yummy( );
+
+	}
+
+}
+
+
+출력값:
+Yummy Cheese Cake
+Yummy Cheese Cake
+
+
+
+▷모두가 이해 못하는 부분: c1을 뿌렸는데 부모가 아니라 자식거가 나옴 ㅋㅋㅋ
+
+부모 = 자식
+오버라이딩은 자식꺼 !! 그냥 외워 !!! 
+
+오버라이딩은 뭐다? 자식거다!!!! 
+며느리 사위라고 생각해 !! 
+
+=========================
+▶ 부모것을 가져오고 싶은데 자꾸 자식거가 와 ㅠㅠ 어떻게 할까?
+어쩔 수 없다. 함수 하나 더 만들어 준다.
+class Cake {
+	public void yummy() {
+		System.out.println("Yummy Cake");
+	}
+	public void yummy99() {   ◀◀
+		System.out.println("Yummy Cake");
+	}
+}
+
+class CheeseCake extends Cake {
+
+	@Override
+	public void yummy() {
+		System.out.println("Yummy Cheese Cake");
+	}
+}
+
+public class OverRiding {
+	public static void main(String[] args) {
+
+		Cake c1 = new CheeseCake();
+
+		c1.yummy();
+		c1.yummy99();  ◀◀
+
+	}
+
+}
+
+
+
+=========================
+
+◐
+▶
+//새
+//- 참새 Sparrow
+//- 비둘기 
+//- 고무새
+
+class Sparrow {
+	public void fly() {
+		System.out.println("한 번에 100미터만 날아 다닙니다.");
+	}
+}
+
+class Pizone {
+	public void fly() {
+		System.out.println("한 번에 2000미터만 날아 다닙니다.");
+	}
+}
+
+class RubBird {
+	public void fly() {
+		System.out.println("날지 못 합니다.");
+	}
+}
+
+public class PolyTest {
+	public static void main(String[] args) {
+		Sparrow sparrow = new Sparrow();
+		sparrow.fly();
+		
+		Pizone pizone = new Pizone();
+		pizone.fly();
+		
+		
+		
+	}
+}
+
+
+
+
+
+▶▶
+public class PolyTest {
+
+	public static void main(String[] args) {
+		
+		Bird bird = new Bird();
+		bird.fly();
+		
+		//PolyMorphism 적용
+		bird = new Sparrow();
+		bird.fly();
+		
+		bird = new Pizone();
+		bird.fly();
+
+		
+		//실무에서 이렇게 짠다.
+		//배열과 함수오버라이징이 절묘하게 어우러짐. 
+		Bird[] arrBir = {new Bird(), new Sparrow(), new Pizone()};
+		for (Bird bird2 : arrBir) {
+			bird2.fly();
+		}
+
+
+
+
+
+★
+폴리몰피즘? 부모는 자식
+다형성? 부모는 자식
+오버라이딩: 자식거
+오버로딩과 오버라이딩 차이: (못들음 ㅋㅋ)
+
+
