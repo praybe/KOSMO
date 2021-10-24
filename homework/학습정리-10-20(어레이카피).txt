@@ -64,7 +64,7 @@ public static void main(String[] args) {
 			System.out.println(e);
 	}
 }
-▶
+▶??? 다시 푸는데 틀림 ㅠㅠㅋㅋ 이해가 살짝 안감 
 
 6. 프로그램을 완성 하시오.
 
