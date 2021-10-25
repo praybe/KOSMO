@@ -1,3 +1,10 @@
+★별표 부분이 개별진척도 예상문제 부분
+
+출력값:
+
+
+
+
 class Box {
 	   public void simpleWrap() {
 	      System.out.println("Simple Wrapping");
@@ -17,19 +24,19 @@ class Box {
 	}
 
 
-public class InstanceOfIntense {
+★public class InstanceOfIntense {
 	public static void main(String[] args) {
 		Box box1 = new Box();
 		PaperBox box2 = new PaperBox();
 		GoldPaperBox box3 = new GoldPaperBox();
 		
-		wrapBox(box1);
-		wrapBox(box2);
-		wrapBox(box3);
+		wrapBox(box1);★
+		wrapBox(box2);★
+		wrapBox(box3);★
 
 	}
 	
-	public static void wrapBox(Box box) { //polymorphism적용
+	★public static void wrapBox(Box box) { //polymorphism적용
 		if (box instanceof GoldPaperBox) {
 			((GoldPaperBox)box).goldWrap();
 		}
@@ -48,7 +55,7 @@ public class InstanceOfIntense {
 		}
 		else {
 			box.simpleWrap();
-		}
+		}★
 	}
 
 }
