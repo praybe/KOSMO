@@ -1,0 +1,86 @@
+package Oct22_java56;
+/*두 사람이 게임을 진행한다. 
+이들의 이름을 키보드로 입력 받으며 
+각 사람은 Person 클래스로 작성하라. 
+그러므로 프로그램에는 2개의 Person 객체가 생성되어야 한다.
+
+ 두 사람은 번갈아 가면서 게임을 진행하는데 
+각 사람이 자기 차례에서 <Enter> 키를 입력하면, 
+3개의 난수가 발생되고 이 숫자가 모두 같으면 승자가 되고 
+게임이 끝난다.
+ 난수의 범위를 너무 크게 잡으면 3개의 숫자가 
+일치하게 나올 가능성이 적기 때문에 숫자의 범위는 
+1~3까지로 한다.*/
+import java.util.Scanner;
+
+//패키지 다르면 사용 import Oct22_Sub.GamblePerson;
+
+public class GamblingMain {
+	public static void main(String[] args) {
+		
+		//while(true) { 이거 밑에서 씀 ㅠㅠ 
+			
+		//Person[] person = new Person[3]; << 오답 ㅠㅠ 회심의 일격이었는데 ㅠㅠ 
+		
+		Scanner sc = new Scanner(System.in);
+		
+		
+	
+		
+		/*오답 퍼레이드 ㅠㅠ
+		 for (int i = 0; i<person.length; i++);
+	
+		System.out.println("이름(수희/연수)를 입력하세요.");
+		int 수희 = sc.nextInt();
+		int 연수 = sc.nextInt();
+		
+		person[i] = new Person(수희, 연수);*/
+		
+		
+		
+		
+		System.out.println("1번쨰 대전 상대(수희/연수)>>");
+		String name = sc.next();
+		//첫번째 상대의 객체생성
+		GamblePerson p1 = new GamblePerson(name);
+		
+		
+		System.out.println("2번쨰 대전 상태(수희/연수)>>");
+		name = sc.next();
+		//name을 이용해서 또 만들어
+		GamblePerson p2 = new GamblePerson(name);
+		
+		
+		//엔터키가 남아 있는 것을 싹 비우고 싶을 때? sc.nextLine으로 한 줄 비워줘
+		String buffer = sc.nextLine();
+		
+		
+		while(true) {
+			System.out.print("[" + p1.getName() + "]:"); 
+			//name에 대한 게터세터 만들러 가자~ public이니까 사용 가능
+			
+			//enter를 받아야함. 한 줄에 있는 buffer를 싹 받아야 함.
+			//이럴떄 next가 안 먹힘. 글자를 받아내는게 아니라서.
+			//엔터 받아내기 위한 코드가 sc.nextLine();
+			buffer = sc.nextLine();
+			
+			if(p1.game()) {
+				System.out.println("[" + p1.getName() + "]:" + "님이 이겼습니다."); 
+				break; //이겼으면 전체를 빠져나가. 게임 끝내버려
+			}
+			System.out.println("아쉽군요"); //이제 p2거 확인하며 while문 돌려돌려~ 
+			
+			System.out.print("[" + p2.getName() + "]:"); 
+			buffer = sc.nextLine();
+			
+			if(p2.game()) {
+				System.out.println("[" + p2.getName() + "]:" + "님이 이겼습니다."); 
+				break;
+			}
+			System.out.println("아쉽군요");  
+			
+
+		}
+	}
+
+}
