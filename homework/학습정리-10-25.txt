@@ -1,0 +1,271 @@
+1. instanceof 연산자에 대하여 설명하시오.
+▶ 객체에 관한 객체 캐스팅으로 【좌 instanceof 우】로 표현하여 설명하겠다. 
+좌(객체)가 우(객체)를 포함하는 가를 의미하며 
+자식 클래스가 new되어 메모리에 올라가 있으면 
+【자식 = (자식)부모】형태로 강제 형변환을 적용한다. 
+즉 instance는 형변환 가능여부라고 파악해도 좋다. 
+=====================================
+=====================================
+2. 아래를 프로그래밍 하시오.
+
+ 다음을 만족하는 클래스 Employee를 작성하시오. 
+
+- 클래스 Employee(직원)은 
+ //클래스 Regular(정규직)와 Temporary(비정규직)의 상위 클래스
+- 필드: 이름, 나이, 주소, 부서, 월급 정보를 필드로 선언
+- 생성자 : 이름, 나이, 주소, 부서를 지정하는 생성자 정의
+- 메소드 printInfo() : 인자는 없고 자신의 필드 이름, 나이, 주소, 부서를 출력
+▶public class EmployeeMain {
+	public static void main(String[] args) {
+
+		Employee emp = new Employee("John Doe", 43, "LasVegas", "Call center");
+		emp.printInfo();
+
+	}
+
+}
+▶public class Employee {
+	private String name, addr, dept;
+	private int age, salary;
+
+	public Employee(String name, int age, String addr, String dept) {
+		this.name = name;
+		this.age = age;
+		this.addr = addr;
+		this.dept = dept;
+
+	}
+
+	public void printInfo() {
+		System.out.println("이름: " + name);
+		System.out.println("나이: " + age);
+		System.out.println("주소: " + addr);
+		System.out.println("부서: " + dept);
+
+	}
+
+}
+
+출력값:
+이름: John Doe
+나이: 43
+주소: LasVegas
+부서: Call center
+
+=======================================
+
+2-1.다음을 만족하는 클래스 Regular를 작성하시오. 
+
+- 클래스 Regular는 위에서 구현된 클래스 Employee의 하위 클래스
+- 생성자 : 이름, 나이, 주소, 부서를 지정하는 상위 생성자 호출
+- Setter : 월급 정보 필드를 지정
+- 메소드 printInfo() : 인자는 없고 기본적인 이름, 나이, 주소, 부서 를 출력후
+ "정규직  월급" 이라는 이름으로 월급출력
+-상위 클래스에서 접근제한자 수정이 필요 하면 수정 할것.
+▶public class EmployeeMain {
+	public static void main(String[] args) {
+		Regular rgr = new Regular("Her Mejasty the Queen", 99, "England", "Royal Windsor Castle");
+		rgr.setSalary(1000000);
+		rgr.printInfo();
+	}
+}
+▶public class Employee {
+	private String name, addr, dept;
+	private int age;
+	protected int salary;
+
+	public Employee(String name, int age, String addr, String dept) {
+		this.name = name;
+		this.age = age;
+		this.addr = addr;
+		this.dept = dept;
+
+	}
+
+	public void printInfo() {
+		System.out.println("이름: " + name);
+		System.out.println("나이: " + age);
+		System.out.println("주소: " + addr);
+		System.out.println("부서: " + dept);
+
+	}
+
+}
+▶public class Regular extends Employee {
+
+	public Regular(String name, int age, String addr, String dept) {
+		super(name, age, addr, dept);
+
+	}
+
+	★public void setSalary(int sal) {   
+		★super.salary = sal;
+	}
+
+	public void printInfo() {
+		super.printInfo();
+		System.out.println("정규직 월급: " + super.salary);★
+
+	}
+
+}
+
+=====================================
+=====================================
+3.Point 를 상속받아
+3차원의 점을 나타내는 Point3D 클래스를 작성하라. 
+다음 main() 메소드를 포함하고 실행 결과와 같이 출력되게 하라
+/*
+(1,2,3) 의 점입니다.
+(1,2,4) 의 점입니다.
+(10,10,3) 의 점입니다.
+(100,200,300) 의 점입니다.
+*/
+
+==================================================
+public static void main(String[] args) {
+	Point3D p = new Point3D(1,2,3); // 1,2,3은 각각 x, y, z축의 값.
+	System.out.println(p.toString()+"입니다.");
+	p.moveUp(); // z 축으로 위쪽 이동
+	System.out.println(p.toString()+"입니다.");
+	p.moveDown(); // z 축으로 아래쪽 이동
+	p.move(10, 10); // x, y 축으로 이동
+	System.out.println(p.toString()+"입니다.");
+	p.move(100,  200, 300); // x, y, z축으로 이동
+	System.out.println(p.toString()+"입니다.");
+}
+
+=====================================
+(참고자료Hint)
+class Point {
+	private int x, y;
+	
+	public Point() {
+		
+	}
+	
+	public Point(int x, int y) { 
+		this.move(x, y);  
+	}
+
+	public int getX() { 
+		return x; 
+	}
+	
+	public int getY() { 
+		return y; 
+	}
+	
+	protected void move(int x, int y) {
+		this.x =x; 						
+		this.y = y;    					
+	}
+}
+
+class ColorPoint extends Point{
+	private String color = "BLACK";   
+	
+	public ColorPoint() {
+		
+	}
+	
+	public ColorPoint(int x, int y, String color) { 
+		super(x, y);
+		this.color = color;
+	}
+	
+	public ColorPoint(int x, int y) {
+		super(x, y);
+	}
+	
+	public void setXY(int x, int y) {
+		super.move(x, y);
+	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	public String toString() {
+		return color + "색의 ("+ super.getX()+", "+ super.getY()+")의 점";
+	}
+}
+=====================================
+▶public class Point {
+
+	private int x, y, z;
+
+	public Point(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getZ() {
+		return z;
+	}
+
+	public void moveUp() {
+		this.z = ++z; // 날 엄청 힘들게 함 ㅋㅋㅋ
+	}
+
+	public void moveDown() {
+		this.z = --z;
+	}
+
+	public void move(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public void move(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	public void setXYZ(int x, int y, int z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+}
+
+▶public class Point3D extends Point {
+
+	public Point3D(int x, int y, int z) {
+		super(x, y, z);
+
+	}
+
+	public void setXYZ(int x, int y, int z) {
+		super.moveUp();
+		super.moveDown();
+		super.move(x, y);
+		super.move(x, y, z);
+	}
+
+	public String toString() {
+		String str;
+
+		str = "(" + super.getX() + "," + super.getY() + "," + super.getZ() + ") 의 점";
+
+		return str;
+
+	}
+}
+
+
+=====================================
+=====================================
+4.자바의 정석 56Page 다시 한번 정리한후 개별 진척도 업데이트 해주세요.
+▶
