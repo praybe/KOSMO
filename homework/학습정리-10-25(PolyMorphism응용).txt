@@ -193,12 +193,11 @@ class ColorPoint extends Point{
 =====================================
 ▶public class Point {
 
-	private int x, y, z;
+	private int x, y;
 
 	public Point(int x, int y, int z) {
 		this.x = x;
-		this.y = y;
-		this.z = z;
+		this.y = y;	
 	}
 
 	public int getX() {
@@ -209,10 +208,22 @@ class ColorPoint extends Point{
 		return y;
 	}
 
-	public int getZ() {
-		return z;
+	public void move(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
+}
+
+▶public class Point3D extends Point {
+	private int z;
+
+	public Point3D(int x, int y, int z) {
+		super(x, y);
+		this.z = z;
+
+	}
+	
 	public void moveUp() {
 		this.z = ++z; // 날 엄청 힘들게 함 ㅋㅋㅋ
 	}
@@ -220,46 +231,15 @@ class ColorPoint extends Point{
 	public void moveDown() {
 		this.z = --z;
 	}
-
-	public void move(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-
+	
 	public void move(int x, int y, int z) {
-		this.x = x;
-		this.y = y;
+		super(x, y);
 		this.z = z;
-	}
-
-	public void setXYZ(int x, int y, int z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-	}
-
-}
-
-▶public class Point3D extends Point {
-
-	public Point3D(int x, int y, int z) {
-		super(x, y, z);
-
-	}
-
-	public void setXYZ(int x, int y, int z) {
-		super.moveUp();
-		super.moveDown();
-		super.move(x, y);
-		super.move(x, y, z);
 	}
 
 	public String toString() {
-		String str;
-
-		str = "(" + super.getX() + "," + super.getY() + "," + super.getZ() + ") 의 점";
-
-		return str;
+		
+		return  "(" + super.getX() + "," + super.getY() + "," + this.z  + ") 의 점";
 
 	}
 }
