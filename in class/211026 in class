@@ -1,6 +1,9 @@
 ★별표 부분이 개별진척도 예상문제 부분
 
 출력값:
+Simple Wrapping
+Paper Wrapping
+Gold Wrapping
 
 
 
@@ -38,19 +41,12 @@ class Box {
 	
 	★public static void wrapBox(Box box) { //polymorphism적용
 		if (box instanceof GoldPaperBox) {
+		
 			((GoldPaperBox)box).goldWrap();
 		}
 		else if(box instanceof PaperBox) {
-			
-			//((PaperBox)box).paperWrap();
-			
-			PaperBox pb = (PaperBox)box; //형변환
-			pb.paperWrap();
-			
-			
-			// 형변환 해주고 겉에 한 번 더 괄호 쳐주면 Paperbox객체가 되는 것.
+		
 			((PaperBox)box).paperWrap();  
-			
 			
 		}
 		else {
