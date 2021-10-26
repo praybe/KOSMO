@@ -1,0 +1,287 @@
+21년 10월 25일 
+
+double = int;
+
+부모 = 자식
+
+부모.자식함수 ==> 호출 안됨 -에러남: 반드시 메모리 그림으로 해결한다.
+부모타입에서는 자식함수를 가지고 있지 않아서 에러나는 것.
+
+함수오버라이딩: 상속관계
+상속관계 같은 함수.(리턴타입 함수명 파라미터) 부모 자식이 바디(내용만) 달리 해서 만들 수 있다.
+=오버라이딩은 자식꺼.
+
+=============================
+
+▣Instanceof 연산자의 기본
+영어가 되면 직감적으로 외우면 됨.
+	~의 객체
+instance: ~의 예를 들어 라는 사전적 의미
+왼쪽 해당객체(변수명)  + instance of + 오른쪽 class명
+왼쪽 객체가 오른쪽을 가지고 있는지
+
+
+▶▶class Cake{
+	
+}
+
+class CheeseCake extends Cake{
+	
+}
+
+class StrawberryCheeseCake extends CheeseCake{
+	
+}
+
+▶public class Instanceof {
+	public static void main(String[] args) {
+		Cake cake = new StrawberryCheeseCake();
+ 
+		if (cake instanceof Cake) {  		//if (cake > Cake) 
+			System.out.println("케익 인스턴스 or");
+			System.out.println("케익 상속하는 인스턴스 \n");
+
+		}
+		
+		if (cake instanceof CheeseCake) {
+			System.out.println("치즈케익 인스턴스 or");
+			System.out.println("치즈케익 상속하는 인스턴스 \n");
+
+		}
+		if (cake instanceof StrawberryCheeseCake) {
+			System.out.println("딸기치즈케익 인스턴스 or");
+			System.out.println("딸기치즈케익 상속하는 인스턴스 \n");
+
+			//전부다 true 나옴. 			
+			
+		}
+	}
+}
+
+
+
+▣Instanceof 연산자의 활용
+소위 말해서 캐스팅
+객체에 관한 객체 캐스팅
+8개 데이터 타입 할 때도 캐스팅 함.
+객체도 캐스팅 함
+▶▶class Box {
+	   public void simpleWrap() {
+	      System.out.println("Simple Wrapping");
+	   }
+	}
+
+	class PaperBox extends Box {
+	   public void paperWrap() {
+	      System.out.println("Paper Wrapping");
+	   }
+	}
+
+	class GoldPaperBox extends PaperBox {
+	   public void goldWrap() {
+	      System.out.println("Gold Wrapping");
+	   }
+	}
+
+
+▶public class InstanceOfIntense {
+	public static void main(String[] args) {
+		Box box1 = new Box();
+		PaperBox box2 = new PaperBox();
+		GoldPaperBox box3 = new GoldPaperBox();
+		
+		wrapBox(box1);
+		wrapBox(box2);
+		wrapBox(box3);
+
+	}
+	
+	public static void wrapBox(Box box) { //polymorphism적용
+		if (box instanceof GoldPaperBox) {
+			((GoldPaperBox)box).goldWrap();
+		}
+		else if(box instanceof PaperBox) {
+			
+			//((PaperBox)box).paperWrap();
+			
+			PaperBox pb = (PaperBox)box; //형변환
+			pb.paperWrap();
+			
+			
+			// 형변환 해주고 겉에 한 번 더 괄호 쳐주면 Paperbox객체가 되는 것.
+			((PaperBox)box).paperWrap();  
+			
+			
+		}
+		else {
+			box.simpleWrap();
+		}
+	}
+
+}
+
+wrapBox라는 함수에 box1
+얘를 요렇게 넘겼어.
+
+
+Box 찾아가니까 박스만 있어 
+그니까 simpleWrap이 나옴
+
+
+
+box2 적용함.
+부모는 자식. polymorphism(다형성)적용됨
+box 찾아가서 gold 웅앵 있음?? 
+아니 없어
+
+box  찾아가서 paperbox 있어? 있네 
+이게 캐스팅
+
+
+double d = 100;
+int aa = (int) d;
+참조형도 강제 형변환이 된다.
+되는 조건은 뭐다? 원래 생성될 떄 자식이 new 되어 (메모리에) 올라가 있어야함
+자식 =(자식)부모>>  강제 형변환 적용됨
+s = ( StrawberryCheeseCake) cake;
+
+
+
+instance라고 읽고 형변환 가능하냐를 묻는거
+
+
+
+=============================
+=============================
+
+▣PolyMorphism 연습하기(1)
+
+다음을 만족하는 클래스 Employee를 작성하시오.
+-클래스 Employee(직원)은
+//클래스 Regular(정규직)와 Temporary(비정규직)의 상위 클래스
+-필드: 이름, 나이, 주소, 부서, 월급 정보를 필드로 선언
+-생성자: 이름, 나이, 주소, 부서를 지정하는 생성자 정의
+-메소드 printInfo(): 인자는 없고 자신의 필드 이름, 나이, 주소, 부서를 출력
+
+
+▶public class Employee {
+
+	private String name, address, dept;
+	private int age, salary;
+
+	public Employee(String name, int age, String address, String dept) {
+		this.address = address;
+		this.age = age;
+		this.name = name;
+		this.dept = dept;
+	}
+
+	public void printInfo() {
+		System.out.println("이름: " + name);
+		System.out.println("나이: " + age);
+		System.out.println("주소: " + address);
+		System.out.println("부서: " + dept);
+	}
+
+}
+
+
+▶public class EmployeeMain {
+	public static void main(String[] args) {
+		Employee emp = new Employee("YuJung", 28, "Seoul", "R&D");
+
+		emp.printInfo();
+
+	}
+
+}
+
+
+
+출력값:
+이름: YuJung
+나이: 28
+주소: Seoul
+부서: R&D
+
+
+
+=============================
+
+
+
+▣PolyMorphism 연습하기(2)
+
+다음을 만족하는 Regular 클래스를 작성하시오.
+-클래스 Regular는 위에서 구현 된 클래스 Employee의 하위 클래스
+-생성자: 이름, 나이, 주소, 부서를 지정하는 상위 생성자 호출
+-Setter: 월급 정보 필드를 지정
+
+-메소드 printInfo(): 인자는 없고 기본적인 이름, 나이, 주소, 부서를 출력 후
+
+"정규직 월급"이라는 이름으로 월급 출력
+-상위 클래스에서 접근제한자 수정이 필요하면 수정할 것.
+//클래스 Regular(정규직)와 Temporary(비정규직)의 상위 클래스
+
+▶public class Regular extends Employee {
+
+	int salary;
+
+	public Regular(String name, int age, String address, String dept, int salary) {
+		super(name, age, address, dept);
+		this.salary = salary;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+}
+
+▶public class Employee {
+
+	private String name, address, dept;
+	private int age;
+	private int salary = 300;
+
+	public Employee(String name, int age, String address, String dept) {
+		this.address = address;
+		this.age = age;
+		this.name = name;
+		this.dept = dept;
+	}
+
+	public void printInfo() {
+		System.out.println("이름: " + name);
+		System.out.println("나이: " + age);
+		System.out.println("주소: " + address);
+		System.out.println("부서: " + dept);
+
+		System.out.println("정규직 월급: " + salary);
+
+	}
+}
+
+
+
+=============================
+
+
+
+▣PolyMorphism 연습하기(3)
+
+
+
+
+
+
+
+
+
+
+
+
