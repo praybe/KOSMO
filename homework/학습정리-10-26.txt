@@ -1,0 +1,258 @@
+1. Object 클래스란?
+▶모든 클래스들이 굳이 적지 않아도 상속하는 클래스.
+즉, 모든 클래스는 Object 클래스를 상속한다.
+그래서 내가 굳이 extends Object를 적지 않아도 컴파일러가 생성해주나 생략되는 것.
+class A extends Object {  
+
+ }
+cf) 컴파일러가 자동으로 해주는 것.
+1. 자동 형변환
+2. 디폴트 생성자
+3. 상속시 디폴트 super생성자
+4. extends Object
+
+---------------------------------------------------------------------------------------------
+
+2. 아래의 소스코드에 대하여 아래와 같이 출력되는 이유는?
+출력
+A@28a418fc
+==============
+class A{
+}
+public class Test {
+	public static void main(String[] args) {
+		A a = new A();
+		System.out.println(a); // String s = String.valueOf(x); -> s가 주소 뿌림
+	}
+}
+▶출력은 주소값이 나오게 된 것이다.
+원하는 값이 아닌 주소값이 출력된 이유는 
+모든 class는 object클래스를 상속 받고 println은 자동으로 String 형태로 주소가 뿌려져서 
+String 함수를 만들어서 return값을 보여줘야 주소값이 아닌 원하는 값이 나오게 된다. ??
+
+---------------------------------------------------------------------------------------------
+
+3. class이름 및 함수에서 final의 의미는?
+▶class 이름 앞에 final이 붙으면 상속할 수 없는 클래스라는 의미이고
+함수 앞에 final이 붙으면 오버라이딩 할 수 없는 함수를 뜻한다.
+
+---------------------------------------------------------------------------------------------
+
+4.아래의 Main이 돌아가도록 프로그래밍 하시오.
+
+interface Printable { // MS가 정의하고 제공한 인터페이스
+	public void print(String doc);
+}
+
+	//SPrinterDriver 와 LPrinterDriver를 만드시오
+	public static void main(String[] args) {
+		String myDoc = "This is a report about...";
+
+		// 삼성 프린터로 출력
+		Printable prn = new SPrinterDriver();
+		prn.print(myDoc);
+		System.out.println();
+
+		// LG 프린터로 출력
+		prn = new LPrinterDriver();
+		prn.print(myDoc);
+	}
+
+/*
+출력: 
+From Samsung printer
+This is a report about ...
+From LG printer
+This is a report about ...
+*/
+▶public class PrinterInterface {
+	public static void main(String[] args) {
+		String myDoc = "This is a report about..";
+
+		// 샘숭 프린터
+		Printable prn = new SPrinterDriver();
+		prn.print(myDoc);
+		System.out.println();
+
+		// 엘지 프린터
+		prn = new LPrinterDriver();
+		prn.print(myDoc);
+
+	}
+
+}
+
+▶public interface Printable {
+	public void print(String doc);
+}
+
+▶public class SPrinterDriver implements Printable {
+
+	@Override
+	public void print(String doc) {
+		System.out.println("From Samsung printer");
+		System.out.println(doc);
+
+	}
+
+}
+▶public class LPrinterDriver implements Printable {
+
+	@Override
+	public void print(String doc) {
+		System.out.println("From LG printer");
+		System.out.println(doc);
+
+	}
+
+}
+
+
+---------------------------------------------------------------------------------------------
+
+5. @Override 에 대하여 설명하시오.
+▶ 상위 클래스를 상속하기 위해 오버라이딩을 시도했으나 extends를 깜빡했을시
+@Override를 붙여놨을 경우 컴파일에러가 띄워져 실수를 수정할 수 있다.
+그리고 다른 개발자들에게 해당 클래스가 상속받았다는 것을 알려주는 표시가 되기도 한다.
+
+---------------------------------------------------------------------------------------------
+
+6. interface 에 대하여 설명해 보시오.
+▶하위 클래스가 여러 개의 상위 클래스를 상속 받고 싶을 때 쓰는 것으로 
+class가 적힐 자리에 interface를 적으며, interface가 품는 메소드 앞에는 반드시 abstract라는 단어가 온다.
+이는 추상함수가 온다는 뜻인데 메소드는 선언 역할만 하고 body부분 내용이 없어 구현은 하지 않는다. 
+---------------------------------------------------------------------------------------------
+
+7.interface 안에 올 수 있는 것은 두가지를 말해 보시오?
+▶상수와 추상함수
+
+---------------------------------------------------------------------------------------------
+
+8. abstract 키워드란?
+▶interface 안에 들어가는 추상함수 정의를 위해 사용되는 키워드.
+
+---------------------------------------------------------------------------------------------
+
+9.아래의 결과가 나오도록 프로그래밍 하시오.
+Object obj = new Circle(10);
+System.out.println(obj);
+
+//출력: 넓이는 314.134 입니다. (예시)
+▶public class ObjectCircle {
+	public static void main(String[] args) {
+
+		Object obj = new Circle(10);
+		System.out.println(obj);
+
+	}
+
+}
+▶public class Circle {
+
+	int r;
+
+	public Circle(int r) {
+		this.r = r;
+	}
+
+	public String toString() {
+		return "넓이는 " + (r * r * Math.PI) + "입니다.";
+	}
+
+}
+
+---------------------------------------------------------------------------------------------
+
+10. 아래의 프로그래밍을 하시오.
+
+아래의 인터페이스에 맞추어(상속하여) 아래를 프로그래밍 하시오.
+
+Circle, Rectangle , Triangle
+
+
+interface AreaGetable{
+double getArea();
+}
+
+
+main(){
+
+AreaGetable area = new Circle(4);
+sysout(area.getArea())
+
+area = new Rectangle(4,5);
+sysout(area.getArea())
+
+area = new Triangle(4,5);
+sysout(area.getArea())
+}
+▶public class ShapeInterface {
+	public static void main(String[] args) {
+
+		AreaGetable area = new Circle2(4);
+		System.out.println(area.getArea());
+
+		area = new Rectangle2(4, 5);
+		System.out.println(area.getArea());
+
+		area = new Triangle2(4, 5);
+		System.out.println(area.getArea());
+
+	}
+
+▶public interface AreaGetable {
+	double getArea();
+
+}
+
+▶public class Circle2 implements AreaGetable {
+	private int r;
+
+	public Circle2(int r) {
+		this.r = r;
+	}
+
+	@Override
+	public double getArea() {
+		return r * r * Math.PI;
+	}
+
+}
+
+▶public class Rectangle2 implements AreaGetable {
+	private int width, height;
+
+	public Rectangle2(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public double getArea() {
+		return width * height;
+	}
+
+}
+
+▶public class Triangle2 implements AreaGetable {
+	private int width, height;
+
+	public Triangle2(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public double getArea() {
+		return width * height * (0.5);
+	}
+
+}
+
+
+출력값:
+50.26548245743669
+20.0
+10.0
+
+
