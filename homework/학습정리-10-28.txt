@@ -1,0 +1,501 @@
+1. 에러(Error)와 예외(Exception)의 차이는?
+▶에러는 시스템 문제라 예측하기 어렵고 그렇기에 대응하기도 힘들다.
+메모리 부족, 벌츄얼 머신 에러와 같은 문제가 발생하면 프로그램은...사망 ~ 
+아무리 대단한 프로그래머가 만든 훌륭한 어플리케이션이라도 OS 입장에서는 단순 어플리케이션일 뿐이라 
+에러사항이 뜨면 jvm이 즉사시켜버린다. ㅋㅋ 
+그래도 jvm이 그냥 죽이지는 않고 예외객체를 보여주고 장렬히 전사시킴.
+??: 에휴 바보 개발자를 위해 내가 대신 만들어줘야지 ..
+
+예외는 프로그래머가 해결할 수 있는 문제의 발생이다. 
+프로그래머의 실수로 발생하기도 하고 컴퓨터 프로그램(?)의상태에 따라 발생하기도 한다.
+미리 문제가 발생하지 않도록 대비가 가능하다.
+
+2. unchecked 와 checked 예외의 차이는?
+▶
+
+
+예외에는 앞서 말했듯이 두 가지 방법에 의해 발생한다.
+프로그래머의 실수 혹은 컴퓨터 상태(파일, 네트워크 등등).
+
+unchekced는 RuntimeException이라고도 불리는데 이것이 프로그래머의 실수에 의해 발생된 예외다.
+>>>언체크드 > 실시간 에러 (런타임 에러)
+
+checked는 other Exception이라고도 하는데  프로그래머가 실수하지 않아도 컴퓨터나 파일 등의 상황에 따라 발생되는 예외이다.
+정리하자면 둘의 차이는 프로그래머의 부주의 여부라 볼 수 있다.
+>>> 런타임 에러 이외에는 반드시 전부 체크드. 왜냐 개발자가 전부 트라이캐치로 묶어라.
+>>> IO Excpetion? > 체크드 > try catch 묶어라
+
+▣오류가 떴을 떄 해결 방법 두 가지:
+1. try catch 묶어라
+2. throw 던젹라
+그 중 try catch로 반드시 묶어야 하는 애들이 체크드 익셉션
+
+
+
+3. 예외처리(Exception Handling) UML(상속도)참고하여  그리시오.
+▶
+
+		   		【Object】
+
+			 	     ↓
+	
+				【Throwable】
+
+			↙			↘
+
+	【 Error 】(우리가 컨트롤 불가)    	|  	【 Exception 】 (컨트롤 가능)
+    
+		 ↓					↙	         ↘
+	
+	메모리부족 		(2)【 other Exceptions 】           (1) 【 RuntimeException 】런타임익셉션
+	벌츄얼 머신 에러		    (checked처리)			(unchecked 처리)	언체크트
+  	    ↓				↓ 				↓
+ 	    죽음 			IO Exception 아이오 익셉션		Arithmetic, ClassCast, IndexOutOfBounds, NegativeArraySize, NullPointer, ArrayStore
+
+
+
+4. throws 에 대하여 설명하시오.
+▶= 나 호출한 놈한테 해당 exception을 책임전가 하겠다. 
+결국 어느 한 놈이 trycatch해줘야함
+
+throws 뒤에는 예외객체를 입력한다.
+
+함수 안에서 문제가 생기게 되어 throws IOException을 jvm이 던져준다고 그러면 md2를 호출한 놈한테 던져줄거라는 것.
+책임전가를 나를 호출한 함수로 던지겠다는 것. md2는 누가 호출했다? md1이. 그러니 체크는 md1이 해라.
+checked 에러유형은 반드시 try catch로 막던지, throws 하면 되는데 md2도 throws해서 책임전가 가능
+md2가 책임전가하면 결국 main으로 가는데 main이 해결해야 함 ㅋㅋ 
+그러고 md1도 throw가능. 그럼 누가 main을 호출했지? jvm이 호출함. jvm 니가 해결해 ㅡㅡ  => 에러 해결 안할거라는거 ㅋㅋㅋㅋㅋ
+ 실무에서는 그래서 이거 안함. 반드시 try catch로 막아 줌. 
+ 빨리 테스트 확인할겨. trycatch 귀찬헝. 그럴떄 씀.
+예))
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class IOExceptionCase {
+	public static void main(String[] args) throws IOException {
+		
+		md1();
+	}
+		
+		public static void md1() throws IOException {
+	
+		md2();
+		}
+		
+		public static void md2() throws IOException{ 
+
+			
+			Path file = Paths.get("C:\\java\\Simple.txt");
+			BufferedWriter writer = null;
+			
+				writer = Files.newBufferedWriter(file); //IOException 발생 가능
+				writer.write('A'); //IOException 발생 가능
+				writer.write('z'); //IOException 발생 가능
+				
+				if(writer != null)
+					writer.close();
+				
+			
+	
+
+	}
+
+}
+
+----------------------------------------------------------------------------------------------------------
+
+5. 아래가 컴파일 에러가 나는 이유에 대하여 설명하시오.
+try {
+		int num = 6 / 0;
+} catch (Exception e) {
+		e.printStackTrace();
+} catch (InputMismatchException e) {
+		e.printStackTrace();
+}
+▶
+다형성 때문에.
+- try에서 예외가 발생했을 때에는 catch블록이 작성된 순서대로 위에서 아래대로 차례로 검사하는데, 만일 상위 예외 클래스가 더 위에 있었다면 하위 예외 클래스를 실행하지 않게 된다.
+  즉, 하위 예외 클래스가 상위 예외 클래스를 상속했기 때문에, 상위 예외 클래스를 잡는 catch 블록이 실행되게된다.
+
+
+6. 사칙연산 계산기를 아래의 조건으로 짜시오.
+interface ICalculator {
+	int add(int x, int y);
+	int sub(int x, int y);
+	int mul(int x, int y);
+	int div(int x, int y);
+}
+
+public class CalculatorMain {
+
+	public static void main(String[] args) {
+		ICalculator cal = new Calculator();
+
+		//출력결과 참고 하여 try catch 를 적절히 넣을것  
+			System.out.println(cal.add(6, 5));
+			System.out.println(cal.sub(6, 5));	
+			System.out.println(cal.mul(6, 5));	
+			System.out.println(cal.div(6, 0));
+
+	}
+}
+
+/*
+================================================
+11
+1
+30
+java.lang.ArithmeticException: / by zero
+	at Calculator.div(CalculatorMain.java:32)
+	at CalculatorMain.main(CalculatorMain.java:45)
+계산기 종료
+*/
+▶
+package Oct28;
+
+interface ICalculator {
+	int add(int x, int y);
+
+	int sub(int x, int y);
+
+	int mul(int x, int y);
+
+	int div(int x, int y);
+}
+
+class Calculator implements ICalculator {
+
+	@Override
+	public int add(int x, int y) {
+
+		return x + y;
+	}
+
+	@Override
+	public int sub(int x, int y) {
+
+		return x - y;
+	}
+
+	@Override
+	public int mul(int x, int y) {
+
+		return x * y;
+	}
+
+	@Override
+	public int div(int x, int y) {
+
+		return x / y;
+	}
+
+}
+
+public class CalculatorMain {
+
+	public static void main(String[] args) {
+		ICalculator cal = new Calculator();
+
+		// 출력결과 참고 하여 try catch 를 적절히 넣을것
+		try {
+			System.out.println(cal.add(6, 5));
+			System.out.println(cal.sub(6, 5));
+			System.out.println(cal.mul(6, 5));
+			System.out.println(cal.div(6, 0));
+		} catch (Exception e) {
+			e.printStackTrace(); // 오류메세지를 출력
+		} ★finally ★{ 
+			System.out.println("종료입니다");
+		}
+
+	}
+}
+
+
+출력값:
+11
+1
+30
+java.lang.ArithmeticException: / by zero
+	at Oct28.Calculator.div(CalculatorMain.java:36)
+	at Oct28.CalculatorMain.main(CalculatorMain.java:51)
+종료입니다
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+7.과일, 사과, 배, 포도를 표현한 클래스를 만들고 이들 간의 관계를 고려하여 하나의 클래스를 ★추상 클래스로★ 만들어 메소드 print()를 구현하고 
+다음과 같은 소스와 결과가 나오도록 클래스를 작성하시오.
+- 소스
+Fruit fAry[] = {new Grape(), new Apple(), new Pear()};
+for(Fruit f : fAry)
+f.print();
+
+- 결과
+나는 포도이다.
+나는 사과이다.
+나는 배이다.
+▶힌트: 인터페이스를 ★추상클래스로★ 만들어라 
+/*interface Fruit { //인터페이스 안에는 
+	public abstract void print();
+}*/
+
+abstract class Fruit { ★
+	public abstract void print();
+	
+	public void print2() {
+		System.out.println("추상클래스 안에는 일반 함수도 가능하다.");
+	}
+
+};
+
+class Grape extends Fruit {
+
+	@Override
+	public void print() {
+		System.out.println("나는 포도이다.");
+	}
+}
+
+class Apple extends Fruit {
+	@Override
+	public void print() {
+		System.out.println("나는 사과이다.");
+	}
+}
+
+class Pear extends Fruit {
+	@Override
+	public void print() {
+		System.out.println("나는 배이다.");
+	}
+}
+
+public class FruitTest {
+	public static void main(String[] args) {
+
+		Fruit fAry[] = { new Grape(), new Apple(), new Pear() };
+		for (Fruit f : fAry)
+			f.print();
+
+	}
+
+}
+출력값:
+나는 포도이다.
+나는 사과이다.
+나는 배이다.
+
+
+
+--------------------------------------------------------------------------------------------------------------
+(추가... 수업 마지막 문제풀기)
+▣오늘의 문제
+
+
+다음은 도형의 구성을 묘사하는 인터페이스이다.
+
+interface Shape {
+   final double PI = 3.14; // 상수
+   void draw(); // 도형을 그리는 추상 메소드
+   double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+   default public void redraw() { // 디폴트 메소드
+      System.out.print("--- 다시 그립니다.");
+      draw();
+   }
+}
+
+다음 main() 메소드를 참고하여, 
+인터페이스 Shape을 구현한 클래스 Circle를 작성하고 전체 프로그램을 완성하라.
+
+public static void main(String[] args) {
+   Shape donut = new Circle(10); // 반지름이 10인 원 객체
+   donut.redraw();
+   System.out.println("면적은 "+ donut.getArea());
+}
+
+출력값:
+--- 다시 그립니다. 반지름이 10인 원입니다.
+면적은 314.0
+
+▶package Oct28;
+
+interface Shape {
+	final double PI = 3.14; // 상수
+
+	void draw(); // 도형을 그리는 추상 메소드
+
+	double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+
+	default public void redraw() { // 디폴트 메소드
+		System.out.print("--- 다시 그립니다.");
+		draw();
+	}
+}
+
+class Circle implements Shape {
+
+	private double r;
+
+	public Circle(double r) {
+		this.r = r;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println("반지름이 " + r + "인 원입니다.");
+		return;
+	}
+	
+
+	public double getArea() {
+		return r * r * Math.PI;
+
+	}
+
+
+}
+
+public class ShapeInterface {
+
+	public static void main(String[] args) {
+		Shape donut = new Circle(10); // 반지름이 10인 원 객체
+		donut.redraw();
+		System.out.println("면적은 " + donut.getArea());
+	}
+
+}
+
+
+나의 출력값:
+--- 다시 그립니다.반지름이 10.0인 원입니다.
+면적은 314.1592653589793
+
+
+▣이어서... 마름모(Oval)하고 Rec 추가 작성
+다음 main() 메소드와 실행 결과를 참고하여,
+ Shape 인터페이스를 구현한 클래스 Oval, Rect를 추가 작성하고 전체 프로그램을 완성하라.
+
+public static void main(String[] args) {
+   Shape[] list = new Shape[3]; // Shape을 상속받은 클래스 객체의 레퍼런스 배열
+   list[0] = new Circle(10); // 반지름이 10인 원 객체
+   list[1] = new Oval(20, 30); // 20x30 사각형에 내접하는 타원
+   list[2] = new Rect(10, 40); // 10x40 크기의 사각형
+   for(int i=0; i<list.length; i++) list[i].redraw();
+   for(int i=0; i<list.length; i++) System.out.println("면적은 "+ list[i].getArea());
+}
+--- 다시 그립니다.반지름이 10인 원입니다.
+--- 다시 그립니다.20x30에 내접하는 타원입니다.
+--- 다시 그립니다.10x40크기의 사각형 입니다.
+면적은 314.0
+면적은 1884.0000000000002
+면적은 400.0
+
+힌트: oval = pi * ab
+▶
+
+interface Shape {
+	final double PI = 3.14; // 상수
+
+	void draw(); // 도형을 그리는 추상 메소드
+
+	double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+
+	default public void redraw() { // 디폴트 메소드
+		System.out.print("--- 다시 그립니다.");
+		draw();
+	}
+}
+
+class Circle implements Shape {
+
+	private double r;
+
+	public Circle(double r) {
+		this.r = r;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println("반지름이 " + r + "인 원입니다.");
+	}
+
+	public double getArea() {
+		return r * r * PI;
+
+	}
+
+}
+
+class Oval implements Shape {
+
+	private int width, height;
+
+	public Oval(int width, int height) {
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println(width + " x " + height + " 사각형에 내접하는 타원");
+	}
+
+	public double getArea() {
+		return width * height * PI;
+
+	}
+
+}
+
+class Rect implements Shape {
+
+	private int width, height;
+
+	public Rect(int width, int height) {
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println(width + " x " + height + " 크기의 사각형");
+		return;
+	}
+
+	public double getArea() {
+		return width * height;
+
+	}
+
+}
+
+public class ShapeInterface {
+	public static void main(String[] args) {
+		Shape[] list = new Shape[3]; // Shape을 상속받은 클래스 객체의 레퍼런스 배열
+		list[0] = new Circle(10); // 반지름이 10인 원 객체
+		list[1] = new Oval(20, 30); // 20x30 사각형에 내접하는 타원
+		list[2] = new Rect(10, 40); // 10x40 크기의 사각형
+		for (int i = 0; i < list.length; i++)
+			list[i].redraw();
+		for (int i = 0; i < list.length; i++)
+			System.out.println("면적은 " + list[i].getArea());
+
+	}
+
+}
+
+출력값:
+
+--- 다시 그립니다.반지름이 10.0인 원입니다.
+--- 다시 그립니다.20 x 30 사각형에 내접하는 타원
+--- 다시 그립니다.10 x 40 크기의 사각형
+면적은 314.0
+면적은 1884.0
+면적은 400.0
