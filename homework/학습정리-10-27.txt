@@ -1,0 +1,328 @@
+1. Maker 인터페이스에 대하여 설명하시오.
+▶interface 안에 아무 것도 정의하지 않은 것을 marker interface라고 부른다.
+개발자들이 붙인 이름이나 공식적인 명칭은 아니다.
+interface Upper{	}  ▷마커 인터페이스
+interface Lower{	}  ▷마커 인터페이스
+이렇게 중괄호 안에 텅 비어도 문법적으로 허용 됨
+
+2. 추상 클래스(abstract class)에 대하여 설명하시오.
+▶class 앞에 abstract가 붙는 것이다.. 
+public abstrat class House {	
+	public void methodOne( ){
+	  System.out.println("method one");
+	}	
+  }
+
+인터페이스가 아닌 일반 클래스라도 abstract가 붙으면 구현 부분이 생략된다.
+즉, 구현을 하고 싶지 않을 때 abstract를 붙이면 된다.
+그렇게 되면 본인은 구현 부분이 없고 구현은 자손클래스가 맡게 된다.
+구현 부분이 생략되는 이유는 abstract가 붙으면 미완성의 의미로 해석기 떄문이다.
+추상이 되면 new가 되지 않는다. 즉 객체생성이 안된다.
+abstract class A {
+	// 일반적인 클래스에서는 함수를 모두 구현해야 함.
+	public void one() {
+		System.out.println("메소드 하나");
+	}
+
+	public abstract void two(); // 온전하지 않음. 자손이 구현해라
+
+}
+class B extends A {
+	@Override
+	public void two() {
+		System.out.println("메소드 둘");
+	}
+
+}
+
+public class AbstractClass {
+	public static void main(String[] args) {
+
+		B b = new B();
+		b.one();
+		b.two();
+
+		
+		☞polyMorphism적용해보자
+		☞메모리에 올리는건 안되지만 자손을 통해서는 가능함
+		A a = new B();
+		a.one();
+		a.two();
+
+	}
+
+}
+
+
+
+3.Exception 에 대하여 설명하시오.
+▶단순한 문법 오류가 아닌 실행 중간에 발생하는 비정상적인 상황을 의미한다.
+
+4.에러를 내는 주체는?
+▶jvm
+
+5. 아래의 소스코드를 참고 하여 중에 Main안에 있는 두개의
+getAllArea 과 getArea 함수를 완성하시오.
+================================
+interface AreaGetable {
+	double getArea();
+
+}
+
+class Circle implements AreaGetable {
+	private double r;
+
+	public Circle(double r) {
+		this.r = r;
+	}
+
+	@Override
+	public double getArea() {
+
+		return r * r * Math.PI;
+	}
+}
+
+class Rectangle implements AreaGetable {
+
+	private double width, height;
+
+	public Rectangle(double width, double height) {
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return width * height;
+	}
+}
+
+
+class CondOp {
+	public static void main(String[] args) {
+
+		AreaGetable[] area = { new Rectangle(4, 5), new Circle(4), new Circle(4), new Circle(5), new Circle(5),
+				new Circle(6) ,new Rectangle(4, 5),new Rectangle(4, 5),new Rectangle(4, 5),};
+
+		// AreaGetable oneArea = new Circle(4);
+		System.out.println(getAllArea(area));
+		System.out.println(getArea(new Circle(10))); //314
+		System.out.println(getArea(new Rectangle(4, 5))); //20
+
+		// oneArea = new Rectangle(4,5);
+		// System.out.println(area.getArea());
+
+	}
+}
+▶
+
+
+6. 아래의 결과를 나타내는 사칙연산 계산기를 완성하시오.
+-주의 잘못된 입력이 있으면 처음부터 다시 입력을 받도록 
+예외처리 구문(try catch)을 넣을것★
+▷사칙연산이니까 int 쓰자
+
+*** 계산기 ***
+수1 : 10
+수2 : 20
+연산 : +
+계산 결과 : 30
+계속 하시겠습니까? 계속 : Y , 종료 : N
+y
+*** 계산기 ***
+수1 : R
+잘못된 입력입니다. 다시입력해 주세요
+*** 계산기 ***
+수1 : 10
+수2 : 20
+연산 : *
+계산 결과 : 200
+계속 하시겠습니까? 계속 : Y , 종료 : N
+y
+*** 계산기 ***
+수1 : 90
+수2 : 80
+연산 : /
+계산 결과 : 1
+계속 하시겠습니까? 계속 : Y , 종료 : N
+n
+종료입니다.
+
+힌트:
+
+String 비교(문자열비교)는 str.equals("+")이다.
+.equals사용. ==가 아니다.
+
+
+▶
+1. 우선 한 번 연산하는 걸 만든다.
+		int num1 = 0;
+		int num2 = 0;
+
+		// char op = 0; 도 가능함.
+		String op = null; // 문자열로 받을 수 있음. String 안에 엄청 난 함수들이 있기 떄문에 문자열을 다룰 수 있음.
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("*** 계산기 ***"); // 타이틀 출력
+		System.out.println("수1 : ");
+		num1 = sc.nextInt();
+
+		System.out.println("수2 : ");
+		num2 = sc.nextInt(); // 변수 반드시 num2로 구분
+
+		System.out.println("연산 : ");
+		op = sc.next(); // x+-% 연산자 문자 받는 거
+
+		switch (op) {
+		case "+":
+			result = num1 + num2;
+			break;
+		case "-":
+			result = num1 - num2;
+			break;
+		case "*":
+			result = num1 * num2;
+			break;
+		case "/":
+			result = num1 / num2;
+			break;
+
+		default:
+			System.out.println("잘못된 연산자 입력입니다.");
+			result = 0;
+		}
+		
+		System.out.println("계산 결과: " + result);
+
+
+
+2. 이제 반복해서 연산할 수 있도록 while 문을 추가한다.
+(while문 위치 주의 !! )
+	public static void main(String[] args) {
+
+		int num1 = 0;
+		int num2 = 0;
+
+		// char op = 0; 도 가능함.
+		String op = null; // 문자열로 받을 수 있음. String 안에 엄청 난 함수들이 있기 떄문에 문자열을 다룰 수 있음.
+		
+		while(true) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("*** 계산기 ***"); // 타이틀 출력
+		System.out.println("수1 : ");
+		num1 = sc.nextInt();
+		
+		System.out.println("연산 : ");
+		op = sc.next(); // x+-% 연산자 문자 받는 거
+
+		System.out.println("수2 : ");
+		num2 = sc.nextInt(); // 변수 반드시 num2로 구분
+
+
+
+		switch (op) {
+		case "+":
+			result = num1 + num2;
+			break;
+		case "-":
+			result = num1 - num2;
+			break;
+		case "*":
+			result = num1 * num2;
+			break;
+		case "/":
+			result = num1 / num2;
+			break;
+
+		default:
+			System.out.println("잘못된 연산자 입력입니다.");
+			result = 0;
+		}
+
+		System.out.println("계산 결과: " + result);
+		
+		System.out.println("계속 하시겠습니까? 계속 : Y  |  종료 : N");
+		String finish = sc.next();
+		//문자열은 반드시 ==이게 아니라 .equals
+		if(finish.equals("N") || finish.equals("n")) {
+			break;
+		}
+		
+	} // while (true) << 와일문의 끝이라는 표시
+		System.out.println("프로그램 종료입니다.");
+		
+
+
+3. 그 후 try catch를 추가하여 에러처리를 한다.
+에러가 생길만한 위치 찾기
+(1)
+(2)
+scan 받고 나서 어차피 system in할 때부터 과감하게 에러 날만한 곳에 try catch 덮어 쓴다. 
+주의할 점은 try catch를 난발하는 것은 좋지 않다 ! 
+
+		
+		while(true) {
+			
+			try {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("*** 계산기 ***"); // 타이틀 출력
+		System.out.println("수1 : ");
+		num1 = sc.nextInt();
+		
+		System.out.println("연산 : ");
+		op = sc.next(); // x+-% 연산자 문자 받는 거
+
+		System.out.println("수2 : ");
+		num2 = sc.nextInt(); // 변수 반드시 num2로 구분
+
+
+
+		switch (op) {
+		case "+":
+			result = num1 + num2;
+			break;
+		case "-":
+			result = num1 - num2;
+			break;
+		case "*":
+			result = num1 * num2;
+			break;
+		case "/":
+			result = num1 / num2;
+			break;
+
+		default:
+			System.out.println("잘못된 연산자 입력입니다.");
+			result = 0;
+		}
+
+		System.out.println("계산 결과: " + result);
+		
+		System.out.println("계속 하시겠습니까? 계속 : Y  |  종료 : N");
+		String finish = sc.next();
+		//문자열은 반드시 ==이게 아니라 .equals
+		if(finish.equals("N") || finish.equals("n")) {
+			break;
+		}
+	
+		}	catch (Exception e) {
+			System.out.println("잘못된 입력입니다. 처음부터 다시 입력하세요.");
+			continue;
+			}
+		
+	} // while (true) << 와일문의 끝이라는 표시
+		System.out.println("프로그램 종료입니다.");
+		
+
+	}
+
+}
+
+
