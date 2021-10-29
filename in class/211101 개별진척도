@@ -1,4 +1,4 @@
-public static void main(String[] args) {
+41번. public static void main(String[] args) {
         Circle a = new Circle(2, 3, 5); // 중심 (2, 3)에 반지름 5인 원
         Circle b = new Circle(2, 3, 30); // 중심 (2, 3)에 반지름 30인 원
 
