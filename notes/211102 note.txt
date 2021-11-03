@@ -1,0 +1,718 @@
+11월 02일
+
+데이터>> 
+입력, 출력, 정렬, 검색  this is 알고리즘! 
+어떻게 입력하냐에 따라 정렬과 검색이 달라짐
+
+
+
+▣수학 관련 연산 기능을 제공하는 Math클래스
+
+Math.PI
+Math.sqrt
+Math.toDegree 
+Math.toRadians
+Math.sin
+Math.cos
+Math.tan
+Math.log
+Math.pow(2,16) : 2의 16승 
+
+▶public class MathClass {
+	public static void main(String[] args) {
+		System.out.println("원주율: " + Math.PI);
+		System.out.println("2의 제곱근: " + Math.sqrt(2));
+		System.out.println();
+		System.out.println("파이에 대한 Degree: " + Math.toDegrees(Math.PI));
+		System.out.println("2 파이에 대한 Dgree: " + Math.toDegrees(2.0 * Math.PI));
+		System.out.println();
+
+		double radian45 = Math.toRadians(45); // 라디안으로의 변환!
+		System.out.println("싸인45: " + Math.sin(radian45));
+		System.out.println("탄젠트45: " + Math.cos(radian45));
+		System.out.println();
+		System.out.println("로그25: " + Math.log(25));
+		System.out.println("2의 16승: " + Math.pow(2, 16));
+
+	}
+
+}
+
+▶출력값:
+원주율: 3.141592653589793
+2의 제곱근: 1.4142135623730951
+
+파이에 대한 Degree: 180.0
+2 파이에 대한 Dgree: 360.0
+
+싸인45: 0.7071067811865475
+탄젠트45: 0.7071067811865476
+
+로그25: 3.2188758248682006
+2의 16승: 65536.0
+
+======================================================
+
+▣난수 (랜덤 함수)
+
+실세계에서 확률적인 것을 보장하지 못함.
+랜덤 함수 조차도 예전에는 돈 주고 샀음. 
+자체적으로 확률을 보장하고 싶어서..
+
+우리가 쓰는 간단한 것은 Random(); 랜덤함수를 사용할 수 있지만,
+경품회사 / 게임회사 이렇게 랜덤(가챠)가 많이 필요한 곳은 
+랜덤함수를 돈 주고 삼.
+
+Random() 괄호 안에 들어가는 숫자를 '시드 값'이라고 한다. 
+컴퓨터가 실행하는 시간을 알고 싶을 떄 System.currentTimeMillis();를 사용한다.
+시드 값이 없으면 이 sysTimeMillis로 돌아가서 값이 계속 변하고
+시드 값이 있으면 실행할 때마다 같은 결과를 보여준다.
+
+
+▶import java.util.Random;
+
+public class RandomMethod {
+	public static void main(String[] args) {
+
+		Random rand = new Random();
+		for (int i = 0; i < 7; i++)
+			System.out.println(rand.nextInt(1000));
+
+		System.out.println();
+
+		Random rand2 = new Random(12);
+		for (int i = 0; i < 7; i++)
+			System.out.println(rand.nextInt(1000));
+
+	}
+
+}
+▶출력값:
+97
+820
+834
+172
+929
+609
+559
+
+101
+972
+396
+624
+317
+494
+783
+
+
+
+
+======================================================
+▣문자열의 토큰 구분
+
+PM : 08 : 45를 : 기분으로 분리하고 싶으면
+StringTokenize라는 것을 사용하고 함수에는 ("PM : 08 : 45: " , " : ");  이런식으로 적으면 된다.
+
+▶import java.util.StringTokenizer;
+
+public class StringTokenizerr {
+	public static void main(String[] args) {
+		StringTokenizer st1 = new StringTokenizer("PM:08:45:", ":");
+
+		while (st1.hasMoreTokens())
+			System.out.print(st1.nextToken() + ' ');  ★println아니라 print임
+		System.out.println();
+
+		StringTokenizer st2 = new StringTokenizer("12 + 36 - 8 / 2 = 44", "+-/= "); ★=뒤 공백도 Tokenize 역할함
+
+		while (st2.hasMoreTokens())
+			System.out.print(st2.nextToken() + ' '); ★println아니라 print임
+		System.out.println();
+
+	}
+
+}
+
+▶출력값:
+PM 08 45 
+12   36   8   2   44 
+
+
+======================================================
+◑Arrays 클래스
+Array를 좀 더 쉽게 컨트롤 할 수 있는 클래스를 만들고 그 안에 함수들을 뒀음.
+우리가 여태 했던건 arraycopy
+
+▣copyOf 메소드 호출의 예
+▶import java.util.Arrays;
+
+public class CopyOfArrayClass {
+	public static void main(String[] args) {
+		double[] arOrg = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+
+		// 배열 전체를 복사
+		double[] arCpy1 = Arrays.copyOf(arOrg, arOrg.length);
+
+		// 세번째 요소까지만 복사
+		double[] arCpy2 = Arrays.copyOf(arOrg, 3);
+
+		for (double d : arCpy1)
+			System.out.print(d + "\t");
+		System.out.println();
+
+		for (double d : arCpy2)
+			System.out.print(d + "\t");
+		System.out.println();
+
+	}
+
+}
+
+▶출력값:
+1.1	2.2	3.3	4.4	5.5	
+1.1	2.2	3.3	
+
+
+cf)
+		// Arrays toString안에 배열을 집어넣으면 한꺼번에 나옴 좀더 쉬운 방법
+		System.out.println(Arrays.toString(arOrg)); 
+		System.out.println(Arrays.toString(arCpy1)); 
+		System.out.println(Arrays.toString(arCpy2)); 
+
+======================================================
+▣Arrays Copy
+import java.util.Arrays;
+
+▶public class ArrayCopyArrayClass {
+	public static void main(String[] args) {
+		double[] org = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+		double[] cpy = new double[3];
+		
+		//배열 org의 인덱스 1에서 배열 cpy 인덱스 0으로 
+		System.arraycopy(org, 1, cpy, 0, 3);
+
+
+	
+		for (double d : cpy)
+			System.out.print(d + "\t");
+		System.out.println();
+
+
+	}
+
+}
+
+
+
+======================================================
+▣Arrays Equals
+
+import java.util.Arrays;
+
+▶public class EqualsArrayClass {
+	public static void main(String[] args) {
+		int[] ar1 = { 1, 2, 3, 4, 5 };
+		int[] ar2 = Arrays.copyOf(ar1, ar1.length);
+		System.out.println(Arrays.equals(ar1, ar2));
+
+	}
+
+}
+
+▶출력값: true
+
+
+그런데 new를 하면 주소값이 다르므로 false가 나옴
+▶import java.util.Arrays;
+
+class INum {
+	private int num;
+	public INum(int num) {
+		this.num = num;
+	}
+}
+
+public class ArrayObjEquals {
+	public static void main(String[] args) {
+		INum[] ar1 = new INum[3];
+		INum[] ar2 = new INum[3];
+		
+		ar1[0] = new INum(1); 
+		ar2[0] = new INum(1);
+		
+		ar1[1] = new INum(2);
+		ar2[1] = new INum(2);
+		
+		ar1[2] = new INum(3);
+		ar2[2] = new INum(3);
+		System.out.println(Arrays.equals(ar1, ar2));
+
+	}
+
+}
+▶출력값: false
+
+두 개가 같게 하려면
+equals를 overriding해주면 오버라이딩된 값이 나옴
+
+▶class INum {
+	private int num;
+
+	public INum(int num) {
+		this.num = num;
+	}
+	
+
+	@Override★
+	public boolean equals(Object obj) {★
+		if (this.num == ((INum) obj).num)★
+			return true;
+		else
+			return false;
+
+	}
+}
+	public class ArrayObjEquals {
+
+	public static void main(String[] args) {
+		INum[] ar1 = new INum[3];
+		INum[] ar2 = new INum[3];
+
+		ar1[0] = new INum(1);
+		ar2[0] = new INum(1);
+
+		ar1[1] = new INum(2);
+		ar2[1] = new INum(2);
+
+		ar1[2] = new INum(3);
+		ar2[2] = new INum(3);
+		
+		
+		System.out.println(Arrays.equals(ar1, ar2));
+
+	}
+
+}
+
+
+
+
+
+======================================================
+▣숫자 정렬 Sort 
+일반 숫자 오름차순 정렬
+ int나 primitive type일 떄는 그냥 sort함수에 집어 넣으면 끝.
+▶import java.util.Arrays;
+
+public class ArraySort {
+	public static void main(String[] args) {
+		int[] ar1 = { 1, 5, 3, 2, 4 };
+		double[] ar2 = { 3.3, 2.2, 5.5, 1.1, 4.4 };
+		Arrays.sort(ar1);  ★오름차순★★계단을 올라간다
+		Arrays.sort(ar2);
+
+		for (int n : ar1)
+			System.out.print(n + "\t");
+		System.out.println();
+
+		for (double d : ar2)
+			System.out.print(d + "\t");
+		System.out.println();
+
+	}
+
+}
+
+▶출력값:
+1	2	3	4	5	
+1.1	2.2	3.3	4.4	5.5	
+
+
+======================================================
+▣ 객체 정렬 implements Comparable
+Person 객체를 name 순으로 정렬을 시키든, age 순으로 정렬을 시키든
+Person 4천만명을 배열로 정렬하고 싶다면, Comparable을 implement하면 강제로 정렬시킬수 있다. 
+
+1.compareTo(Object 상대방)
+2.Person p = (Person)상대방;  폴리몰피즘 되어있으니까 캐스티을 해준다.
+3.내거랑 상대방거 비교한다.
+4.리턴 시켜줘 
+
+//자바에서 객체를 정렬시키고 싶음
+//그럴때 implments comparable
+
+위치를 바꾸고 싶다.
+	Arrays.sort(ar);  << 객체 배열이든 뭐든 sorting을 해야함
+		for (Person p : ar)
+			System.out.println(p);
+그래서 이 순서대로 돌리면 나이 순서대로 찍히고 싶다 is the 정렬 ~~~
+
+방법:
+sort 함수를 호출해서 객체 배열이든 뭐든 sorting을 해야함! Arrays.sort(ar); 
+ int나 primitive type은 넣으면 걍 됨
+근데 객체가 등장하면 반. 드. 시 【 implement Comparable 】을 해야 함.
+
+sort에 집어 넣으면 sorting 시키는 알고리즘에 의해 
+
+나이순으로 비교하고 싶을떄: 
+▶import java.util.Arrays;
+
+class Person implements Comparable {
+	private String name;
+	private int age;
+
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	public int compareTo(Object o) {
+		Person p = (Person) o;
+		return this.age - p.age;
+	}
+
+	public String toString() {
+		return name + ": " + age;
+	}
+
+}
+
+public class ArrayComparable {
+	public static void main(String[] args) {
+		Person[] ar = new Person[3];
+		ar[0] = new Person("Jake", 29);
+		ar[1] = new Person("Avery", 15);
+		ar[2] = new Person("Elizabeth", 37);
+
+		Arrays.sort(ar);
+		for (Person p : ar)
+			System.out.println(p);
+
+	}
+
+}
+▶출력값:
+Avery: 15
+Jake: 29
+Elizabeth: 37
+
+
+======================================================
+▣내림차순으로 정렬하고 싶을 때는?_?
+	@Override
+	public int compareTo(Object o) {
+		Person p = (Person) o;
+		return this.age - p.age;
+이 부분에서 
+return this.age - p.age; 이 거를
+return p.age - this.age; 이렇게 바꿔주면 내림차순이 된다.
+
+▶▶즉 ! 
+오름차순: 자기자신 기준 ▷ this.age - p.age;
+내림차순: 상대방 기준 ▷ p.age - this.age; 
+
+
+======================================================
+▣이름의 갯수 순서대로 정렬해보고 싶을떈 ?_? 
+▶	@Override
+	public int compareTo(Object o) {
+		Person p = (Person) o;
+		return p.name.length() - this.name.length();
+	}
+▶출력값:
+Elizabeth: 37
+Avery: 15
+Jake: 29
+
+
+
+======================================================
+▣검색 BinarySearch
+
+ar 배열에서 특정 숫자를 찾고 싶으면 binarySearch 함수에 집어 넣어서 인덱스(idx)해주면 됨.
+그나저나 이것을 직접적으로 쓸 일은 없다. 하지만 개념은 알아두자.
+sort와 binary 둘 중 하나라도 뺴먹으면 엉뚱한 출력값이 나오니 주의하자.
+
+▶public class ArrayBinarySearch {
+	public static void main(String[] args) {
+		int[] ar = { 33, 55, 11, 44, 22 };
+		★Arrays.sort★(ar); //탐색 이전에 정렬이 선행되어야 한다.
+
+		for (int n : ar)
+			System.out.print(n + "\t");
+		System.out.println();
+
+		int idx = ★Arrays.binarySearch★(ar, 33); //배열 ar에서 33을 찾아라.
+		System.out.println("Indext of 33: " + idx);
+
+	}
+
+}
+
+▶출력값:
+11	22	33	44	55	
+Indext of 33: 2
+
+바이너리 서치를 해석하자면
+트리형태로 두고 절반씩 떨궈내는 것을 의미한다.
+
+
+
+
+======================================================
+~ 오후 수업 ~ 
+Html visual code
+front(이클립스도 가능하지만 visual code씀) + +back(이클립스)
+특히 리엑트는 비쥬얼코드
+이클립스에서 할 수 있는건 비주얼코드에서도 다 할 수 있음. 자바도 가넝.
+하지만 현장에서는 아직 이클립스가 메인.
+프론트에서는 비주얼코드가 대세.
+html, javascript, vue, react 
+프로그램하다보면 서버가 두 개 돌아가는데 그래서 vs코드 씀. 이클립스 돌아가고 프론트 돌아가고
+▶
+file > open folder > 문서에 vscode 만들기 > html폴더 만들고 > Hello 폴더 만들어서 선택.
+ㅁ+ 파일 눌러서 hello.html 입력
+쉬프트 누르고 ! 하고 엔터 하면 자동완성
+아니면 html5입력 
+그러면 기본적으로 뭐 잔뜩 만들어줌
+body 아래에 쓰고 싶은 글 쓰고 ctrl s 저장
+▶
+그러고 우클릭 reveal explore 눌러서 크롬 열어. 
+근데 open in browser 설치하면 한방에 크롬이 열림.
+extension 클릭 > open in b > install 
+우클릭 open in browswer클릭 혹은
+alt + b 하면 한 번에 chrome이 뜸. 
+
+beauty는 자동완성기능
+
+▶
+내가 www.naver.com한담에 f12하면 디버깅이 뜸.
+마크업 랭귀지인 html이 뜸.
+그러니 웹페이지 화면을 구성하기위해서 html을 배우는 것이다.
+======================================================
+▣폰트크기
+
+</head>
+<body>
+    <h1> h1 태그 입니다. </h1> 
+    <h2> h2 태그 입니다. </h2>
+</body>
+
+
+h는 헤드라인의 약자이고 h1태그부터 h6태그까지 있다. 얘네는 글자 크기 나타냄
+h1이 젤 큰 글자고 h6이 젤 작은 글자 크기
+
+
+    <h1>h1 태그 입니다.</h1> 
+    <h2>h2 태그 입니다.</h2>
+    <h3>h3 태그 입니다.</h3>
+    <h4>h4 태그 입니다.</h4>
+    <h5>h5 태그 입니다.</h5>
+    <h6>h6 태그 입니다.</h6>
+
+======================================================
+*** html에서 주석처리 방법: ctrl + ?  ***
+*** 자동줄정렬 기능 >>  Beauty 파일 받으면 됨: ctrl + a  >> ctrl + shift + b  ***
+
+▣단락 바꾸기, 줄 바꾸기
+
+p는 paragraph의 약자. 하나의 문단
+<> 열고 </> 닫고
+
+p태그를 주게 되면 폰트 크기가 16pixel(=1em). 웹브라우저가 가지고 있는 default
+한 줄 뿌리고 그 다음 줄로 개행을 시킨다.
+
+ <p>주로 본문에 사용되는 태그로서 단락을 구분합니다.
+    주로 본문에 사용되는 태그로서 단락을 구분합니다. </p>
+▶▶이런식으로 하면 우리 편집 프로그램 상으로는 다음 줄이지만 chrome으로 띄우면 나란히 한 줄로 나옴.
+
+    <p>주로 본문에 사용되는 태그로서 단락을 구분합니다. </p>
+
+   <p>주로 본문에 사용되는 태그로서 단락을 구분합니다. <br />
+        행바꿈 태그 입니다.</p>
+▶▶br태그는 다음 줄로 가는 것이다. 다음 단락 원하면 <p>. br은 이클립스로 치면 println
+
+ <p>글씨를 <b>굵게</b>하고 싶으면 b태그를 사용한다. </p>
+
+
+a href 는 a라는 태그에 href값을 준다는 것
+    <p><a href = "http://www.naver.com"> 네이버로 이동</a></p>
+
+    <p><i>이탈릭체는 i를 사용</i></p>
+
+    <p>위첨자 sup은<sup>superscript의 약자</sup></p>
+    <p>아래첨자 sub은<sub>subscript의 약자</sub></p>
+
+    <p><ins>ins는 밑줄</ins></p>
+    <p><del>del은 글자 위에 선 그어서 했던말 취소하는 느낌</del></p>
+
+
+
+html은 언어다. 컴파일 과정은 없지만 암튼 언어임.
+여기서는 kjfhsdkfdskfn 이렇게 아무거나 치고 chrome켜도 나옴
+그 이유는 바로 ... html은 전적으로 chrome이라는 웹브라우저가 해석해서 그렇다.
+
+======================================================
+▶
+html은 markup language이다.
+태그를달고 무언 가를 적으면 
+
+
+======================================================
+
+▣리스트 태그  ul, li, ol 
+게시판이나 메뉴리스트 만들떄 사용
+
+ol means order list
+
+    <p>●으로 된 메뉴 리스트 ul사용</p>
+ ▶   <ul>
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+        <li>menu4</li>
+        <li>menu5</li>
+    </ul>
+
+    <p>숫자로 된 지역 리스트 ol사용</p>
+ ▶   <ol>
+        <li>서울</li>
+        <li>경기</li>
+        <li>충청</li>
+        <li>강원</li>
+        <li>경상</li>
+        <li>전라</li>
+    </ol>
+
+    <p>검색 사이트 리스트</p>
+    <ol>
+ ▶      <li><a href = "http://www.google.com" target = "_blank">google</a></li>
+ ▶       <li><a href = "http://www.naver.com" target = "_blank">naver</a></li>
+    </ol>
+
+
+href 담에 주소라는 속성 적는 건 알겠어. 근데 뒤에 target은 뭐여?
+
+traget 뒤에 _blank 속성을 넣으면 새 창에 링크 띄움.
+target 뒤에 _self를 넣으면 이용하던 창이 링크창으로 바뀜. ex)카톡 사용하다가 링크누르면 바뀜 ㅅㅂ 
+
+
+    <p>지역 리스트 ol사용 숫자 순서</p>
+  ▶  <ol type='i'>
+        <li>서울</li>
+        <li>경기</li>
+        <li>충청</li>
+        <li>강원</li>
+        <li>경상</li>
+        <li>전라</li>
+    </ol>
+ol 담에 타입을 i 라고 하면 로마체가 나옴
+
+    <p>지역 리스트 ol사용 숫자 순서</p>
+  ▶  <ol start='5'>
+        <li>서울</li>
+        <li>경기</li>
+        <li>충청</li>
+        <li>강원</li>
+        <li>경상</li>
+        <li>전라</li>
+    </ol>
+ ol 담에  start='5'하면 5부터 시작됨
+======================================================
+▶▶ 표를 나타내는 태그
+
+tr td 외우자~~ 얘네 둘은 한 쌍이라고 봐도 됨. 같이 다님
+tr 괄호를 여는 것
+td 글이 들어감
+
+border 테두리
+rowspan
+colspan: td에다가 collum n개 만큼 사용하겠다.
+<td colspan = "2">는 collum 2개 만큼 사용하겠다~ 라는 뜻
+
+
+
+    <title>표차트 만들기</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td rowspan="4">중간고사 성적</td>  ◀4인 이유는 tr 4개를 전부 가져가겠다는 말.
+        </tr>
+        <tr>
+            <td>국어</td>
+            <td>영어</td>
+            <td>수학</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>60</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td colspan="2">평균</td>
+            <td>80</td>
+        </tr>
+    </table>
+
+======================================================
+▶▶
+
+출력결과가 이름이 사전순으로 출력 되도록 하시오 
+
+import java.util.Arrays;
+class Person implements Comparable {
+	private String name;
+	private int age;
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		Person p = (Person) o;
+		return name.compareTo(((Person)o).name); //사전순으로 정렬
+				
+	}
+
+	@Override
+	public String toString() {
+		return name + ": " + age;
+	}
+}
+
+public class ArrayComparable {
+	public static void main(String[] args) {
+		Person[] ar = new Person[3];
+		ar[0] = new Person("Jake", 29);
+		ar[1] = new Person("Avery", 15);
+		ar[2] = new Person("Elizabeth", 37);
+
+		Arrays.sort(ar);
+		System.out.println(Arrays.toString(ar));
+
+	}
+}
+
+▶출력값:
+[Avery: 15, Elizabeth: 37, Jake: 29]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

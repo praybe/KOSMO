@@ -1,0 +1,326 @@
+21년11월01일 월욜
+
+공통으로 들어가는 함수나 데이터멤버가 있으면 
+백프로 폴리몰피즘 활용한다. interface로 빼든지 추상메소드로 뺴든지 무관함.
+함수오버라이딩 하면 프로그램 유연성이 높아짐
+
+ 
+
+Wrapper Class: 기본타입 8개에 대해서 감싸고 있는 클래스 (int, double 참조형 ....)
+메인을 가진 클래스니까 당연히 static을 가지고 있음.
+main이 static이니까, main에서 호출하려하는 함수라는 것을 이해할 수 있다.
+
+▶class UseWrapperClass{
+	public static void showData(Object obj) {  //★polyMorphism적용됨을 알 수 있음
+
+	//★println에 객체를 다이렉트로 넣으면
+	//★(1)오버라이딩 안되어있으면 주소 갖다 뿌리기, 
+	//★(2)오버라이딩 된 toString 호출
+		System.out.println(obj);
+	}
+
+	public static void main(String[] args) {
+		// 정수 3으로 채워진 래퍼 인스턴스 생성
+		Integer iInst = new Integer(3);
+		showData(iInst);
+		// 실수 7.15로 채워진 래퍼 인스턴스 생성
+		showData(new Double(7.15));
+
+	}
+
+}
+
+즉, int를 객체(클래스)로 표현한게 래퍼 클래스이다.
+자바스크립트나 파이썬은 래퍼런스타입으로 long int double을 제공한다.
+
+
+Wrapping의 두 가지 기능: 박싱과 언박싱
+
+기본 자료형의 값     (Boxing) →      Wrapper 인스턴스
+
+객체에 있는것을 primitive type으로 꺼내오는 것:
+기본 자료형의 값 	←(Unboxing)    Wrapper 인스턴스
+ 
+
+direct 로 집어넣는 것을 auto boxing이라고 한다.
+
+
+
+
+래퍼클래스의 다양한 static메소드들
+▶public class DiverseStaticWrapper {
+	public static void main(String[] args) {
+
+		// 클래스 메소드를 통한 인스턴스 생성 방법 두 가지
+		Integer n1 = Integer.valueOf(5);
+		Integer n2 = Integer.valueOf("1024");
+
+		// 대소 비교와 합을 계산하는 클래스 메소드
+		System.out.println("큰 수: " + Integer.max(n1, n2));
+		System.out.println("작은 수: " + Integer.min(n1, n2));
+		System.out.println("합: " + Integer.sum(n1, n2));
+		System.out.println();
+
+		// 정수에 대한 2진, 8진, 16진수 표현 결과를 반환하는 클래스 메소드
+		System.out.println("12의 2진 표현: " + Integer.toBinaryString(12));
+		System.out.println("12의 8진 표현: " + Integer.toOctalString(12));
+		System.out.println("12의 16진 표현: " + Integer.toHexString(12));
+
+	}
+
+}
+
+출력값:
+큰 수: 1024
+작은 수: 5
+합: 1029
+
+12의 2진 표현: 1100
+12의 8진 표현: 14
+12의 16진 표현: c
+
+
+
+.valueOf는 클래스명으로 들어감. static이라는 것.
+【 클래스명.valueOf 】
+String으로 된 문자열을 숫자로 바꾸는 것.
+	Integer n1 = Integer.valueOf(5);
+	Integer n2 = Integer.valueOf("1024"); 
+같은 함수 이름으로 데이터 타입이 다름. 함수 오버로딩이 됨. (오버라이딩 아님
+
+
+	int s1 = String.valueOf(false)
+String에도 valueOf가 있고 데이터 타입이 참거짓이다.
+	int s2 = String.valueOf(5)
+	int s3 = String.valueOf(5.0)
+데이터타입을 String으로 바꾸겠다는 것이다.
+
+
+
+
+욜라 큰 수 계산
+▶import java.math.BigInteger;
+
+public class BigIntegerEx {
+	public static void main(String[] args) {
+
+		// 객체를 통해서 컨트롤. 숫자가 너무 커서 multiply(),add() 이런식의 함수를 써야함. +-이런거로 안됨.
+		// long형으로 표현 가능한 값의 크기 출력
+		System.out.println("최대 정수: " + Long.MAX_VALUE);
+		System.out.println("최소 정수: " + Long.MIN_VALUE);
+		System.out.println();
+
+		// 매우 큰 수를 BigInteger 인스턴스로 표현
+		BigInteger big1 = new BigInteger("100000000000000000000");
+		BigInteger big2 = new BigInteger("-99999999999999999999");
+
+		// BigInteger 기반 덧셈 연산
+		BigInteger r1 = big1.add(big2);
+		System.out.println("덧셈 결과: " + r1);
+
+		// BigInteger 기반 곱셈 연산
+		BigInteger r2 = big1.multiply(big2);
+		System.out.println("곱셈 결과: " + r2);
+		System.out.println();
+
+		// 인스턴스에 저장된 값을 int형 정수로 반환
+		int num = r1.intValueExact();
+		System.out.println("From BigInteger: " + num);
+
+	}
+
+}
+
+
+
+
+컴공생들이 무너지는 파트
+c, c++언어 = 포인터
+java = 지네릭(제네틱)
+
+
+html: float + overflow
+javascript: 클로져, 함수형언어
+
+
+------------------------------------------------------------------------
+
+오후수업 >> HTML <<
+TOOL DOWNLOAD 방법
+
+구글검색: visual code > download >> 걍 계속 다운로드 ㅋㅋ
+
+
+
+
+
+
+프로그램(Application)을 종류로 나누게 되면,
+
+시스템 프로그래밍: 
+하드웨어 컨트롤을 해야 하는 쪽(JVM, OS, 윈도우, 리눅스, 임베디드 시스템)
+자바로는 못 짜고 c나 c++을 해야함. 메모리를 직접 컨트롤
+실체가 없이 밑에서 돌아가는 것
+
+응용 프로그래밍: 
+눈에 보이는 것들 (한글, 엑셀, 포토샵... C#, Java, 이클립스...> OS위에서 돌아감 )
+응용 프로그래밍 시대는 지나갔다.
+서버도 그렇고 120프로 웹 프로그래밍으로 넘어감..
+
+
+웹 프로그래밍: 
+통신, (서버 - 클라이언트) 네이버 ... >>클라우드(서버, 클라이언트 기반)..
+유튜브, 페이스북, 인스타그램 우리가 사용하는 모든 것
+한글 엑셀 이런 것도 이제 돈 내고 한 달에 한 번 실행하는 걸로 바뀜
+막 로그인하라고 그러고 귀찮게 함
+
+우리가 6개월 간 배워서 구현하는 것: 한글 파워포인트 구현이 아니라, 페북 인스타그램 구현이다.
+
+
+
+좀 큰 기업 + 게임은 기본적으로 
+서버(웹브라우저로 안보이는거) / 클라이언트(웹브라우저로 보이는 거)로 나뉨.
+
+
+		서버(Back End) - 클라이언트(Front)
+★java 진영: ★Spring, ★jsp(java server page) -시장정유 20퍼  <<< 돈 되는쪽임. (은행, 전자정부프레임 다 여기) + DB 오라클(SQL)★
+MS: ASP
+Php: PHP - 시장점유율 50퍼 <<< (개인, 페이스북 ... lalavel..
+javascript: node.js <<말로만 떴고 서버 중에 작은 부분 가끔 프로젝트 있고 개발자들도 별로 안함 ㅎ 
+
+
+
+
+Front: 어떤 식으로 프로그래밍을 하느냐
+★html + ★css + ★javascript(ajax);  이거 세 개가 기본적으로 섞여야 함 << 80~90퍼 
+bootstrap★ + ( Vue / react (<<얘네가 대세고 거의 98퍼차지)// angular / velocity.....) <<신규로 할때 10개 중 하나는 Vue나 react
+
+
+
+
+===========================================
+https://www.naver:80.com
+
+
+1) 프로토콜:https
+= 통신규약 ex) Http, FTP, SMTP, POP, DHCP  >> 뒤에 P 자가 붙으면 protocol이라고 생각하면 됨
+
+2) 도메인: naver
+
+
+3) ip: 주소
+
+
+4) Port번호: 생략하는 경우가 많음
+=프로그램 번호.
+해당 컴퓨터 찾아가서 80번이면 80에 해당되는 프로그램 실행
+
+5) DNS:
+
+
+1. 톰캣, 제우스(티맥스 소프트), 웹로직...
+대한민국에서는 제우스가 시장경쟁률 1등
+
+
+
+
+
+
+
+============================
+이클립스 실행 > default package > 우 클릭 > New > other > html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Hello World</title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+이 상태로 우클릭해서 show in - system explore한 담에 chrome으로 된거 눌러서 열면
+
+html은 기본적으로 웹브라우저가 해석하기 떄문에 
+
+chrome을 쓰셈
+
+아무것도 안 뜨지만 HelloWOrld라고 뜸 
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Hello World</title>
+	</head>
+	<body>
+		Hello World !!!!!!!!!
+	</body>
+</html>
+
+
+
+
+한글로 자기 이름 나오게 하자
+
+
+	<h1>
+		Hello World !!!!!!!!! ::정유정
+	</h1>
+
+글씨가 커짐
+
+h1 ~ h6 
+
+
+html강좌 추천:
+https://seouliotcenter.tistory.com/126?category=877556
+
+==============================================
+오늘의 문제~~
+
+-클래스 Person은 이름을 저장하는 필드 구성
+-클래스 Person은 상위 클래스 Object의 메소드 equals()를 오버라이딩하여 
+이름이 같으면 true를 반환하는 메소드 구현
+-다음과 같은 소스로 클래스 Person을 점검
+
+class Person {
+
+	private String name;
+
+	public Person(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Person person = (Person) obj;
+		if (this.name == person.name)
+			return true;
+		else
+			return false;
+	}
+
+}
+
+public class Question1 {
+	public static void main(String[] args) {
+		Person p1 = new Person("홍길동");
+		System.out.println(p1.equals(new Person("홍길동")));
+		System.out.println(p1.equals(new Person("최명태")));
+
+	}
+
+}
+
+
+출력값:
+true
+false
+
+

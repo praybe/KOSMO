@@ -1,0 +1,447 @@
+21년 10월 28일
+
+
+인터페이스 = 다형성 + 함수오버라이딩
+interface AreaGetable {
+	double getArea();
+}
+
+
+
+============================================
+exception부터 시작해서 상속, 예외처리 관련된 class들을 이해할 필요가 있다. 
+
+
+일단은 Throwable이라는 클래스가 있다.
+모든 예외에 대한 최상위 class이다.
+
+https://m.blog.naver.com/taeil34/221320100699 (참고)
+
+
+		   		【Object】
+
+			 	     ↓
+	
+				【Throwable】
+
+			↙			↘
+
+	【 Error 】(우리가 컨트롤 불가)    	|  	【 Exception 】 (컨트롤 가능)
+    
+		 ↓					↙	         ↘
+	
+	메모리부족 		(2)【 other Exceptions 】           (1) 【 RuntimeException 】런타임익셉션
+	벌츄얼 머신 에러		    (checked처리)			(unchecked 처리)	언체크트
+  	    ↓				↓ 				↓
+ 	    죽음 			IO Exception 아이오 익셉션		Arithmetic, ClassCast, IndexOutOfBounds, NegativeArraySize, NullPointer, ArrayStore
+
+
+
+1.에러객체 > jvm
+2.exception 객체              
+
+
+error 클래스를 상속하는 예외 클래스들의 특성
+
+
+
+아무리 훌륭한 프로그래머라도 os입장에서는 단순 어플리케이션일 뿐이라
+에러사항이 뜨면 그냥 즉사시켜버림 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+
+이게 머선 말이냐
+
+
+http://www.baeldung.com/java-catch-throwable-bad-practice
+이 외국 블로그에서 설명이 잘 되어 있음
+
+
+
+
+
+
+
+
+
+
+jvm의 역할: 죽인다. 죽여. 중단시켜버려.
+근데 죽이기만 하지는 않고 예외객체를 던져주고 장렬히 전사함.
+즉, 예외 객체를 만들어 주면서 돌아가심
+jvm?? 으휴 바보 개발자야 내가 대신 만들어준다 ㅉㅉ 
+
+
+▣exception 에러
+
+반드시 이해!!!! 자식 부모 호출할떄
+class Board{ }
+class PBoard extends Board{ }
+
+부모		자식
+Board pbd1 = new PBoard();
+PBoard pbd2 = (PBoard)pbd1; << ok ! 
+자식이 호출할때
+
+
+
+지꺼
+Board ebd1 = new Board();
+PBoard ebd2 = (PBoard)ebd1; <<얘는 Exception오류 뜸. 왜냐? 다형성 떄문에
+
+
+
+
+
+
+컴파일러가 못잡아내고 실시간 에러가 뜸
+class Board{ }
+class PBoard extends Board{ }
+
+public class ClassCastException {
+	public static void main(String[] args) {
+		Board pbd1 = new PBoard();
+		PBoard pbd2 = (PBoard)pbd1; 
+		
+		System.out.println("..intermediate location..");
+
+		Board ebd1 = new Board();
+		PBoard ebd2 = (PBoard)ebd1; 
+
+	}
+
+}
+
+
+
+▣nullpointexception
+
+
+▣ Exception을 상속하는 예외의 예
+
+▣기계적으로 로직을 암기할것
+
+에러 객체와 익셉션(예외)객체의 차이?
+익셉션에 또 2가지 (체크드, 언체크드)
+
+언체크드 > 실시간 에러 (런타임 에러)
+
+런타임 에러 이외에는 반드시 전부 체크드.
+왜냐 개발자가 전부 트라이캐치로 묶어라.
+
+
+
+
+
+▣오류가 떴을 떄 해결 방법 두 가지:
+1. try catch 묶어라
+2. throw 던젹라
+
+그 중 try catch로 반드시 묶어야 하는 애들이 체크드 익셉션
+
+
+
+▣Throws 
+= 나 호출한 놈한테 해당 exception을 책임전가 하겠다. 
+결국 어느 한 놈이 trycatch해줘야함
+
+throws 뒤에는 예외객체를 입력한다.
+
+함수 안에서 문제가 생기게 되어 throws IOException을 jvm이 던져준다고 그러면 md2를 호출한 놈한테 던져줄거라는 것.
+책임전가를 나를 호출한 함수로 던지겠다는 것. md2는 누가 호출했다? md1이. 그러니 체크는 md1이 해라.
+checked 에러유형은 반드시 try catch로 막던지, throws 하면 되는데 md2도 throws해서 책임전가 가능
+md2가 책임전가하면 결국 main으로 가는데 main이 해결해야 함 ㅋㅋ 
+그러고 md1도 throw가능. 그럼 누가 main을 호출했지? jvm이 호출함. jvm 니가 해결해 ㅡㅡ  => 에러 해결 안할거라는거 ㅋㅋㅋㅋㅋ
+ 실무에서는 그래서 이거 안함. 반드시 try catch로 막아 줌. 
+ 빨리 테스트 확인할겨. trycatch 귀찬헝. 그럴떄 씀.
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class IOExceptionCase {
+	public static void main(String[] args) throws IOException {
+		
+		md1();
+	}
+		
+		public static void md1() throws IOException {
+	
+		md2();
+		}
+		
+		public static void md2() throws IOException{ 
+
+			
+			Path file = Paths.get("C:\\java\\Simple.txt");
+			BufferedWriter writer = null;
+			
+				writer = Files.newBufferedWriter(file); //IOException 발생 가능
+				writer.write('A'); //IOException 발생 가능
+				writer.write('z'); //IOException 발생 가능
+				
+				if(writer != null)
+					writer.close();
+				
+			
+	
+
+	}
+
+}
+
+
+
+
+
+
+▣ finally
+
+
+========================================
+오후수업
+▣운영체제 입장에서 자바 가상머신
+그냥 프로그램의 하나. 
+운영제체가 프로그램에 4기가 메모리 공간 할당하면 jvm에게도 4기가 메모리 공간 할당.
+자바 프로그램이 두 개 실행되며, 가상머신도 두 개 실행.
+메모당을 두 번 띄우면 두 개의 메모장 프로그램이 실행되는 이치와 같음.
+
+▣자바 가상머신의 메모리 모델
+jvm이 메모리에 올릴 떄 아래와 같이 올라가는 영역이 다르다.
+
+(1)메소드 영역(Method Area)
+메소드 바이트코드, static 변수
+
+(2)스택 영역(Stack Area)
+지역변수, 매개변수 
+함수들
+
+(3)힙 영역(Heap Area)
+new 어쩌고(인스턴스)
+
+▣Object 클래스
+최고 조상. 
+그 안에는 11개의 함수가 있다.
+
+우리가 배운 3개는
+hashcode
+toString
+equals
+
+
+그 중에서 finalize라는게 있음.
+실무에서는 쓰지마. 써봤자 생각대로 안되고 쓸 일도 없고 써서도 안됨 ㅋㅋ
+이거는 인스턴스 소멸 시 자동으로 호출되는 것이다.
+한마디로 객체가 메모리에서 사라질떄 자동으로 호출됨.
+
+
+jvm이 호출하니까 우리가 써먹을 수 잉ㅆ는거
+
+◆garbage collector: 메모리 생성되는거 수집하는거 (gc)
+
+
+
+
+▣오늘의 문제
+
+
+다음은 도형의 구성을 묘사하는 인터페이스이다.
+
+interface Shape {
+   final double PI = 3.14; // 상수
+   void draw(); // 도형을 그리는 추상 메소드
+   double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+   default public void redraw() { // 디폴트 메소드
+      System.out.print("--- 다시 그립니다.");
+      draw();
+   }
+}
+
+다음 main() 메소드를 참고하여, 
+인터페이스 Shape을 구현한 클래스 Circle를 작성하고 전체 프로그램을 완성하라.
+
+public static void main(String[] args) {
+   Shape donut = new Circle(10); // 반지름이 10인 원 객체
+   donut.redraw();
+   System.out.println("면적은 "+ donut.getArea());
+}
+
+출력값:
+--- 다시 그립니다. 반지름이 10인 원입니다.
+면적은 314.0
+
+▶package Oct28;
+
+interface Shape {
+	final double PI = 3.14; // 상수
+
+	void draw(); // 도형을 그리는 추상 메소드
+
+	double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+
+	default public void redraw() { // 디폴트 메소드
+		System.out.print("--- 다시 그립니다.");
+		draw();
+	}
+}
+
+class Circle implements Shape {
+
+	private double r;
+
+	public Circle(double r) {
+		this.r = r;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println("반지름이 " + r + "인 원입니다.");
+		return;
+	}
+	
+
+	public double getArea() {
+		return r * r * Math.PI;
+
+	}
+
+
+}
+
+public class ShapeInterface {
+
+	public static void main(String[] args) {
+		Shape donut = new Circle(10); // 반지름이 10인 원 객체
+		donut.redraw();
+		System.out.println("면적은 " + donut.getArea());
+	}
+
+}
+
+
+나의 출력값:
+--- 다시 그립니다.반지름이 10.0인 원입니다.
+면적은 314.1592653589793
+
+
+▣이어서... 마름모(Oval)하고 Rec 추가 작성
+다음 main() 메소드와 실행 결과를 참고하여,
+ Shape 인터페이스를 구현한 클래스 Oval, Rect를 추가 작성하고 전체 프로그램을 완성하라.
+
+public static void main(String[] args) {
+   Shape[] list = new Shape[3]; // Shape을 상속받은 클래스 객체의 레퍼런스 배열
+   list[0] = new Circle(10); // 반지름이 10인 원 객체
+   list[1] = new Oval(20, 30); // 20x30 사각형에 내접하는 타원
+   list[2] = new Rect(10, 40); // 10x40 크기의 사각형
+   for(int i=0; i<list.length; i++) list[i].redraw();
+   for(int i=0; i<list.length; i++) System.out.println("면적은 "+ list[i].getArea());
+}
+--- 다시 그립니다.반지름이 10인 원입니다.
+--- 다시 그립니다.20x30에 내접하는 타원입니다.
+--- 다시 그립니다.10x40크기의 사각형 입니다.
+면적은 314.0
+면적은 1884.0000000000002
+면적은 400.0
+
+힌트: oval = pi * ab
+▶
+
+interface Shape {
+	final double PI = 3.14; // 상수
+
+	void draw(); // 도형을 그리는 추상 메소드
+
+	double getArea(); // 도형의 면적을 리턴하는 추상 메소드
+
+	default public void redraw() { // 디폴트 메소드
+		System.out.print("--- 다시 그립니다.");
+		draw();
+	}
+}
+
+class Circle implements Shape {
+
+	private double r;
+
+	public Circle(double r) {
+		this.r = r;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println("반지름이 " + r + "인 원입니다.");
+		return;
+	}
+
+	public double getArea() {
+		return r * r * Math.PI;
+
+	}
+
+}
+
+class Oval implements Shape {
+
+	private int width, height;
+
+	public Oval(int width, int height) {
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println(width + " x " + height + " 사각형에 내접하는 타원");
+		return;
+	}
+
+	public double getArea() {
+		return width * height * Math.PI;
+
+	}
+
+}
+
+class Rect implements Shape {
+
+	private int width, height;
+
+	public Rect(int width, int height) {
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public void draw() {
+		System.out.println(width + " x " + height + " 크기의 사각형");
+		return;
+	}
+
+	public double getArea() {
+		return width * height;
+
+	}
+
+}
+
+public class ShapeInterface {
+	public static void main(String[] args) {
+		Shape[] list = new Shape[3]; // Shape을 상속받은 클래스 객체의 레퍼런스 배열
+		list[0] = new Circle(10); // 반지름이 10인 원 객체
+		list[1] = new Oval(20, 30); // 20x30 사각형에 내접하는 타원
+		list[2] = new Rect(10, 40); // 10x40 크기의 사각형
+		for (int i = 0; i < list.length; i++)
+			list[i].redraw();
+		for (int i = 0; i < list.length; i++)
+			System.out.println("면적은 " + list[i].getArea());
+
+	}
+
+}
+
+출력값:
+
+--- 다시 그립니다.반지름이 10.0인 원입니다.
+--- 다시 그립니다.20 x 30 사각형에 내접하는 타원
+--- 다시 그립니다.10 x 40 크기의 사각형
+면적은 314.1592653589793
+면적은 1884.9555921538758
+면적은 400.0

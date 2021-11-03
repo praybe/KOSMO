@@ -1,0 +1,210 @@
+10월 29일 금욜 
+
+챕터 19
+
+object class finalize > gc 나 runfilnalization이 나오는데 쓸 일 없고 써서도 안됨.
+
+finalize는 jvm이 호출해 준다.
+
+지금하고있는 것은 object.
+모든 것의 최고의 조상이고 11개의 메소드만 가능하다
+
+우리가 overriding해서 써먹을수 잇는데 
+
+
+
+▣인스턴스의 비교: equals 메소드
+
+class INum {
+   private int num;
+   public INum(int num) {
+      this.num = num;
+   }
+
+   @Override
+   public boolean equals(Object obj) {
+      if(this.num == ((INum)obj).num)
+         return true;
+      else
+         return false;
+   }
+}
+equals 다음에는 object  즉 참조형이 올 수 있다. 8개 타입 중 참조형을 받겠다.
+polymorphism. 자기 객체하고 obj하고 주소가 같으면 (boolean이니까) 즉, 자기 자신이면 트루 아니면 펄스.
+
+   public boolean equals(Object obj) {
+     return( this == obj );
+ 
+   }
+
+
+--------------------------------------------------
+
+
+
+
+
+A == B : 주소 비교
+
+A .equals B: 문자열 비교 
+
+
+
+
+
+인스턴스 복사: clone 메소드
+자바script 할떄 얕은 복사 깊은 복사에 대한 개념을 반드시 알아야함 
+.
+
+부모거 유산 쓰던지 말던지는 자식한테 달려 있음
+니가 쓰고 싶으면 쓰고 바꾸고 싶으면 함수 오버라이징해서 바꾸면 됨
+
+클론도 있으니까 써먹으면 됨
+
+clone매소드를 호출ㅎ려면 Cloneable인터페이스를 구현
+
+얕은 카피 깊은 카피는 자바스크립트, 리액트에도 나오서 굉장히 중요하다 !!!!
+
+
+
+
+
+
+속도는 clone이 new보다는 빠름
+어디서 활용하느냐'
+게임만들떄 ㅋㅋㅋ fsp만들떄 new가 아니라 clone으로 총쏴 
+
+
+
+------------------
+Shallow Copy 얕은 카피 ,   < > deep Copy
+
+
+생성자는 복사 안하고 원 클래스를 복사했으니까 바뀐 그대로 복사되는 거 같습니다 by 오금환
+
+
+
+
+
+
+
+
+Rectangle처럼 참조형이 왔을떄 deep copy가 필요하다.
+
+참조라 객체가 생성된 부분이 있다. 그런데 이건 copy가 안 됨.
+deep copy는 해당 class가 참조형을 가질 때 필요한 것이다.
+
+
+
+
+
+▣오늘의 문제 1
+
+다음 main()이 실행되면 아래 예시와 같이 출력되도록 MyPoint 클래스를 작성하라
+
+class MyPoint {
+	private int x, y;
+
+	public MyPoint(int x, int y) {
+		this.x = x;
+		this.y = y;
+
+	}
+
+	@Override
+	public String toString() {
+
+		return "Point(" + x + "," + y + ")";
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		MyPoint point = (MyPoint)obj;
+		
+		if (this.x == ((MyPoint) obj).x && this.y == ((MyPoint) obj).y)
+			return true;
+		else
+			return false;
+	}
+
+}
+
+public class MyPointTest {
+	public static void main(String[] args) {
+		MyPoint p = new MyPoint(3, 50);
+		MyPoint q = new MyPoint(4, 50);
+
+		System.out.println(p);
+
+		if (p.equals(q))
+			System.out.println("같은 점");
+		else
+			System.out.println("다른 점");
+
+	}
+
+}
+
+출력값:
+Point(3,50)
+다른 점
+
+
+
+▣오늘의 문제 2
+package Oct29;
+
+class Circle{
+	int x, y, radius;
+	
+	public Circle(int x, int y, int radius) {
+		this.radius=radius;
+		this.x=x;
+		this.y=y;
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Circle(" + x + "," + y + ")"+ "반지름"+radius;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Circle circle = (Circle)obj;
+		if(this.x == ((Circle)obj).x && this.y == ((Circle)obj).y)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	
+}
+public class CirclePointTest {
+	public static void main(String[] args) {
+		Circle a = new Circle(2, 3, 5); //중심 (2,3)에 반지름 5인 원
+		Circle b = new Circle(2, 3, 30); //중심 (2,3)에 반지름 30인 원
+		
+		System.out.println("원 a : " +a);
+		System.out.println("원 b : " +b);
+		
+		if(a.equals(b))
+			System.out.println("같은 원");
+		else
+			System.out.println("서로 다른 원");
+
+	}
+
+}
+
+
+출력값:
+원 a : Circle(2,3)반지름5
+원 b : Circle(2,3)반지름30
+같은 원
+
+
+
+
