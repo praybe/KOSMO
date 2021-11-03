@@ -1,0 +1,313 @@
+211103
+lexicon 사전
+
+제네릭 1
+
+고슬링 아재 소스코드 사용하는데 가장 큰 걸림돌은 제네릭 문법.
+현업에서 엄청 쓰일 일은 없음
+
+
+class A
+class B
+
+class C
+
+이렇게 있고 C가 AB를 담고 싶어. 
+그러면 AB 모두의 조상인 Object를 private Object 이런식으로 넣고 set해야 함
+
+모든 객체형 받으려면 polymorphism을 적용할 수 밖에 없는데 
+그렇게 하려면 println(Object obj) 이런 방법 뿐이다.
+
+방법은? 기존 소스 코드로 
+
+
+◑기본적인 제네릭 문법
+c언어 템플릿 영향으로 T라고 씀 
+그리고 예전에 Object자리에 다 T를 넣어. 데이터 타입이 들어가는 곳에 T 넣음
+연산하고 그런 자리에 넣는게 아님. 클래스 명 옆에 꺽쇠 하나 주고 T적어
+class Box<T>{
+   private T object;
+
+   public void set(T o){
+     object = o;
+   }
+
+   public T get(){
+     return object;
+   }
+
+}
+
+
+
+◑Generic 클래스 기반 인스턴스 생성
+Box<Apple> aBox = new Box<Apple>();
+데이터타입: Box<Apple>형 데이터 타입
+
+
+◑Generic 이후 개선된 결과
+1. 형변환을 하지 않는다.
+	자바1.5부터는 예전에 다형성 적용( Object)으로 인한 
+	형변환 및 실시간 에러 등을 컴파일 에러로 잡아낼 수 있게 됨
+		> very 혁명적임
+2. 과거 실시간 에러가 컴파일 에러로 잡아낼 수 있는 이유는?
+	데이터 타입을 미리 정하고 들어가기 때문
+		>> 이게 바로 핵심이고 제네릭 도입 이유다.
+			> 그래서 컴파일 에러를 내게 된다. 
+class Apple2 {
+
+	@Override
+	public String toString() {
+		return "I am an apple.";
+	}
+}
+
+class Orange2 {
+
+	@Override
+	public String toString() {
+		return "I am an orange.";
+	}
+}
+
+class Box2<T> {
+	private T ob;
+
+	public void set(T o) {
+		ob = o;
+	}
+
+	public T get() {
+		return ob;
+	}
+}
+
+public class GenericBase {
+	public static void main(String[] args) {
+		Box2<Apple2> aBox = new Box2<Apple2>();
+		Box2<Orange2> oBox = new Box2<Orange2>();
+
+		aBox.set(new Apple2());
+		oBox.set(new Orange2());
+
+		Apple2 ap = aBox.get();
+		Orange2 og = oBox.get();
+
+		System.out.println(ap);
+		System.out.println(og);
+
+출력값:
+I am an apple.
+I am an orange.
+
+
+◑다중 매개변수 기반 generic 클래스의 정의
+레프트 라이트를 대놓고 스트링으로 씀
+
+class DBox<L, R> {
+	private L left; // 왼쪽 수납 공간
+	private R right; // 오른쪽 수납 공간
+
+	public void set(L o, R r) {
+		left = o;
+		right = r;
+	}
+
+	@Override
+	public String toString() {
+		return left + " & " + right;
+	}
+
+}
+
+public class GenericMultiParameter {
+	public static void main(String[] args) {
+		DBox<String, Integer> box = new DBox<String, Integer>();
+		box.set("Apple", 25);
+		System.out.println(box);
+
+		DBox<String, String> box2 = new DBox<String, String>();
+		box2.set("Apple", "Orange");
+		System.out.println(box2);
+
+	}
+
+}
+
+출력값:
+Apple & 25
+Apple & Orange
+
+
+
+◑타입 매개변수 이름규칠
+대문자 형태의 한 문자로 이름을 짓는다. 
+E Element
+K Key
+N Number
+T Type
+V Value
+
+◑기본 자료형 제한, 래퍼클래스 가넝
+기본형 8개는 안되고 참조형, 래퍼클래스 형태로 들어가야 함
+Box<Integer> iBox = new ... >> 可
+Box<int> box = new ...  >>컴파일 오류 발생
+
+
+		Box2<Integer> iBox = new Box2<Integer>();
+		iBox.set(125); // 오토 박싱 진행
+		int num = iBox.get(); // 오토 언박싱 진행
+		System.out.println(num);
+
+
+
+출력값:
+125
+◑
+
+
+		Box2<String> sBox = new Box2<>();
+		sBox.set("I am so happy");
+
+		Box2<Box2<String>> wBox = new Box2<>();
+		wBox.set(sBox);
+
+		Box2<Box2<Box2<String>>> zBox = new Box2<>();
+		zBox.set(wBox);
+
+		System.out.println(zBox.get().get().get());
+
+
+
+출력값:
+I am so happy
+
+=====================================
+
+VSCODE 
+
+◑이미지 삽입하기
+
+같은 파일 있는 리스트에 이미지 가져다 놓고
+<body>
+    <P><img src="Navi_dr.png" alt="액박"></P>
+    <p><img src= "http://www.sba.seoul.kr/kr/images/header/Navi_dr.png" alt=""></p>    //이미지 주소 넣으면 됨
+    <p><img src= "http://www.sba.seoul.kr/kr/images/header/Navi_dr.png1" alt="잘못된 이미지"></p>
+    <p><img src= "Navi_dr.png" width= "500"></p>    //이미지 크기 조절
+    
+</body>
+
+
+
+◑사운드 출력하기
+
+같은 파일 있는 리스트에 mp3파일(노래파일) 가져다가 놓고
+<body>
+    <audio src="34ex1.mp3" controls="controls" autoplay="audio" loop="loop"></audio>
+ </body>
+  
+
+loop: 반복재생
+controls: 
+
+◑주간 히트송 예제
+
+투바투로 하느라 좀 길어짐 ㅋㅋ
+
+       <title>주간히트송 예제</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>
+                    <h1>주간 히트 노래</h1>
+                    <hr/>
+
+                    <ol>
+                        <li><img src="BG (4).jpg" width="70" height="70">
+                            <a href="https://youtu.be/d5bbqKYu51w" target="_blank">
+                                0X1=LOVESONG</a>
+                        </li>
+
+                        <li><img src="BG (2).jpg" width="70" height="70" alt="">
+                            <a href="https://youtu.be/6yWPfUz0z94" target="_blank">9와 4분의 3 승강장</a>
+                        </li>
+                        <li><img src="BG (3).jpg" width="70" height="78" alt="">
+                            <a href="https://youtu.be/9OXAoESmsRE" target="_blank">그냥 괴물을 살려</a>
+                        </li>
+                        <li><img src="BG (1).jpg" width="70" height="78" alt="">
+                            <a href="https://youtu.be/_F2GyzNZdy4" target="_blank">Ghosting</a>
+                        </li>
+                        <li><img src="BG (5).jpg" width="70" height="78" alt="">
+                            <a href="https://youtu.be/Vd9QkWsd5p4" target="_blank">5시 53분의 하늘</a>
+                        </li>
+                    </ol>
+
+                    <p>
+                        <audio src="34ex1.mp3" controls="controls" autoplay="audio" loop="loop"></audio>
+                    </p>
+                </td>
+            </tr>
+
+        </table>
+    </body>
+
+===============================================================
+
+◑동영상 출력
+< video></video> 비디오 태그
+
+◑폼태그
+
+
+
+        <form action="#" method="get">
+            이름 :
+            <input type="text" name="uname"/><br/>
+            아이디 :
+            <input type="text" name="uid"/><br/>
+            비밀번호 :
+            <input type="password" name="upw"/><br/>
+            연락처 :
+            <input type="text" name="uphone1" size="5"/>
+            -
+            <input type="text" name="uphone2" size="5"/>
+            -
+            <input type="text" name="uphone3" size="5"/><br/>
+            사진 :
+            <input type="file" name="upic"/><br/>
+            성별구분:
+            <input type="radio" name="gender" value="m">남
+            <input type="radio" name="gender" value="w">여
+            <br/>
+            사용언어 :
+            <input type="checkbox" name="lan" value="kor" checked="checked"/>한글
+            <input type="checkbox" name="lan" value="eng" checked="checked"/>영어
+            <input type="checkbox" name="lan" value="jap" checked="checked"/>일어
+            <input type="checkbox" name="lan" value="chn" checked="checked"/>중어
+            <br/>
+            자기소개 :
+            <textarea rows="5" cols="20">간단하게 입력하세요.</textarea><br/>
+            국적 :
+            <select>
+                <option>KOREA</option>
+                <option>USA</option>
+                <option>JAPAN</option>
+                <option>CHINA</option>
+            </select><br/>
+            좋아하는 음식 :
+            <select multiple="multiple">
+                <option>파전</option>
+                <option>불고기</option>
+                <option>김치</option>
+                <option>비빔밥</option>
+            </select><br/>
+            <input type="submit"/>
+
+        </form>
+
+
+
+
+
+
