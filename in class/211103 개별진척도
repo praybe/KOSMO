@@ -78,6 +78,11 @@ class CondOp {
 }
 
 
+
+
+
+
+
 3번(38번)
 Object obj = new Circle(10);
 System.out.println(obj);
