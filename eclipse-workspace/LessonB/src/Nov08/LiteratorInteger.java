@@ -12,7 +12,7 @@ public class LiteratorInteger {
 
 		int n;
 		for (Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
-			n = itr.next(); // ¿ÀÅä ¾ğ¹Ú½Ì ÁøÇà
+			n = itr.next(); // ì˜¤í†  ì–¸ë°•ì‹± ì§„í–‰
 			System.out.println(n + "\t");
 		}
 		System.out.println();
