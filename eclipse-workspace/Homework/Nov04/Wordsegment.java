@@ -6,27 +6,27 @@ import java.util.StringTokenizer;
 public class Wordsegment {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("¹®ÀåÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("ë¬¸ì¥ì„ ì…ë ¥í•˜ì„¸ìš”.");
 
 		while (true) {
 			try {
 				String words = sc.nextLine();
-				// ÇÑ±¸Àı ÀüÃ¼¸¦ ÀĞÀ¸·Á¸é nextLine
+				// í•œêµ¬ì ˆ ì „ì²´ë¥¼ ì½ìœ¼ë ¤ë©´ nextLine
 
-				if (words.equals("±×¸¸")) {
-					System.out.println("Á¾·áÇÕ´Ï´Ù.");
+				if (words.equals("ê·¸ë§Œ")) {
+					System.out.println("ì¢…ë£Œí•©ë‹ˆë‹¤.");
 					break;
 				}
-				// words¸¦ ¹ŞÀ¸¸é StringTokenizer »ç¿ë
+				// wordsë¥¼ ë°›ìœ¼ë©´ StringTokenizer ì‚¬ìš©
 				StringTokenizer tokens = new StringTokenizer(words, " ");
 
-				System.out.println("¾îÀı ¼ö: " + tokens.countTokens());
+				System.out.println("ì–´ì ˆ ìˆ˜: " + tokens.countTokens());
 
 			} catch (Exception e) {
 				sc.nextLine();
-				System.out.println("Àß¸øµÈ ÀÔ·ÂÀÌ´Ï ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.");
+				System.out.println("ì˜ëª»ëœ ì…ë ¥ì´ë‹ˆ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”.");
 				continue;
-				//sc.nextLine(); ¹öÆÛ·Î ºñ¿öÁÖ°í 
+				//sc.nextLine(); ë²„í¼ë¡œ ë¹„ì›Œì£¼ê³  
 			
 			}
 		}
@@ -34,3 +34,9 @@ public class Wordsegment {
 		
 	}
 }
+
+
+//ë¬¸ì¥ì„ ì…ë ¥í•˜ì„¸ìš”.
+//ë‚˜ëŠ” ì˜¤ëŠ˜ ë°¥ì„ ë¨¹ì—ˆë‹¤.
+//ì–´ì ˆ ìˆ˜: 4
+
