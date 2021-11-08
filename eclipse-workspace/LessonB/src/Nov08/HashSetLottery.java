@@ -11,7 +11,7 @@ public class HashSetLottery {
 			int rNum = (int)(Math.random() * 45 + 1);
 			set.add(rNum);
 		}
-		System.out.print("·Î¶Ç ¹øÈ£: ");
+		System.out.print("ë¡œë˜ ë²ˆí˜¸: ");
 		for (Integer num : set)
 			System.out.print(num + "\t");
 		System.out.println();
