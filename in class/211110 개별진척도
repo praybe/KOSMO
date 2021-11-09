@@ -1,0 +1,31 @@
+1번 (복습 33번 문제)
+
+2차원 배열 4 * 3 을 선언하고,
+각각의 방을 랜덤으로 값을 넣은뒤
+모두 출력하시오.
+
+
+
+
+
+
+2번 (52번 문제)
+아래와 같이 출력이 나오도록 프로그래밍을 하시오.
+
+        HashSet<Num> set = new HashSet<>();
+        set.add(new Num(7799));
+        set.add(new Num(9955));
+        set.add(new Num(7799));
+
+        System.out.println("인스턴스 수: " + set.size());
+
+        for(Num n : set)
+            System.out.print(n.toString() + '\t');
+
+        System.out.println();
+
+/*
+====출력
+인스턴스 수: 2
+7799	9955
+*/
