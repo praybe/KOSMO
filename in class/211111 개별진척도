@@ -1,0 +1,25 @@
+1번(복습 32번)
+Rectangle 을 배열로 3개 선언
+
+해당 객체에 인덱스 순서대로 가로 세로 설정 - 
+이번에는 반드시 scanner 로 입력 받을것
+
+해당 배열에 있는 Rectangle 의 총넓이의 합을 구하시오.
+
+또한 아래의 함수도 만들것(static 으로 만들것)
+- 파라미터를 Rectangle 배열로 받아서 해당 배열에 들어 잇는 
+Rectangle 들에 총 넓이를 리턴 하는 함수를 만드시오.
+
+
+
+
+
+
+2번(53번)
+   HashMap<Integer, String> map = new HashMap<>();
+   map.put(45, "Brown");
+   map.put(37, "James");
+   map.put(23, "Martin");
+
+======================================
+위의 Value 값이 다나오도록 for 문 돌리시오.
