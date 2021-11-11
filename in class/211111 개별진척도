@@ -1,4 +1,4 @@
-1번(복습 32번)
+1번(복습 32번) << 어려움 ㅠㅠ !! 
 Rectangle 을 배열로 3개 선언
 
 해당 객체에 인덱스 순서대로 가로 세로 설정 - 
@@ -11,6 +11,60 @@ Rectangle 을 배열로 3개 선언
 Rectangle 들에 총 넓이를 리턴 하는 함수를 만드시오.
 
 
+class Rectangle {
+	private int x, y;
+
+	public Rectangle(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public int getArea() {
+		return x * y;
+	}
+
+	public static int getTotalArea(Rectangle[] rec) {
+		int sum = 0;
+		for (int i = 0; i < rec.length; i++) {
+			sum += rec[i].getArea();
+		}
+		return sum;
+	}
+
+}
+
+public class Nov11 {
+	public static void main(String[] args) {
+		Rectangle[] rec = new Rectangle[3];
+
+		Scanner sc = new Scanner(System.in);
+
+		for (int i = 0; i < rec.length; i++) {
+			System.out.print("가로를 입력하세요.");
+			int x = sc.nextInt();
+			System.out.print("세로를 입력하세요.");
+			int y = sc.nextInt();
+
+			new Rectangle(x, y);
+			rec[i] = new Rectangle(x, y);
+
+		}
+		System.out.println("총 넓이: " + Rectangle.getTotalArea(rec));
+
+	}
+
+}
+
+
+
+출력값:
+가로를 입력하세요.5
+세로를 입력하세요.5
+가로를 입력하세요.6
+세로를 입력하세요.6
+가로를 입력하세요.7
+세로를 입력하세요.7
+총 넓이: 110
 
 
 
