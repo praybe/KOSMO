@@ -23,3 +23,37 @@ Rectangle 들에 총 넓이를 리턴 하는 함수를 만드시오.
 
 ======================================
 위의 Value 값이 다나오도록 for 문 돌리시오.
+
+
+import java.util.HashMap;
+import java.util.Set;
+
+public class Nov11 {
+	public static void main(String[] args) {
+		   HashMap<Integer, String> map = new HashMap<>();
+		   
+		   Set<Integer> s = map.keySet();
+		   
+		   map.put(45, "Brown");
+		   map.put(37, "James");
+		   map.put(23, "Martin");
+		   
+		   for(Integer n : s)
+			   System.out.print(n.toString() + '\t');
+		   System.out.println();
+		   
+		   for(Integer n : s)
+			   System.out.print(map.get(n).toString() + '\t');
+		  
+
+	}
+
+}
+
+
+
+출력값:
+37	23	45	
+James	Martin	Brown	
+
+
