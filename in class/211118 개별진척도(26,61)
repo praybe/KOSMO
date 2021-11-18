@@ -1,0 +1,32 @@
+1번 (복습 26)
+Rectangle 클래스 작성
+
+int 값 두개 입력
+
+출력
+가로 세로 입력 하세요.
+100 
+200
+넓이는 20000 입니다.
+
+
+
+
+
+2번(Servlet 61번)
+서블릿으로 구구단을 출력하시오.
+
+우클릭 > new > servlet> (프로젝트 및 클래스 생성)
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// http://localhost:8282/JSP/gugudan
+		
+		response.setContentType("text/html");
+    	for(int i = 1; i<10; i ++ ) {
+			for(int j =1; j<10 ; j++) {
+				writer.println(i+" x "+j+" = "+ (i*j)+ "</br>");
+			}
+			writer.println("</br>");
+		}
+    	writer.close();
+	}
