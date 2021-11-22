@@ -9,6 +9,44 @@ employee.printInfo();
 주소 : 서울 뉴욕시
 부서 : 개발 1팀
 
+▶▶▶
+class Employee {
+	
+	String name, addr, depart;
+	int age;
+	
+	public Employee(String name, int age, String addr, String depart) {
+		this.addr = addr;
+		this.age = age;
+		this.depart = depart;
+		this.name = name;
+		
+	}
+	
+	public void printInfo() {
+		
+		System.out.println("이름 : "+ name);
+		System.out.println("나이 : "+ age);
+		System.out.println("주소 : "+ addr);
+		System.out.println("부서 : "+ depart);
+		
+		
+	}
+	
+	
+}
+
+public class Nov22_no24th {
+	public static void main(String[] args) {
+		
+		Employee employee = new Employee("홍길동", 19, "서울 뉴욕시", "개발 1팀");
+		employee.printInfo();
+
+
+
+	}
+
+}
 
 
 
