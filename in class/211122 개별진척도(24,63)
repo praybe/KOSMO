@@ -50,3 +50,32 @@ employee.printInfo();
 	
 </body>
 </html>
+
+
+
+▶▶▶
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String[] hobby = request.getParameterValues("hobby");
+		String major = request.getParameter("major");
+		String protocol = request.getParameter("protocol");
+		
+		System.out.println("post 방식 출력 -----");
+		
+		response.setContentType("text/html; charset=EUC-KR");
+		PrintWriter writer = response.getWriter();
+		
+		writer.println("<html><head></head><body>");
+		
+		writer.println("이름: " + name);
+		writer.println("취미: " + Arrays.toString(hobby));
+		writer.println("아이디: " + major);
+		writer.println("비밀번호: " + protocol);
+		
+		writer.println("</body></html>");
+		
+		writer.close();
+	
+
+▶ @WebServlet("/FormEx") 이거 안 맞춰줘서 호출이 계속 안되었음 !!!!
+
