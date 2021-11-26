@@ -1,0 +1,49 @@
+1번 (복습 19번)
+원의 넓이는 구하는 프로그램을 아래와 같이 작성하시오.
+  - 원클래스를 만들것
+    - 변수 radius
+    - 변수 radius에 대한 setter getter 함수 만들것
+    - getArea 함수
+  
+  -메인 메소드를 가진 다른 클래스(AreaTest)에서 원 객체를 생성할것 
+  
+  내가 풀이한 방법:
+  class Circle{
+        private int radius;
+        
+        public Circle(int radius) {
+                this.radius=radius;
+        }
+
+        public int getRadius() {
+                return radius;
+        }
+
+        public void setRadius(int radius) {
+                this.radius = radius;
+        }
+        
+        public void getArea() {
+                System.out.println(radius * radius * Math.PI);
+                
+        }
+        
+}
+public class test1126 {
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                
+                Circle c = new Circle(5);
+                
+                c.getArea();
+                
+                
+                
+
+        }
+
+}
+출력값: 78.53981633974483
+
+
+2번(67번)
