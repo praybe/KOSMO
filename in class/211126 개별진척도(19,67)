@@ -7,7 +7,7 @@
   
   -메인 메소드를 가진 다른 클래스(AreaTest)에서 원 객체를 생성할것 
   
-  내가 풀이한 방법:
+▶내가 풀이한 방법:
   class Circle{
         private int radius;
         
@@ -43,7 +43,140 @@ public class test1126 {
         }
 
 }
-출력값: 78.53981633974483
+▶출력값: 78.53981633974483
 
 
 2번(67번)
+
+2. 아래를 참고 하여, 이름,국,영,수 데이터 멤버로 갖는 클래스(자바 빈)를 만든후 
+아래와 같이 액션 태그를 활용하여 총점고 평균이 나오도록 하시오.
+
+=========================================================
+
+        Student student = new edu.kosmo.ex.Student();
+        <jsp:useBean id="student" class="edu.kosmo.ex.Student"></jsp:useBean>
+
+        <jsp:setProperty name="student" property="name" value="홍길동" />
+              ~~~~~~~~~~~
+             ~~~~~~~~~~~~~
+        이름 : <jsp:getProperty ~~~ /><br />
+        국어 : <jsp:getProperty ~~~ /><br />
+        영어 : <jsp:getProperty ~~~ /><br />
+        수학 : <jsp:getProperty ~~~ /><br />
+        총점 : <jsp:getProperty ~~~ /><br />
+        평균 : <jsp:getProperty ~~~ /><br />
+
+
+▶내가 풀이한 방법:
+▶set.jsp
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+        <jsp:useBean id="student" class="edu.kosmo.ex.Student"></jsp:useBean>
+
+        <jsp:setProperty name="student" property="name" value="홍길동" />
+         <jsp:setProperty name="student" property="kor" value="80" />
+          <jsp:setProperty name="student" property="eng" value="90" />
+           <jsp:setProperty name="student" property="math" value="85" />
+            <jsp:setProperty name="student" property="total" />
+            <jsp:setProperty name="student" property="avg"/>
+   
+        이름 : <jsp:getProperty name="student" property="name" /><br />
+        국어 : <jsp:getProperty  name="student" property="kor" /><br />
+        영어 : <jsp:getProperty name="student" property="eng" /><br />
+        수학 : <jsp:getProperty name="student" property="math" /><br />
+        총점 : <jsp:getProperty name="student" property="total" /><br />
+        평균 : <jsp:getProperty name="student" property="avg" /><br />
+
+
+
+</body>
+</html>
+
+
+
+▶Student.java
+package edu.kosmo.ex;
+
+public class Student {
+        
+        String name;
+        int kor, eng, math;
+         double total;
+         double avg;
+        
+        public Student() {}
+        
+        public Student(String name, int kor, int eng, int math) {
+                this.name =name;
+                this.eng = eng;
+                this.math = math;
+                
+        }
+
+        public String getName() {
+                return name;
+        }
+
+        public void setName(String name) {
+                this.name = name;
+        }
+
+        public int getKor() {
+                return kor;
+        }
+
+        public void setKor(int kor) {
+                this.kor = kor;
+        }
+
+        public int getEng() {
+                return eng;
+        }
+
+        public void setEng(int eng) {
+                this.eng = eng;
+        }
+
+        public int getMath() {
+                return math;
+        }
+
+        public void setMath(int math) {
+                this.math = math;
+        }
+
+        public double getTotal() {
+                return kor+eng+math;
+        }
+
+        public void setTotal(double total) {
+                this.total = total;
+        }
+
+        public double getAvg() {
+                return getTotal()/3.0;
+        }
+
+        public void setAvg(double avg) {
+                this.avg = avg;
+        }
+        
+        
+        
+
+}
+▶출력값: 
+이름 : 홍길동
+국어 : 80
+영어 : 90
+수학 : 85
+총점 : 255.0
+평균 : 85.0
