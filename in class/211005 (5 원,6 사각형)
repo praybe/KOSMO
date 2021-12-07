@@ -38,3 +38,21 @@ RecArea.java 파일을 만들고
 넓이를 담는 변수 선언
 
 해당 넓이 출력
+
+```
+public class RecArea {
+
+	public static void main(String[] args) {
+		int width, length;
+		width = 4;
+		length = 5;
+		int area = width * length;
+		System.out.println(area);
+		
+		
+		
+
+	}
+
+}
+```
