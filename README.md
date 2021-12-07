@@ -9,7 +9,7 @@
 # 목차
 - [자바기본](https://github.com/praybe/KOSMO/tree/main/eclipse-workspace/java_variable/src/java_variable)
 - [자바 도형 넓이 구하기 기본](https://github.com/praybe/KOSMO/tree/main/eclipse-workspace/java_area/src)
- - [원](https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/java_area/src/CircleArea.java), [사각형](https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/java_area/src/RecArea.java)
+ - [원](https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/java_area/src/CircleArea.java), [사각형](https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/java_area/src/RecArea.java), [원과 사각형](https://github.com/praybe/KOSMO/blob/main/in%20class/211005%20(5%20%EC%9B%90%2C6%20%EC%82%AC%EA%B0%81%ED%98%95).md)
  - [이스케잎 시퀀스](https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/java_area/src/EscapeSequences.java)
 - [다형성 polymorphism](https://github.com/praybe/KOSMO/tree/main/eclipse-workspace/java_polymorphism/src/edu/kosmo/ex)
 <br/>
