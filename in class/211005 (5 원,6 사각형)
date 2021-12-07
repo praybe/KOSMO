@@ -10,7 +10,21 @@ PI 상수로 선언
 원의 넓이 공식 파이알의제곱을 담는 변수 선언 하여 
 넓이를 담고 출력
 
+public class CircleArea {
 
+	public static void main(String[] args) {
+		
+		double radius = 5.6;
+		final double PI = 3.14;
+		double area = radius * radius * PI;
+		System.out.println(area);
+		
+		
+	}
+
+}
+
+================================================================
 
 2번
 이클립스로 java_area 프로젝트를 만들고, 
