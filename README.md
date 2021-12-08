@@ -21,7 +21,7 @@
 
 
 
-```sqld
+``` sql
 --2> EMP테이블에서 각 사원의 직업, 사원번호, 이름, 입사일을 출력하라.
 SELECT JOB, EMPNO, ENAME, HIREDATE
 FROM EMP
