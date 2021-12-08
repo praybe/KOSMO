@@ -1,17 +1,17 @@
-//for¹®À¸·Î º°Ç¥ ÁÂÇâ ¿ªÁ÷°¢»ï°¢Çü 
+//forë¬¸ìœ¼ë¡œ ë³„í‘œ ì¢Œí–¥ ì—­ì§ê°ì‚¼ê°í˜• 
 
 public class StarRTInverseleft {
 
 	public static void main(String[] args) {
 		for (int i = 1; i <= 5; i++) {
 
-			for (int j = 1; j < i; j++) { // °ø¹é ´ã´ç for(int j = 5; j >= i; j--)µµ °¡ 
+			for (int j = 1; j < i; j++) { // ê³µë°± ë‹´ë‹¹ for (int j = 4; j >= i; j--)ê°€ëŠ¥
 
 				System.out.print(" ");
 
 			}
 
-			for (int j = i; j <= 5; j++) { // º° ´ã´ç
+			for (int j = i; j <= 5; j++) { // ë³„ ë‹´ë‹¹ ìœ„ì—ê°€ j--ì¼ê²½ìš° for (int j = 1; j <= i; j++)ì´ê±¸ë¡œ
 
 				System.out.print("*");
 			}
@@ -26,11 +26,11 @@ public class StarRTInverseleft {
 
 
 /*
-  °á°ú°ª
+  ê²°ê³¼ê°’
 *****
  ****
   ***
    **
     *
-  ÀÌ·¸°Ô ³ª¿È
+  ì´ë ‡ê²Œ ë‚˜ì˜´
  */
