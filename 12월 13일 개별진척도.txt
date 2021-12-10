@@ -1,0 +1,32 @@
+개별진척도
+==================================================================================
+52번)
+ 아래와 같이 출력이 나오도록 프로그래밍을 하시오.
+
+        HashSet<Num> set = new HashSet<>();
+        set.add(new Num(7799));
+        set.add(new Num(9955));
+        set.add(new Num(7799));
+
+        System.out.println("인스턴스 수: " + set.size());
+
+        for(Num n : set)
+            System.out.print(n.toString() + '\t');
+
+        System.out.println();
+
+/*
+====출력
+인스턴스 수: 2
+7799        9955
+*/
+
+53번 
+
+   HashMap<Integer, String> map = new HashMap<>();
+   map.put(45, "Brown");
+   map.put(37, "James");
+   map.put(23, "Martin");
+
+======================================
+위의 Value 값이 다나오도록 for 문 돌리시오.
