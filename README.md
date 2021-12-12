@@ -14,7 +14,7 @@
 - [다형성 polymorphism](https://github.com/praybe/KOSMO/tree/main/eclipse-workspace/java_polymorphism/src/edu/kosmo/ex)
 <br/>
 
-# 문제
+## 개별진척도 문제들
 - [5.원, 6.사각형](https://github.com/praybe/KOSMO/blob/main/in%20class/211005%20(5%20%EC%9B%90%2C6%20%EC%82%AC%EA%B0%81%ED%98%95).md)
 - [7.세 과목 총점과 평균, 8.초과~미만 그리고 배수](https://github.com/praybe/KOSMO/blob/main/in%20class/211006(7%20%EC%84%B8%EA%B3%BC%EB%AA%A9%2C8%20%EC%B4%88%EA%B3%BC%EB%AF%B8%EB%A7%8C%EB%B0%B0%EC%88%98).md)
 - [9.수우미양가, 11.짝수 홀수 판단](https://github.com/praybe/KOSMO/blob/main/in%20class/211007%20(9%20%EC%88%98%EC%9A%B0%EB%AF%B8%2C11%20%EC%A7%9D%ED%99%80).md)
