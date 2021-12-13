@@ -21,6 +21,61 @@
 7799        9955
 */
 
+>>>>
+import java.util.HashSet;
+ 
+class Num{
+	
+	private int num;
+
+	public Num(int num) {
+		this.num = num;
+	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(num);
+	}
+	@Override
+	public int hashCode() {
+		return num %3;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(num==((Num)obj).num)
+			return true;
+		else 
+			return false;
+	}
+	
+}
+public class dec13 {
+	public static void main(String[] args) {
+		HashSet<Num> set = new HashSet<>();
+		set.add(new Num(7799));
+		set.add(new Num(9955));
+		set.add(new Num(7799));
+		
+		System.out.println("인스턴스 수: " + set.size());
+
+		for(Num n : set)
+		    System.out.print(n.toString() + '\t');
+
+		System.out.println();
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
 53번 
 
    HashMap<Integer, String> map = new HashMap<>();
@@ -30,3 +85,31 @@
 
 ======================================
 위의 Value 값이 다나오도록 for 문 돌리시오.
+
+
+
+
+>>>>
+import java.util.HashMap;
+import java.util.Set;
+
+public class dec13_2 {
+	public static void main(String[] args) {
+		   HashMap<Integer, String> map = new HashMap<>();
+		   
+		   Set<Integer> s = map.keySet();
+		   
+		   map.put(45, "Brown");
+		   map.put(37, "James");
+		   map.put(23, "Martin");
+		   
+		   for(Integer n : s)
+			   System.out.print(n.toString() + '\t');
+		   System.out.println();
+		   
+		   for(Integer n : s)
+			   System.out.print(map.get(n).toString() + '\t');
+	}
+
+}
+
