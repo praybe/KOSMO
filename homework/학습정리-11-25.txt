@@ -1,0 +1,37 @@
+1. 예외 페이지를 설정 하는 방법 2가지는?
+2. 아래를 참고 하여, 이름,국,영,수 데이터 멤버로 갖는 클래스(자바 빈)를 만든후 
+아래와 같이 액션 태그를 활용하여 총점고 평균이 나오도록 하시오.
+
+=========================================================
+
+	Student student = new edu.kosmo.ex.Student();
+	<jsp:useBean id="student" class="edu.kosmo.ex.Student"></jsp:useBean>
+
+	<jsp:setProperty name="student" property="name" value="홍길동" />
+              ~~~~~~~~~~~
+             ~~~~~~~~~~~~~
+	이름 : <jsp:getProperty ~~~ /><br />
+	국어 : <jsp:getProperty ~~~ /><br />
+	영어 : <jsp:getProperty ~~~ /><br />
+	수학 : <jsp:getProperty ~~~ /><br />
+	총점 : <jsp:getProperty ~~~ /><br />
+	평균 : <jsp:getProperty ~~~ /><br />
+
+3.flex 에 대하여 설명하시오.
+
+=======================================================
+
+개별 진척도
+
+위의 문제 2번(개별진척도 파일 67번) 
+
+
+====================================
+19번 문제
+원의 넓이는 구하는 프로그램을 아래와 같이 작성하시오.
+  - 원클래스를 만들것
+    - 변수 radius
+    - 변수 radius에 대한 setter getter 함수 만들것
+    - getArea 함수
+  
+  -메인 메소드를 가진 다른 클래스(AreaTest)에서 원 객체를 생성할것
