@@ -25,3 +25,31 @@ starPrint3(5)
   *****
  *******
 *********"
+
+참고:https://github.com/praybe/KOSMO/blob/main/eclipse-workspace/Method/src/StarPrint.java
+
+코드:
+public class StarPrint {
+	public static void main(String[] args) {
+
+		starPrint(5);
+
+	}
+
+	public static void starPrint(int num) { 
+
+		for (int i = 1; i <= num; i++) {
+			for (int j = i; j < num; j++) {
+				System.out.print(" ");
+			}
+			for (int j = 1; j <= i * 2 - 1; j++) {
+				System.out.print("*");
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
