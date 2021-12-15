@@ -187,3 +187,22 @@ html_css_12_4_ex5.html 구현하시오
     </body>
 </html>
 
+
+
+
+
+js 3번
+"
+ var varType = "123";
+ console.log(""varType : "" + (varType + 1000));
+                        
+ varType = Number(varType);
+ console.log("varType : " + (varType + 1000));
+                        
+위의 코드를 읽고 예측하시오."
+
+
+1231000
+1123
+
+
