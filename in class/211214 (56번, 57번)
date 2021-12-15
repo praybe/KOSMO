@@ -3,49 +3,187 @@
 좋은 아침 입니다. 를 love.txt 로 저장 -> 해당 내용을 읽어 들여 love2.txt 로 복사"
 참고: 11월12일 이클립스
 코드:
+Input====================================================================================
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
+public class IOTest {
 
-public class N3_ReadCopy {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
+		//I Love U를 한자 한자 읽는다. read는 한 1byte를 읽는 것
+		//32는 아스키 코드의 띄어쓰기 -1은 파일의 끝을 의미
+		
+		//실무에서는 trycatch무조건 들어가야 됨
 		InputStream is = null;
-		OutputStream os = null;
-
 		try {
-			is = new FileInputStream("C:\\kosmo\\love.txt");
-			os = new FileOutputStream("C:\\kosmo\\love2.txt");
-
+		
+		is = new FileInputStream("C:\\Users\\kosmo\\eclipse-workspace\\Love\\Love.txt");
+		//폴리몰피즘 적용해서
+		
+		while(true) {
+			int i = is.read();
 			
-			while (true) {
-				int i = is.read();
-			
-				
-				if (i == -1)
-					break;
-				
-				os.write(i);
-
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		} finally {
-			try {
-				if (os != null)
-					os.close();
-			} catch (Exception e2) {
-
-			}
-
+			System.out.println("데이터" + i);
+			if(i == -1)
+				break;
 		}
-
+		
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try { 
+				if(is != null)
+				is.close();
+			} catch (Exception e) { }
+		}
 	}
 }
 
 
+
+
+Output====================================================================================
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class OutPutStreamTest {
+
+	public static void main(String[] args) throws Exception{
+		//I Love U를 한자 한자 읽는다. read는 한 1byte를 읽는 것
+		//32는 아스키 코드의 띄어쓰기 -1은 파일의 끝을 의미
+		
+		//실무에서는 trycatch무조건 들어가야 됨
+		OutputStream os = null;
+		try {
+		
+		os = new FileOutputStream("C:\\Users\\kosmo\\eclipse-workspace\\Love\\Love.txt");
+		//폴리몰피즘 적용해서
+		String str = "오늘 날씨는 아주 좋습니다.";
+		
+		byte[] bs = str.getBytes();
+		os.write(bs);
+		
+	
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			try { 
+				if(os != null)
+				os.close();
+			} catch (Exception e) { }
+		}
+	}
+}
+
+
+
+In N Out===================================================================================
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class inNoutTestMain {
+
+	public static void main(String[] args) {
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			
+		is = new FileInputStream("C:\\Users\\kosmo\\eclipse-workspace\\Love\\Love.txt");
+		os = new FileOutputStream("Love5.txt");
+		
+		while(true) {
+			int i = is.read();
+			
+			if(i == -1)
+				break;
+			
+			os.write(i);
+		}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}try { 
+			if(is != null)
+			is.close();
+		} catch (Exception e) { }
+		
+	}
+}
+
+
+
+
+
 57번
 html_css_12_4_ex5.html 구현하시오
+(빨간 사각형과 노란 사각형이 겹쳐 있고 테두리는 점선으로 됨)
+참고: vscode 11월 12일 zindex 파일
+코드:
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>12-4 position_relative와 absolute 혼합</title>
+        <style>
+
+            #header {
+                height: 50px;
+                background-color: #cccccc;
+            }
+
+            #wrap {
+                height: 200px;
+                position: relative;
+            }
+
+            #content1{
+                width: 100px; height: 100px;
+                background-color: red;
+                border: 2px dashed green;
+                position: absolute;
+                top: 10px; left: 10px;
+                z-index: 20;
+            }
+
+            #content2{
+                width: 100px; height: 100px;
+                background-color: yellow;
+                border: 2px dashed green;
+                position: absolute;
+                top: 50px; left: 50px;
+                z-index: 10;
+            }
+
+            #footer{
+                height: 50px;
+                background-color: #cccccc;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div id="contain">
+            <div id = "header"> Header </div>
+            <div id ="wrap">
+                <div id = "content1"> content1 </div>
+                <div id = "content2"> content2 </div>
+            </div>
+            <div id="footer"> footer </div>
+        </div>
+
+    </body>
+</html>
+
