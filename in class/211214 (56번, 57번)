@@ -1,0 +1,51 @@
+56번(IO STREAM)
+"아래를 프로그래밍 하시오.
+좋은 아침 입니다. 를 love.txt 로 저장 -> 해당 내용을 읽어 들여 love2.txt 로 복사"
+참고: 11월12일 이클립스
+코드:
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+
+public class N3_ReadCopy {
+	public static void main(String[] args) {
+		InputStream is = null;
+		OutputStream os = null;
+
+		try {
+			is = new FileInputStream("C:\\kosmo\\love.txt");
+			os = new FileOutputStream("C:\\kosmo\\love2.txt");
+
+			
+			while (true) {
+				int i = is.read();
+			
+				
+				if (i == -1)
+					break;
+				
+				os.write(i);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (os != null)
+					os.close();
+			} catch (Exception e2) {
+
+			}
+
+		}
+
+	}
+}
+
+
+57번
+html_css_12_4_ex5.html 구현하시오
